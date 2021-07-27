@@ -1,21 +1,19 @@
-import './App.css';
-import Template from "./componentes/Template"
-import Login from "./componentes/Login"
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Error404 from './pages/Error404';
 
-function App() {
+const App = () => {
   return (
-    <div className="App-header">
+    <div>
       <Router>
         <Switch>
-          <Route path="/template" component={Template}></Route>
-          
-          <Route path="/login" component={Login}></Route>
-          <Route path="/" component={Login}></Route>
+          <Route exact path='/' component={Login}/>
+          <Route path='*' component={Error404}/>
         </Switch>
       </Router>
     </div>
   );
-}
+};
 
 export default App;
