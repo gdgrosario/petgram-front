@@ -1,1 +1,32 @@
-$colorbg: salmon;
+$bg_white: #f6f6f6;
+// Base Colors 1
+$purple_one: #405de6;
+$purple_two: #5851db;
+$purple_three: #833ab4;
+$pink_one: #c13584;
+$pink_two: #e1306c;
+$red_one: #fd1d1d;
+$gradient_one: linear-gradient(
+  180deg,
+  rgba(64, 93, 230, 0.9) 0%,
+  rgba(88, 81, 219, 0.9) 18.23%,
+  rgba(136, 51, 170, 0.9) 39.74%,
+  rgba(193, 53, 132, 0.9) 60.65%,
+  rgba(225, 48, 108, 0.9) 78.65%,
+  rgba(253, 29, 29, 0.9) 100%
+);
+
+// Base Colors 2
+$yellow: #fbac49;
+$orange: #f67728;
+$red_two: #d81b46;
+$pink_three: #cc136f;
+$purple_for: #a20f96;
+$gradient_two: linear-gradient(
+  46.57deg,
+  #fbac49 14.57%,
+  #f67728 29.84%,
+  #d81b46 46.27%,
+  #cc136f 68.56%,
+  #a20f96 85.02%
+); ;
