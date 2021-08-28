@@ -8,7 +8,7 @@ export function Home() {
   return (
     <>
       <Header />
-      <section className="home">
+      <section className="home animate__animated animate__rubberBand">
         <Logo className="icon" />
         <Error />
         <Hero />
