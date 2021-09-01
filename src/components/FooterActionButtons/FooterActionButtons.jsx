@@ -1,10 +1,11 @@
 import './FooterActionButtons.scss'
 
 /* svgs */
-import home from '../../assets/svgs/icons/home.svg'
-import search from '../../assets/svgs/icons/search.svg'
-import video from '../../assets/svgs/icons/video.svg'
-import store from '../../assets/svgs/icons/store.svg'
+import home from 'assets/svgs/icons/home.svg'
+import search from 'assets/svgs/icons/search.svg'
+import video from 'assets/svgs/icons/video.svg'
+import store from 'assets/svgs/icons/store.svg'
+import { Link } from 'react-router-dom'
 
 const avatar = 'https://assets.teenvogue.com/photos/5776b76d924ce46478f244de/master/w_1080,h_1236,c_limit/01.png'
 
@@ -15,48 +16,48 @@ export const FooterActionButtons = () => {
             <nav className="footer-action-nav__nav">
                 <ul className="footer-action-nav__list">
                     <li className="footer-action-nav__item">
-                        <a className="footer-action-nav__link" href="/">
+                        <Link to="/" className="footer-action-nav__link" href="/">
                             <img 
                                 className="footer-action-nav__svg"
                                 src={home} 
                                 alt="home" />
-                        </a>
+                        </Link>
                     </li>
                     
                     <li className="footer-action-nav__item">
-                        <a className="footer-action-nav__link" href="/">
+                        <Link to="/" className="footer-action-nav__link" href="/">
                             <img 
                                 className="footer-action-nav__svg"
                                 src={search} 
                                 alt="search" />
-                        </a>
+                        </Link>
                     </li>
                     
                     <li className="footer-action-nav__item">
-                        <a className="footer-action-nav__link" href="/">
+                        <Link to="/" className="footer-action-nav__link" href="/">
                             <img 
                                 className="footer-action-nav__svg"
                                 src={video} 
                                 alt="video" />
-                        </a>
+                        </Link>
                     </li>
                     
                     <li className="footer-action-nav__item">
-                        <a className="footer-action-nav__link" href="/" >
+                        <Link to="/" className="footer-action-nav__link" href="/" >
                             <img 
                                 className="footer-action-nav__svg"
                                 src={store} 
                                 alt="store" />
-                        </a>
+                        </Link>
                     </li>
                     
                     <li>
-                        <a className="footer-action-nav__link footer-action-nav__link--user" href="/">
+                        <Link to="/" className="footer-action-nav__link footer-action-nav__link--user" href="/">
                             <img 
                                 className="footer-action-nav__svg footer-action-nav__svg--avatar"
                                 src={avatar} 
                                 alt="store" />
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>

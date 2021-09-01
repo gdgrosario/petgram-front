@@ -1,6 +1,6 @@
 import './CardFriend.scss'
 
-import menuBtn from '../../../../assets/svgs/icons/bar.svg'
+import menuBtn from 'assets/svgs/icons/bar.svg'
 
 const avatar = 'https://assets.teenvogue.com/photos/5776b76d924ce46478f244de/master/w_1080,h_1236,c_limit/01.png'
 

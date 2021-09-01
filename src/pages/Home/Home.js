@@ -4,20 +4,15 @@ import "./scss/home.scss";
 import { ReactComponent as Logo } from "assets/svgs/Logo.svg";
 import { ReactComponent as Error } from "assets/svgs/404_two.svg";
 
-/* Pages */
-import { Followers } from "pages/Followers/Followers";
-
-
 export function Home() {
   return (
     <>
-     {/*  <Header /> */}
-      <Followers/>
+      <Header />
       <section className="home animate__animated animate__rubberBand">
-        {/* <Logo className="icon" />
+        <Logo className="icon" />
         
         <Error />
-        <Hero /> */}
+        <Hero />
         
       </section>
     </>
