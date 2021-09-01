@@ -1,0 +1,38 @@
+@import "assets/scss/colors";
+
+.team__description {
+  text-align: center;
+  color: $black;
+  margin-bottom: 3rem; 
+  &__title {
+    margin: 0;
+  }
+}
+
+
+.team__card{
+  color: $black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem; 
+  &__user{
+    display: flex;
+    align-items: center;
+    img{
+      border-radius: .5rem;
+      margin-right: .5rem;
+    }
+    h2{
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    span{
+      font-size: 1rem;
+      color: $gray;
+    }
+  }
+  &__social{
+    margin-right: .2rem;
+  }
+}
