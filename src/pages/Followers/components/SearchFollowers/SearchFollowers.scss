@@ -1,0 +1,16 @@
+.box-search{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    
+    border-radius: 22px;
+    padding: 0 20px;
+    border: 1.8px solid #EAEAEA;
+    &__inputSearch{
+        padding: 15px 20px;
+        border-radius: 22px;
+        border: none;
+        outline: none;
+        width: 100%;
+    }
+}

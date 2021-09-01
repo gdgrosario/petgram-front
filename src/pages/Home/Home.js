@@ -10,8 +10,10 @@ export function Home() {
       <Header />
       <section className="home animate__animated animate__rubberBand">
         <Logo className="icon" />
+        
         <Error />
         <Hero />
+        
       </section>
     </>
   );
