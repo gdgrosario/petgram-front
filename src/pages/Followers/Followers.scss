@@ -1,0 +1,16 @@
+.separationMargin {
+    margin: 30px 0;
+}
+
+.container{
+    padding: 30px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.section-cardProfile{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
