@@ -33,7 +33,7 @@ export const routes = [
         component: LayoutHome,
         routes: [
             {
-                path: '/Home/:userName',
+                path: '/Home',
                 component: HomeAut,
                 exact: true
             },
