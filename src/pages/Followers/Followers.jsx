@@ -7,10 +7,10 @@ import { SearchFollowers } from './components/SearchFollowers/SearchFollowers';
 import { CardFriend } from './components/ListFriends/CardFriend';
 import { FooterActionButtons } from 'components/FooterActionButtons/FooterActionButtons';
 
-export function Followers () {
+export function Followers (props) {
     return (
         <div className="container">
-                <NavPages titleHeaderPage="Seguidores de Quimera" />
+                <NavPages titleHeaderPage="Seguidores de Quimera" history={props.history} />
     
                <section className="section-cardProfile">
                     <CardInfoProfile number="200"  textCard="Seguidos" />
