@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
         //TODO: Create function or import for check access token.
 
         setUser({
-            user: true,
+            user: false,
             isLoading: false
         })
     }, [])

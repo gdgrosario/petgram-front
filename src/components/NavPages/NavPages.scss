@@ -4,7 +4,8 @@
     top: 0;
     background-color: #F6F6F6 ;
     left: 0;
-    padding: 20px 0 20px 0;
+    padding: 10px 0;
+    z-index: 1;
     right: 0 ;
     &__list{
         display: flex;
