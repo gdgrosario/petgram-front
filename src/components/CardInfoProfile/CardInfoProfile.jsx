@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import './CardInfoProfile.scss'
-
 export function CardInfoProfile  ( { number = 0 , textCard = 'Info Card' } ) {
     return (
         <Link to="/" className="cardProfile">

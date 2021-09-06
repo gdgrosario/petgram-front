@@ -1,0 +1,106 @@
+.container-user{
+    padding: 10px 30px  30px 30px;
+    margin-bottom: 60px;
+}
+
+.box-profile{ 
+    margin-top: 60px;
+    height: 255px;
+    &__content-profile{
+        min-height: 210px;
+        max-height: 210px;
+        overflow: hidden;
+        height: 25vh;
+        position: relative;
+    }
+
+    &__wave{
+        position: absolute;
+        bottom: 0;
+        path {
+            fill: #F6F6F6;
+        }
+    }
+
+    &__description-profile{
+        line-height: 20px;
+        margin: 0;
+        width: 80%;
+        color: #8E8E8E;
+    }
+}
+
+.info-user-box{
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 50px;
+    margin-left: 30px;
+    
+    &__box-perfil-photo{
+        overflow: hidden;
+        width: 95px;
+        margin-right: 20px;
+        height: 95px;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+    }
+    &__perfil-photo{
+        width: 100%;
+        height: auto;
+    }
+    &__box-buttons{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 5px;
+    }
+
+    &__name{
+        font-size: 22px;
+        margin: 0;
+
+    }
+
+    &__user-name{
+        margin: 2px 0 0 0;
+        color: #666666;
+    }
+}
+
+.section-friends{
+    margin-top: 20px;
+    &__followers{
+        color: #8E8E8E;
+    }
+    &__user-friend{
+        color: #000;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 424px) {
+    .info-user-box{
+        &__box-buttons{
+            flex-direction: column;
+        }
+    }
+}
+
+@supports(object-fit: cover){
+    .box-profile{
+        height: 300px;
+    }
+    .info-user-box{
+        &__perfil-photo{ 
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+    }
+}

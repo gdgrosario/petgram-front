@@ -3,8 +3,6 @@ import React from 'react'
 
 export const LoadSubroutesHome = ({routes}) => {
     return (
-        <>
-            <LoadSubRoutes  routes={routes} />
-        </>
+        <LoadSubRoutes  routes={routes} />
     )
 }
