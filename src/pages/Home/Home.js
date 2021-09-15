@@ -11,7 +11,7 @@ export function Home() {
 
   return (
     <>
-      <section className="home animate__animated animate__rubberBand">
+      <section className="container-global home animate__animated animate__rubberBand">
         <Logo className="icon" />
         {
           user && !isLoading && <p>Tu historia </p>

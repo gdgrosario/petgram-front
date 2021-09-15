@@ -4,7 +4,8 @@
 @import './utilities/colors';
 
 //base
-@import './base/resets';
+@import './base/resets',
+        './base/base';
 
 //layout
 @import './layout/gridCards';
@@ -25,5 +26,6 @@
     './pages/followers',
     './pages/home',
     './pages/team',
+    './pages/signUp',
     './pages/userProfile';
 
