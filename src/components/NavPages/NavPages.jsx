@@ -1,4 +1,3 @@
-import "./NavPages.scss";
 /* svgs */
 import backBtn from "assets/svgs/icons/arrow.svg";
 import menuBtn from "assets/svgs/icons/bar.svg";

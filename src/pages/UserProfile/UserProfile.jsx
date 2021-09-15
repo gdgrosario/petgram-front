@@ -1,6 +1,4 @@
 import { useContext } from 'react'
-import './UserProfile.scss'
-
 /* Context */
 import { AuthContext } from 'context/ContextProvider';
 

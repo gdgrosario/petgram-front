@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "normalize.css";
 import "animate.css";
-import "index.scss";
+import "./styles/main.scss"
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { App } from "App";

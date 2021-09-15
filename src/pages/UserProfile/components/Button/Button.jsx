@@ -1,4 +1,3 @@
-import './Button.scss'
 export const Button = ({ textButtonn, action }) => {
     return (
         <button className="btn-profile">

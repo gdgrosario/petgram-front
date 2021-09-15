@@ -1,5 +1,3 @@
-import './SearchFollowers.scss'
-
 /* svgs */
 import searchSvgDark from 'assets/svgs/icons/search_dark.svg'
 

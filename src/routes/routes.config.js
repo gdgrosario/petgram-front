@@ -4,6 +4,7 @@ import { Error404 } from "pages/Errors/Error404";
 import { Followers } from "pages/Followers/Followers";
 import { Home } from "pages/Home/Home";
 import { LoadSubroutesHome } from "pages/Home/LoadSubroutesHome";
+import { Team } from "pages/Team/Team";
 import { UserProfile } from "pages/UserProfile/UserProfile";
 
 export const routes = [
@@ -26,6 +27,11 @@ export const routes = [
                 path: '/SignUp',
                 exact: true,
                 component: SignUp,
+            },
+            {
+                path: '/Team',
+                exact: true,
+                component: Team,
             },
             {
                 

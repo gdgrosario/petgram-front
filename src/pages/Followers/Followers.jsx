@@ -1,5 +1,3 @@
-import './Followers.scss'
-
 /* Components */
 import { CardInfoProfile } from "components/CardInfoProfile/CardInfoProfile";
 import { NavPages } from 'components/NavPages/NavPages';

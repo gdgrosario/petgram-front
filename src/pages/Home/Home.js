@@ -1,5 +1,4 @@
 import { Hero } from "./components/Hero";
-import "./scss/home.scss";
 import { ReactComponent as Logo } from "assets/svgs/Logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "context/ContextProvider";

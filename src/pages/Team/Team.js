@@ -3,12 +3,11 @@ import { NavPages } from "components/NavPages/NavPages";
 import { CardTeam } from "./CardTeam";
 
 import { getTeam } from "helpers/getTeam";
-import "./Team.scss";
 
-export function Team() {
+export function Team({history}) {
   return (
     <div className="container">
-      <NavPages />
+      <NavPages titleHeaderPage="Volver" history={history} />
 
       <section className="team__description">
         <h1 className="team__description__title">Team</h1>
