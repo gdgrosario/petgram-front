@@ -1,4 +1,3 @@
-import './Cardhoto.scss'
 import simona from '../../img/simona.jpg'
 export const CardPhoto = ({ urlPhoto }) => {
     return (

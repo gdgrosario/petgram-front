@@ -1,6 +1,4 @@
 import { useContext } from 'react'
-import './UserProfile.scss'
-
 /* Context */
 import { AuthContext } from 'context/ContextProvider';
 
@@ -49,7 +47,7 @@ export const UserProfile = (props) => {
             </section>
 
 
-            <div className="container-user">
+            <div className="container-global">
                 <p className="box-profile__description-profile">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sunt dicta provident.
                 </p>

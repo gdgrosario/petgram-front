@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { getActionButtons } from "helpers/getActionButtons";
-import "./FooterActionButtons.scss";
 
 export const FooterActionButtons = () => {
   return (
