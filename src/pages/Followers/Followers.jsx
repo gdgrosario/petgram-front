@@ -8,7 +8,7 @@ import { GridCards } from 'components/GridCards/GridCards';
 
 export function Followers (props) {
     return (
-        <div className="container">
+        <div className="container-global spacing-for-pages">
             <NavPages titleHeaderPage="Seguidores de Quimera" history={props.history} />
 
             <GridCards>

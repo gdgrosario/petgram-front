@@ -1,12 +1,9 @@
 .header-nav-pages{
     margin-bottom: 30px;
     position: fixed;
-    top: 0;
     background-color: #F6F6F6 ;
-    left: 0;
     padding: 10px 0;
-    z-index: 1;
-    right: 0 ;
+    @include fixElement($position-y: 'top', $z-index: 1);
     &__list{
         display: flex;
         justify-content: space-between;

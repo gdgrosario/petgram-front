@@ -3,6 +3,7 @@ import { ReactComponent as Logo } from "assets/svgs/Logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "context/ContextProvider";
 import { FooterActionButtons } from "components/FooterActionButtons/FooterActionButtons";
+import { HeaderHome } from "components/Header/HeaderHome";
 
 export function Home() {
   //TODO: Refactor 
@@ -11,8 +12,8 @@ export function Home() {
 
   return (
     <>
+      <HeaderHome/>
       <section className="container-global home animate__animated animate__rubberBand">
-        <Logo className="icon" />
         {
           user && !isLoading && <p>Tu historia </p>
         }
