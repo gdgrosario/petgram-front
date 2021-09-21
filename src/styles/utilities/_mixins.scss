@@ -1,0 +1,17 @@
+@mixin fixElement($top:0, $bottom:0, $rigth:0, $left:0, $z-index:0, $position-y: 'top', $position-x: 'left') {
+    position: fixed;
+    width: 100%;
+    z-index: $z-index; 
+    
+    @if $position-y == 'top' {
+        top: $top;  
+    }  @else if $position-y == 'bottom' {
+        bottom: $bottom;
+    }
+
+    @if $position-x == 'left' {
+        left: $left;  
+    }  @else if $position-x == 'rigth' {
+        right: $rigth;
+    }
+}

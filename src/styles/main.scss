@@ -1,14 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 
 //utilities
-@import './utilities/colors';
+@import './utilities/colors',
+        './utilities/mixins';
 
 //base
 @import './base/resets',
         './base/base';
 
 //layout
-@import './layout/gridCards';
+@import './layout/gridCards',
+        './layout/header';
 
 //Components
 @import 

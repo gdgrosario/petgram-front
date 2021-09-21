@@ -6,7 +6,7 @@ import { getTeam } from "helpers/getTeam";
 
 export function Team({history}) {
   return (
-    <div className="container">
+    <div className="container-global spacing-for-pages">
       <NavPages titleHeaderPage="Volver" history={history} />
 
       <section className="team__description">

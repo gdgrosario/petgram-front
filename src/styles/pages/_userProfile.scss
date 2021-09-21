@@ -1,5 +1,4 @@
 .box-profile{ 
-    margin-top: 60px;
     height: 255px;
     &__content-profile{
         min-height: 210px;
@@ -71,6 +70,7 @@
 .section-friends{
     margin-top: 20px;
     &__followers{
+        margin: 22px 0;
         color: #8E8E8E;
     }
     &__user-friend{

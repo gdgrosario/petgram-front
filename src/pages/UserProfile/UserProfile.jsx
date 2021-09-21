@@ -27,53 +27,55 @@ export const UserProfile = (props) => {
         <>
             <NavPages titleHeaderPage="Perfil" history={props.history} />
 
-            <section className="box-profile">
-                <div style={{ backgroundImage: `url(${catBanner})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="box-profile__content-profile">
-                    <Wave className="box-profile__wave" />
-                </div>
-
-                <div className="info-user-box">
-                    <div className="info-user-box__box-perfil-photo">
-                        <img className="info-user-box__perfil-photo" src={catPerfil} alt="perfil" />
+            <div className="spacing-for-pages">
+                <section className="box-profile">
+                    <div style={{ backgroundImage: `url(${catBanner})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="box-profile__content-profile">
+                        <Wave className="box-profile__wave" />
                     </div>
-
-                    <div className="info-user-box__box-user-names">
-                        <h1 className="info-user-box__name">Quimera</h1>
-                        <p className="info-user-box__user-name">Gata Siamesa</p>
-
-                        <RenderButtonsForUser {...UserState} />
+    
+                    <div className="info-user-box">
+                        <div className="info-user-box__box-perfil-photo">
+                            <img className="info-user-box__perfil-photo" src={catPerfil} alt="perfil" />
+                        </div>
+    
+                        <div className="info-user-box__box-user-names">
+                            <h1 className="info-user-box__name">Quimera</h1>
+                            <p className="info-user-box__user-name">Gata Siamesa</p>
+    
+                            <RenderButtonsForUser {...UserState} />
+                        </div>
                     </div>
-                </div>
-            </section>
-
-
-            <div className="container-global">
-                <p className="box-profile__description-profile">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sunt dicta provident.
-                </p>
-                <section className="section-friends">
-                    <GridCards>
-                        <CardInfoProfile number={200} textCard='Seguidos' />
-                        <CardInfoProfile number={100} textCard='Seguidores' />
-                        <CardInfoProfile number={10} textCard='Publicaciones' />
-                    </GridCards>
-
-                    <RenderFollowers {...UserState} />
                 </section>
-
-                <GridCards>
-                    <CardPhoto />
-                    <CardPhoto />
-                    <CardPhoto />
-                    <CardPhoto />
-                    <CardPhoto />
-                    <CardPhoto />
-                    <CardPhoto />
-                    <CardPhoto />
-                    <CardPhoto />
-                    <CardPhoto />
-                    <CardPhoto />
-                </GridCards>
+    
+    
+                <div className="container-global">
+                    <p className="box-profile__description-profile">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sunt dicta provident.
+                    </p>
+                    <section className="section-friends">
+                        <GridCards>
+                            <CardInfoProfile number={200} textCard='Seguidos' />
+                            <CardInfoProfile number={100} textCard='Seguidores' />
+                            <CardInfoProfile number={10} textCard='Publicaciones' />
+                        </GridCards>
+    
+                        <RenderFollowers {...UserState} />
+                    </section>
+    
+                    <GridCards>
+                        <CardPhoto />
+                        <CardPhoto />
+                        <CardPhoto />
+                        <CardPhoto />
+                        <CardPhoto />
+                        <CardPhoto />
+                        <CardPhoto />
+                        <CardPhoto />
+                        <CardPhoto />
+                        <CardPhoto />
+                        <CardPhoto />
+                    </GridCards>
+                </div>
             </div>
 
 
@@ -82,14 +84,10 @@ export const UserProfile = (props) => {
     )
 }
 
-const RenderFollowers = ({ user, isLoading }) => (
-    <>
-        {
-            !user && !isLoading && <p className="section-friends__followers">
-                <span className="section-friends__user-friend">carlitos.perro</span> y 19 mascotas más siguen esta cuenta
-            </p>
-        }
-    </>
+const RenderFollowers = ({ user, isLoading }) => !user && !isLoading && (
+    <p className="section-friends__followers">
+        <span className="section-friends__user-friend">carlitos.perro</span> y 19 mascotas más siguen esta cuenta
+    </p>
 )
 
 const RenderButtonsForUser = ({ user, isLoading }) => (
