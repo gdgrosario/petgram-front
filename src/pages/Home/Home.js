@@ -1,5 +1,5 @@
 import { Hero } from "./components/Hero";
-import { ReactComponent as Logo } from "assets/svgs/Logo.svg";
+//import { ReactComponent as Logo } from "assets/svgs/Logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "context/ContextProvider";
 import { FooterActionButtons } from "components/FooterActionButtons/FooterActionButtons";
