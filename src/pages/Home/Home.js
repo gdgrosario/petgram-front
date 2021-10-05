@@ -1,18 +1,25 @@
 import { Hero } from "./components/Hero";
-import { Header } from "layouts/Header";
-import "./scss/home.scss";
-import { ReactComponent as Logo } from "assets/svgs/Logo.svg";
-import { ReactComponent as Error } from "assets/svgs/404_two.svg";
+//import { ReactComponent as Logo } from "assets/svgs/Logo.svg";
+import { useContext } from "react";
+import { AuthContext } from "context/ContextProvider";
+import { FooterActionButtons } from "components/FooterActionButtons/FooterActionButtons";
+import { HeaderHome } from "components/Header/HeaderHome";
 
 export function Home() {
+  //TODO: Refactor 
+  const { user: UserState } = useContext(AuthContext)
+  const { user, isLoading } = UserState
+
   return (
     <>
-      <Header />
-      <section className="home animate__animated animate__rubberBand">
-        <Logo className="icon" />
-        <Error />
+      <HeaderHome/>
+      <section className="container-global home animate__animated animate__rubberBand">
+        {
+          user && !isLoading && <p>Tu historia </p>
+        }
         <Hero />
       </section>
+      <FooterActionButtons/>
     </>
   );
 }

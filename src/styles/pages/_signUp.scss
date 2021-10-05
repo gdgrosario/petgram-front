@@ -1,0 +1,41 @@
+.content-page-auth{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &__icon{
+        margin: 15px 0 10px 0;
+    }
+    &__title{
+        font-weight: 400;
+        font-size: 26px;
+        color: #262626;
+        margin-bottom: 30px;
+    }
+}
+
+.footer-auth{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    margin-top: 70px;
+    &__title{
+        font-weight: 400;
+        color: $gray;
+        font-size: 15px;
+    }
+    &__link{
+        color: Red;
+        font-weight: 700;
+        font-size: 24px;
+    }
+    &__terms{
+        color: #A9A9A9;
+    }
+}
+
+input[type="radio"]{
+    display: none;
+}

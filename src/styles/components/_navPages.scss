@@ -1,0 +1,49 @@
+.header-nav-pages{
+    margin-bottom: 30px;
+    position: fixed;
+    background-color: #F6F6F6 ;
+    padding: 10px 0;
+    @include fixElement($position-y: 'top', $z-index: 1);
+    &__list{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0 10px;
+    }
+    &__item{    
+        &--left{
+            margin-right: auto;
+            margin-left: 10px;
+        }
+    }
+
+    &__btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        height: 32px;
+        padding: 0;
+        width: 32px;
+        border-radius: 50%;
+        background-color: transparent;
+        transition: all .5s;
+        &:hover{
+            background-color: rgb(236, 236, 236);
+        }
+    }
+
+    &__svg{
+        &--pointer{
+            cursor: pointer;
+            width: 15px;
+        }
+    }
+    &__titlePage{
+        margin: 0;
+        font-size: 17px;
+        font-weight: normal;
+    }
+}
