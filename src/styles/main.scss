@@ -1,34 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 
 //utilities
-@import './utilities/colors',
-        './utilities/mixins';
+@import "./utilities/colors", "./utilities/mixins";
 
 //base
-@import './base/resets',
-        './base/base';
+@import "./base/resets", "./base/base";
 
 //layout
-@import './layout/gridCards',
-        './layout/header';
+@import "./layout/gridCards", "./layout/header";
 
 //Components
-@import 
-    './components/cardInfoProfile',
-    './components/footerActionsButtons',
-    './components/button',
-    './components/cardFriend',
-    './components/cardPhoto',
-    './components/searchFollowers',
-    './components/formAuth',
-    './components/navPages';
+@import "./components/cardInfoProfile", "./components/footerActionsButtons",
+  "./components/button", "./components/cardFriend", "./components/cardPhoto",
+  "./components/searchFollowers", "./components/formAuth",
+  "./components/navPages";
 
 //pages
-@import 
-    './pages/error404',
-    './pages/followers',
-    './pages/home',
-    './pages/team',
-    './pages/signUp',
-    './pages/userProfile';
+@import "./pages/error404", "./pages/followers", "./pages/home", "./pages/team",
+  "./pages/signUp", "./pages/userProfile", "./pages/userEdit";
 
+html,
+body {
+  color: $black;
+}
