@@ -1,5 +1,4 @@
-import menuBtn from 'assets/svgs/icons/bar.svg'
-
+import {ReactComponent as MenuBars } from 'assets/svgs/icons/bar.svg'
 const avatar = 'https://assets.teenvogue.com/photos/5776b76d924ce46478f244de/master/w_1080,h_1236,c_limit/01.png'
 
 
@@ -17,7 +16,7 @@ export function CardFriend({userName = 'No user', name = 'No Name'}) {
                 <p className="content-listFriends__name">{name}</p>
             </div>
             
-            <img className="content-listFriends__menu" src={menuBtn} alt="Menú" />
+            <MenuBars className="content-listFriends__menu"  />
         </div>
     )
 }

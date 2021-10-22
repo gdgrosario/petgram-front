@@ -1,12 +1,10 @@
 import { Hero } from "./components/Hero";
-//import { ReactComponent as Logo } from "assets/svgs/Logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "context/ContextProvider";
-import { FooterActionButtons } from "components/FooterActionButtons/FooterActionButtons";
-import { HeaderHome } from "components/Header/HeaderHome";
+import { FooterActionButtons } from "components/FooterActionButtons";
+import { HeaderHome } from "components/HeaderHome";
 
 export function Home() {
-  //TODO: Refactor 
   const { user: UserState } = useContext(AuthContext)
   const { user, isLoading } = UserState
 

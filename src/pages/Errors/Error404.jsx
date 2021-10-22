@@ -1,6 +1,5 @@
-import React from 'react'
 import { ReactComponent as ErrorSvg404 } from "assets/svgs/404_two.svg";
-import { NavPages } from 'components/NavPages/NavPages';
+import { NavPages } from 'components/NavPages';
 export const Error404 = (props) => {
 
     return (
