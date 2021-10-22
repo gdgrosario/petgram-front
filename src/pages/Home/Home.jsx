@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "context/ContextProvider";
 import { FooterActionButtons } from "components/FooterActionButtons";
 import { HeaderHome } from "components/HeaderHome";
+import { ContentCircleStories } from "components/Stories/ContentCircleStories";
 
 export function Home() {
   const { user: UserState } = useContext(AuthContext)
@@ -12,9 +13,7 @@ export function Home() {
     <>
       <HeaderHome/>
       <section className="container-global home animate__animated animate__rubberBand">
-        {
-          user && !isLoading && <p>Tu historia </p>
-        }
+        <ContentCircleStories/>
         <Hero />
       </section>
       <FooterActionButtons/>
