@@ -1,11 +1,13 @@
-import { SignIn } from "pages/Auth/SignIn";
+
+import { LoadSubroutesHome } from "routes/LoadRoutes/Components/LoadSubroutesHome";
+import { Login } from "pages/Auth/Login";
 import { SignUp } from "pages/Auth/SignUp";
 import { Error404 } from "pages/Errors/Error404";
 import { Followers } from "pages/Followers/Followers";
 import { Home } from "pages/Home/Home";
-import { LoadSubroutesHome } from "routes/LoadRoutes/Components/LoadSubroutesHome";
 import { Team } from "pages/Team/Team";
 import { UserProfile } from "pages/UserProfile/UserProfile";
+import { UserEdit } from "pages/UserProfile/UserEdit";
 
 export const routes = [
   {
@@ -19,9 +21,9 @@ export const routes = [
         component: Home,
       },
       {
-        path: "/sign-in",
+        path: "/login",
         exact: true,
-        component: SignIn,
+        component: Login,
       },
       {
         path: "/sign-up",
@@ -36,6 +38,11 @@ export const routes = [
       {
         path: "/followers",
         component: Followers,
+        exact: true,
+      },
+      {
+        path: "/edit",
+        component: UserEdit,
         exact: true,
       },
       {

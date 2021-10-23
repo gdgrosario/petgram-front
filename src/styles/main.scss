@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 
 //utilities
-@import './utilities/colors',
-        './utilities/mixins';
+@import "./utilities/colors", "./utilities/mixins";
 
 //base
-@import './base/resets',
-        './base/base';
+@import "./base/resets", "./base/base";
 
 //layout
+
 @import './layout/gridCards',
         './layout/post',
         './layout/carousel',
@@ -26,12 +25,12 @@
     './components/stories',
     './components/navPages';
 
-//pages
-@import 
-    './pages/error404',
-    './pages/followers',
-    './pages/home',
-    './pages/team',
-    './pages/signUp',
-    './pages/userProfile';
 
+//pages
+@import "./pages/error404", "./pages/followers", "./pages/home", "./pages/team",
+  "./pages/signUp", "./pages/userProfile", "./pages/userEdit";
+
+html,
+body {
+  color: $black;
+}
