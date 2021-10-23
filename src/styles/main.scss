@@ -7,13 +7,24 @@
 @import "./base/resets", "./base/base";
 
 //layout
-@import "./layout/gridCards", "./layout/header";
+
+@import './layout/gridCards',
+        './layout/post',
+        './layout/carousel',
+        './layout/header';
 
 //Components
-@import "./components/cardInfoProfile", "./components/footerActionsButtons",
-  "./components/button", "./components/cardFriend", "./components/cardPhoto",
-  "./components/searchFollowers", "./components/formAuth",
-  "./components/navPages";
+@import 
+    './components/cardInfoProfile',
+    './components/footerActionsButtons',
+    './components/button',
+    './components/cardFriend',
+    './components/cardPhoto',
+    './components/searchFollowers',
+    './components/formAuth',
+    './components/stories',
+    './components/navPages';
+
 
 //pages
 @import "./pages/error404", "./pages/followers", "./pages/home", "./pages/team",

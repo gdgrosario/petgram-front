@@ -1,9 +1,8 @@
 import { Route } from "react-router-dom";
 
-export const RouteWithSubRoutes = ({path, exact, routes, component:Component}) => (
+export const RouteWithSubRoutes = ({routes, component:Component, ...params}) => (
     <Route
-        path={path}
-        exact={exact}
+        {...params}
         render={props => <Component routes={routes} {...props} />}
     />
 )

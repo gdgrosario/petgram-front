@@ -56,7 +56,10 @@ export const FormAuth = ({ typeForm = "SignUp" }) => {
             
             {typeForm === "SignUp" && <SelectSex changeInputValues={changeInputValues} />}
 
-            <button type="submit" className="btn-form"> 
+            <button 
+                type="submit" 
+                className={[typeForm === "SignIN" && 'btn-form--mt', 'btn-form'].join(' ')}
+                > 
                 {typeForm === 'SignUp' ? 'Crear cuenta' : 'Iniciá sesión '}
             </button>
 
