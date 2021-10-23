@@ -1,6 +1,5 @@
-
 import { LoadSubroutesHome } from "routes/LoadRoutes/Components/LoadSubroutesHome";
-import { Login } from "pages/Auth/Login";
+import { SignIn } from "pages/Auth/SignIn";
 import { SignUp } from "pages/Auth/SignUp";
 import { Error404 } from "pages/Errors/Error404";
 import { Followers } from "pages/Followers/Followers";
@@ -21,9 +20,9 @@ export const routes = [
         component: Home,
       },
       {
-        path: "/login",
+        path: "/sign-in",
         exact: true,
-        component: Login,
+        component: SignIn,
       },
       {
         path: "/sign-up",
