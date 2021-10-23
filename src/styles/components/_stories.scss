@@ -24,7 +24,7 @@
         -o-border-radius: 50%;
         
     }
-    &:first-child:after{
+    &--add-istories::after{
         display: flex;
         justify-content: center;
         align-items: center;

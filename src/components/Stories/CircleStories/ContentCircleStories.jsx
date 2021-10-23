@@ -7,8 +7,8 @@ export const ContentCircleStories = () => {
     const { user, isLoading } = UserState
     return (
         <section className="content-circle-stories">
+            <CircleStories addIstories={true} />
             {user && !isLoading && <>
-                <CircleStories />
                 <CircleStories />
                 <CircleStories />
             </>}

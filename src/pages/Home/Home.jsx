@@ -1,7 +1,7 @@
 import { Hero } from "./components/Hero";
 import { FooterActionButtons } from "components/FooterActionButtons";
 import { HeaderHome } from "components/HeaderHome";
-import { ContentCircleStories } from "components/Stories/ContentCircleStories";
+import { ContentCircleStories } from "components/Stories/CircleStories/ContentCircleStories";
 
 export function Home() {
   return (
@@ -9,8 +9,8 @@ export function Home() {
       <HeaderHome/>
       <section className="container-global home animate__animated animate__rubberBand">
         <ContentCircleStories/>
-        <Hero />
       </section>
+      <Hero />
       <FooterActionButtons/>
     </>
   );
