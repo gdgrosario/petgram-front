@@ -1,5 +1,5 @@
-import { FooterActionButtons } from "components/FooterActionButtons/FooterActionButtons";
-import { NavPages } from "components/NavPages/NavPages";
+import { FooterActionButtons } from "components/FooterActionButtons";
+import { NavPages } from "components/NavPages";
 
 export function UserEdit({ history }) {
   return (

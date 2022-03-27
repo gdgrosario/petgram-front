@@ -1,10 +1,10 @@
 /* Components */
-import { CardInfoProfile } from "components/CardInfoProfile/CardInfoProfile";
-import { NavPages } from 'components/NavPages/NavPages';
+import { CardInfoProfile } from "components/CardInfoProfile";
+import { NavPages } from 'components/NavPages';
 import { SearchFollowers } from './components/SearchFollowers/SearchFollowers';
 import { CardFriend } from './components/ListFriends/CardFriend';
-import { FooterActionButtons } from 'components/FooterActionButtons/FooterActionButtons';
-import { GridCards } from 'components/GridCards/GridCards';
+import { FooterActionButtons } from 'components/FooterActionButtons';
+import { GridCards } from 'components/GridCards';
 
 export function Followers (props) {
     return (

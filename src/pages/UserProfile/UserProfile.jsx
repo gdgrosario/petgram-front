@@ -5,10 +5,10 @@ import { AuthContext } from 'context/ContextProvider';
 /* Components */
 
 //globals
-import { NavPages } from "components/NavPages/NavPages"
-import { FooterActionButtons } from 'components/FooterActionButtons/FooterActionButtons'
-import { GridCards } from 'components/GridCards/GridCards';
-import { CardInfoProfile } from "components/CardInfoProfile/CardInfoProfile"
+import { NavPages } from "components/NavPages"
+import { FooterActionButtons } from 'components/FooterActionButtons'
+import { GridCards } from 'components/GridCards';
+import { CardInfoProfile } from "components/CardInfoProfile"
 
 //internal
 import { ReactComponent as Wave } from "assets/svgs/wave.svg";

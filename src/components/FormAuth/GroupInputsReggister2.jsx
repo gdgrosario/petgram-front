@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const GroupInputsReggister2 = ({changeInputValues, inputValues}) => {
     return (
         <>
