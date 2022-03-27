@@ -1,3 +1,21 @@
+import { CardPost } from "components/Stories/CardPost/CardPost";
+import { GridCardPost } from "components/Stories/CardPost/GridCardPost";
+
 export function Hero() {
-  return <h1>Hero</h1>;
+  return <main className="hero">
+    <GridCardPost>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+      <CardPost/>
+    </GridCardPost>
+  </main>
 }

@@ -1,5 +1,5 @@
-import { FooterActionButtons } from "components/FooterActionButtons/FooterActionButtons";
-import { NavPages } from "components/NavPages/NavPages";
+import { FooterActionButtons } from "components/FooterActionButtons";
+import { NavPages } from "components/NavPages";
 import { CardTeam } from "./CardTeam";
 
 import { getTeam } from "helpers/getTeam";

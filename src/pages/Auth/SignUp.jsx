@@ -1,6 +1,6 @@
 import { ReactComponent as Logo } from "assets/svgs/Logo.svg";
 import { FormAuth } from "components/FormAuth/FormAuth";
-import { Link } from "react-router-dom";
+import { FooterForm } from "./components/FooterForm";
 export const SignUp = () => {
 
     return (
@@ -12,17 +12,12 @@ export const SignUp = () => {
             
             <FormAuth typeForm="SignUp" />
 
-            <footer className="footer-auth">
-                <div>
-                    <h3 className="footer-auth__title">
-                        ¿Ya tienes una cuenta?
-                    </h3>
-                    <Link className="footer-auth__link"to="/login">¡Ingresa ahora!</Link>
-                </div>
-                <p className="footer-auth__terms">
-                    Términos y condiciones de uso
-                </p>
-            </footer>
+            <FooterForm
+                title="¿Ya tienes una cuenta?"
+                textLInk="¡Ingresa ahora!"
+                route="/sign-in"
+            /> 
+            
         </div>
     )
 }
