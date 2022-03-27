@@ -1,5 +1,5 @@
 .card-post{
-    width: 400px;
+    height: 700px;
     &__header{
         padding: 20px 30px;
         display: flex;
@@ -27,11 +27,10 @@
 }
 
 .grid-card-post{
-    height: 100vh;
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 10px;
-    justify-items: center;
+    justify-content: center;
 }
 
 .footer-card-post{
@@ -71,9 +70,9 @@
     }
     
 }
-
+/* 
 @media (max-width: 810px){
     .card-post{
         width: 100%;
     }
-}
+} */
