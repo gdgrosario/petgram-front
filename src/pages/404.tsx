@@ -1,10 +1,11 @@
-import { ReactComponent as ErrorSvg404 } from "assets/svgs/404_two.svg";
-import { NavPages } from 'components/NavPages';
-export const Error404 = (props) => {
+// import { ReactComponent as ErrorSvg404 } from "assets/svgs/404_two.svg";
+// import { NavPages } from 'components/NavPages';
+
+const Error404 = (props) => {
 
     return (
         <>
-            <NavPages titleHeaderPage="Volver" history={props.history} />
+            {/* <NavPages titleHeaderPage="Volver" history={props.history} />
 
             <div className="container-404">
                 <div className="container-404__content">
@@ -16,8 +17,12 @@ export const Error404 = (props) => {
                     Código 404 página no encontrada
                 </p>
 
-            </div>
+            </div> */}
+            <h1>
+                Error 404
+            </h1>
         </>
     )
 }
 
+export default Error404;
