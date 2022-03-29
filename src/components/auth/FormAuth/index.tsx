@@ -1,9 +1,10 @@
-import { useStateFormAuth } from 'hooks/useStateFormAuth'
-import { useToggle } from 'hooks/useToggle'
-import {ReactComponent as EyePassword} from 'assets/svgs/icons/eye-slash-solid.svg'
+import { useStateFormAuth } from '@hooks/useStateFormAuth'
+import { useToggle } from '@hooks/useToggle'
+/* import {ReactComponent as EyePassword} from 'assets/svgs/icons/eye-slash-solid.svg' */
 import { SelectSex } from './SelectSex'
 import { GroupInputsReggister1 } from './GroupInputsReggister1'
 import { GroupInputsReggister2 } from './GroupInputsReggister2'
+
 export const FormAuth = ({ typeForm = "SignUp" }) => {
 
     const {inputValues, changeInputValues, submit} = useStateFormAuth(typeForm)
@@ -35,10 +36,10 @@ export const FormAuth = ({ typeForm = "SignUp" }) => {
                     type={state ? 'text' : 'password'}
                 />
 
-                <EyePassword
+                {/* <EyePassword
                     onClick={() => toggle()}
                     className={`content-form-auth__eye-password ${ state && 'content-form-auth__eye-password--active'}`}
-                />
+                /> */}
             </div>
 
             {typeForm === "SignUp" &&  <input
