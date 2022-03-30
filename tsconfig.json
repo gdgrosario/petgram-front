@@ -24,6 +24,9 @@
       "@svgs/*": [
         "./src/static/svgs/*"
       ],
+      "@Types/*": [
+        "./src/Types/*"
+      ],
     },
     "lib": [
       "dom",
