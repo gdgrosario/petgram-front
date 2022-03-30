@@ -21,6 +21,9 @@
       "@styles/*": [
         "./src/styles/*"
       ],
+      "@svgs/*": [
+        "./src/static/svgs/*"
+      ],
     },
     "lib": [
       "dom",
