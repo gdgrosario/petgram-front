@@ -50,7 +50,7 @@ export const CardPost = () => {
           <h4 className="footer-card-post__follower-like">
             Le gusta a Snoopy y 30 más
           </h4>
-          <p className="footer-card-post__comment">
+          <div className="footer-card-post__comment">
             <b>Simona</b> Hola a todos!
             <ul className="footer-card-post__list-hashtag">
               <li className="footer-card-post__item-hashtag">
@@ -69,7 +69,7 @@ export const CardPost = () => {
                 <a href="/">#Petgram</a>
               </li>
             </ul>
-          </p>
+          </div>
           <p className="footer-card-post__comment-follower">
             <b>Snoopy</b> Buena Manta!.
           </p>
