@@ -1,4 +1,3 @@
-
 export const GroupInputsReggister1 = ({changeInputValues, inputValues}) => {
     return (
         <>

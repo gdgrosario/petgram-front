@@ -1,6 +1,33 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "baseUrl": "./",
+    "paths": {
+      "@public/*": [
+        "./public/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@layout/*": [
+        "./src/layout/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
+      "@svgs/*": [
+        "./src/static/svgs/*"
+      ],
+      "@Types/*": [
+        "./src/Types/*"
+      ],
+    },
     "lib": [
       "dom",
       "dom.iterable",

@@ -1,17 +1,25 @@
-import { useStateFormAuth } from 'hooks/useStateFormAuth'
-import { useToggle } from 'hooks/useToggle'
-import {ReactComponent as EyePassword} from 'assets/svgs/icons/eye-slash-solid.svg'
+import { useStateFormAuth } from '@hooks/useStateFormAuth'
+import { useToggle } from '@hooks/useToggle'
+import { TFormAuth } from '@Types/Form'
+
+import EyePassword from '@svgs/icons/eye-slash-solid.svg'
+
 import { SelectSex } from './SelectSex'
 import { GroupInputsReggister1 } from './GroupInputsReggister1'
 import { GroupInputsReggister2 } from './GroupInputsReggister2'
-export const FormAuth = ({ typeForm = "SignUp" }) => {
+
+interface FormAuthProps {
+    typeForm: TFormAuth
+}
+
+export const FormAuth = ({ typeForm = "SIGN_IN" }: FormAuthProps) => {
 
     const {inputValues, changeInputValues, submit} = useStateFormAuth(typeForm)
     const [state, toggle] = useToggle()
 
     return (
         <form onSubmit={submit} className="content-form-auth" action="">
-            {typeForm === "SignUp" && <GroupInputsReggister2
+            {typeForm === "SIGN_UP" && <GroupInputsReggister2
                 inputValues={inputValues} 
                 changeInputValues={changeInputValues} />}
             
@@ -41,7 +49,7 @@ export const FormAuth = ({ typeForm = "SignUp" }) => {
                 />
             </div>
 
-            {typeForm === "SignUp" &&  <input
+            {typeForm === "SIGN_UP" &&  <input
                 onChange={e => changeInputValues(e)} 
                 name="repeatPassword"
                 value={inputValues.repeatPassword}
@@ -49,18 +57,18 @@ export const FormAuth = ({ typeForm = "SignUp" }) => {
                 className="content-form-auth__input"
                 type={state ? 'text' : 'password'} />}
 
-            {typeForm === "SignUp" && <GroupInputsReggister1 
+            {typeForm === "SIGN_UP" && <GroupInputsReggister1 
                 inputValues={inputValues} 
                 changeInputValues={changeInputValues} />}
             
             
-            {typeForm === "SignUp" && <SelectSex changeInputValues={changeInputValues} />}
+            {typeForm === "SIGN_UP" && <SelectSex changeInputValues={changeInputValues} />}
 
             <button 
                 type="submit" 
-                className={[typeForm === "SignIN" && 'btn-form--mt', 'btn-form'].join(' ')}
+                className={[typeForm === "SIGN_IN" && 'btn-form--mt', 'btn-form'].join(' ')}
                 > 
-                {typeForm === 'SignUp' ? 'Crear cuenta' : 'Iniciá sesión '}
+                {typeForm === "SIGN_UP" ? 'Crear cuenta' : 'Iniciá sesión '}
             </button>
 
         </form>

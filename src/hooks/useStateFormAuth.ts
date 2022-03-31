@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { TFormAuth } from '@Types/Form';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
-export const useStateFormAuth = (typeForm) => {
+export const useStateFormAuth = (typeForm: TFormAuth) => {
     const defaulValues = {
         name: '',
         userName: '',
@@ -15,21 +16,20 @@ export const useStateFormAuth = (typeForm) => {
 
     const [inputValues, setinputValues] = useState(defaulValues)
     
-    const changeInputValues = (event) => {
+    const changeInputValues = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target
         setinputValues({...inputValues, [name]:value})
     }
 
-    const submit = (event) => {
+    const submit = (event: FormEvent) => {
         event.preventDefault()
 
-        //logic for registration or login
-        if (typeForm === 'SignUp') {
+        //Inicio
+        if (typeForm === 'SIGN_IN') {
             console.log(defaulValues)
         }
-        //signIn
+        //Registro
 
-        console.log(inputValues.email, inputValues.password)
         setinputValues(defaulValues)
     }
 
