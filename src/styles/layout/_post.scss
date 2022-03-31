@@ -1,74 +1,74 @@
-.card-post{
-    height: 700px;
-    &__header{
-        padding: 20px 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    &__user-info{
-        margin-right: auto;
-        margin-left: 10px;
-    }
-    &__user-name{
-        font-weight: 400;
-    }
-    &__user-name, &__location{
-        font-size: 17px;
-        line-height: 25px;
-        margin: 0;
-    }
-
-    &__photo{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-}
-
-.grid-card-post{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 10px;
-    justify-content: center;
-}
-
-.footer-card-post{
+.card-post {
+  height: 700px;
+  &__header {
+    padding: 20px 10px;
     display: flex;
-    flex-direction: column;
-    &__list-footer-btns{
-        display: flex;
-        align-items: center;
-        padding: 0;
-    }
-    
-    &__items-footer-btns{
-        button{
-            border: 0;
-            outline: none;
-            background: none;
-        }
-    }
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__user-info {
+    margin-right: auto;
+    margin-left: 10px;
+  }
+  &__user-name {
+    font-weight: 400;
+  }
+  &__user-name,
+  &__location {
+    font-size: 17px;
+    line-height: 25px;
+    margin: 0;
+  }
 
-    &__follower-like{
-        font-weight: 400;
-        margin: 0;
-    }
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 
-    &__comment{
-        line-height: 25px;
-    }
+.grid-card-post {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+  justify-content: center;
+}
 
-    &__section{
-        margin: 20px 0 10px 20px;
-    }
+.footer-card-post {
+  display: flex;
+  flex-direction: column;
+  &__list-footer-btns {
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
 
-    &__list-hashtag{
-        display: flex;
-        margin: 0;
-        padding: 0;
+  &__items-footer-btns {
+    button {
+      border: 0;
+      outline: none;
+      background: none;
     }
-    
+  }
+
+  &__follower-like {
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &__comment {
+    line-height: 25px;
+  }
+
+  &__section {
+    margin: 20px 0 10px 20px;
+  }
+
+  &__list-hashtag {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
 }
 /* 
 @media (max-width: 810px){

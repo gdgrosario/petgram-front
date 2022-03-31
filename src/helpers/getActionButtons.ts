@@ -1,8 +1,8 @@
 /* svgs */
-import { ReactComponent as home }  from "assets/svgs/icons/home.svg";
-import { ReactComponent as search }  from "assets/svgs/icons/search.svg";
-import { ReactComponent as video }  from "assets/svgs/icons/video.svg";
-import { ReactComponent as store }  from "assets/svgs/icons/store.svg";
+import home from "@public/assets/svgs/icons/home.svg";
+import search from "@public/assets/svgs/icons/search.svg";
+import video from "@public/assets/svgs/icons/video.svg";
+import store from "@public/assets/svgs/icons/store.svg";
 
 const avatar =
   "https://assets.teenvogue.com/photos/5776b76d924ce46478f244de/master/w_1080,h_1236,c_limit/01.png";
