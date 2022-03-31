@@ -57,6 +57,12 @@
         &:focus{
             color: #000;
         }
+
+        &[type="password"]{
+            &::-ms-reveal{
+                display: none;
+            }
+        }
         
     }
 }
