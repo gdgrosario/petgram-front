@@ -1,6 +1,6 @@
-import { ReactComponent as Linkedin } from "assets/svgs/social-media/linkedin.svg";
-import { ReactComponent as Github } from "assets/svgs/social-media/github.svg";
-import { ReactComponent as Twitter } from "assets/svgs/social-media/twitter.svg";
+import Linkedin from "@public/assets/svgs/social-media/linkedin.svg";
+import Github from "@public/assets/svgs/social-media/github.svg";
+import Twitter from "@public/assets/svgs/social-media/twitter.svg";
 
 export const getTeam = [
   {
@@ -12,17 +12,17 @@ export const getTeam = [
       {
         id: 1,
         link: "https://linkedin.com",
-        icon: <Linkedin />,
+        icon: Linkedin,
       },
       {
         id: 2,
         link: "https://github.com",
-        icon: <Github />,
+        icon: Github,
       },
       {
         id: 3,
         link: "https://twitter.com",
-        icon: <Twitter />,
+        icon: Twitter,
       },
     ],
   },

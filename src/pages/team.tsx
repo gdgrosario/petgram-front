@@ -1,10 +1,10 @@
-import { FooterActionButtons } from "components/FooterActionButtons";
-import { NavPages } from "components/NavPages";
-import { CardTeam } from "./CardTeam";
+import { FooterActionButtons } from "@components/FooterActionButtons";
+import { NavPages } from "@components/NavPages";
+import { CardTeam } from "@components/CardTeam";
 
-import { getTeam } from "helpers/getTeam";
+import { getTeam } from "@helpers/getTeam";
 
-export function Team({history}) {
+export default function Team({ history }) {
   return (
     <div className="container-global spacing-for-pages">
       <NavPages titleHeaderPage="Volver" history={history} />
