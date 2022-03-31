@@ -1,8 +1,10 @@
-/* import { Hero } from "./components/Hero";
-import { FooterActionButtons } from "components/FooterActionButtons";
-import { HeaderHome } from "components/HeaderHome";
+/* 
 import { ContentCircleStories } from "components/Stories/CircleStories/ContentCircleStories";
  */
+import { HeaderHome } from "@components/HeaderHome";
+import { Hero } from "@components/home/Hero";
+import { FooterActionButtons } from "@components/FooterActionButtons";
+
 const Home = () => {
   return (
     <>
@@ -10,13 +12,14 @@ const Home = () => {
       <section className="container-global home animate__animated animate__rubberBand">
         <ContentCircleStories/>
       </section>
+    */}
+      <HeaderHome />
+
       <Hero />
-      <FooterActionButtons/> */}
-      <h1>
-        Home
-      </h1>
+
+      <FooterActionButtons />
     </>
   );
-}
+};
 
 export default Home;
