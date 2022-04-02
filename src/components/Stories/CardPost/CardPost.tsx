@@ -23,7 +23,12 @@ export const CardPost = () => {
       {/* TODO: create carousel*/}
 
       <div className="carousel-photo">
-        <Image className="card-post__photo" src={photo} alt="user-img" />
+        <Image 
+          height={600}
+          priority
+          className="card-post__photo" 
+          src={photo} 
+          alt="user-img" />
       </div>
 
       <footer className="footer-card-post">
