@@ -1,50 +1,49 @@
-.circle-stories{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    justify-content: center;
-    background: $gradient_two;
-    height: 60px;
+.circle-stories {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  background: $gradient_two;
+  height: 60px;
+  border-radius: 50%;
+  width: 60px;
+  margin-right: 10px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  position: relative;
+  &__avatar {
+    object-fit: cover;
+    height: 90%;
     border-radius: 50%;
-    width: 60px;
-    margin-right: 10px;
+    width: 90%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    position: relative;
-    &__avatar{
-        object-fit: cover;
-        height: 90%;
-        border-radius: 50%;
-        width: 90%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-        
-    }
-    &--add-istories::after{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        content: '+';
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background-color: $blue;
-        font-size: 25px;
-        color: #fff;
-        bottom: 0;
-        right: 0;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-    }
+  }
+  &--add-istories::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    content: "+";
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: $blue;
+    font-size: 25px;
+    color: #fff;
+    bottom: 0;
+    right: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
 }
 
-.content-circle-stories{
-    display: flex;
+.content-circle-stories {
+  display: flex;
 }

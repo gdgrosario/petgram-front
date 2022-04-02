@@ -10,11 +10,12 @@
     margin: 50px 0;
 }
 .hero{
-    padding: 20px;
+    margin: 0 auto;
+    max-width:1500px;
 }
 
-@media (max-width: 851px) {
+@media (max-width: 1560px) {
     .hero{
-        padding: 0;
+        width: 90%;
     }
 }
