@@ -34,7 +34,7 @@ export const getActionButtons = [
   },
   {
     id: 5,
-    path: "/me",
+    path: "/profile/",
     src: avatar,
     alt: "avatar",
   },

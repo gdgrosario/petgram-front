@@ -1,9 +1,13 @@
 import "normalize.css";
 import "animate.css";
 import "../styles/main.scss";
+import { AuthProvider } from '@context/ContextProvider';
+
 function MyApp ({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
   )
 }
 
