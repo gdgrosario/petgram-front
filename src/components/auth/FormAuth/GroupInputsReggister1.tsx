@@ -1,17 +1,16 @@
-export const GroupInputsReggister1 = ({changeInputValues, inputValues}) => {
-    return (
+export const GroupInputsReggister1 = ({ changeInputValues, inputValues }) => {
+  return (
         <>
-            <input 
+            <input
                     onChange={e => changeInputValues(e)}
                     name= "raza"
                     placeholder="Raza"
                     type="text"
                     value= {inputValues.raza}
-            
+
                     className="content-form-auth__input"
                     />
-                
-                
+
                 <input
                     className="content-form-auth__input"
                     name= "date"
@@ -20,14 +19,14 @@ export const GroupInputsReggister1 = ({changeInputValues, inputValues}) => {
                     value= {inputValues.date}
                     onChange={e => changeInputValues(e)}
                     onFocus={
-                        (e)=> {
-                        e.currentTarget.type = "date";
-                        e.currentTarget.focus();
+                        (e) => {
+                          e.currentTarget.type = 'date'
+                          e.currentTarget.focus()
                         }
                     }
                 />
-    
-                <input 
+
+                <input
                     onChange={e => changeInputValues(e)}
                     name= "tel"
                     placeholder="Número de teléfono (opcional)"
@@ -36,5 +35,5 @@ export const GroupInputsReggister1 = ({changeInputValues, inputValues}) => {
                     className="content-form-auth__input"
                 />
         </>
-    )
+  )
 }

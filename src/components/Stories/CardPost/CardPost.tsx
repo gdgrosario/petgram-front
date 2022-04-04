@@ -1,12 +1,12 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import { CircleStories } from "../CircleStories/CircleStories";
-import photo from "@public/assets/user/simona.jpg";
+import { CircleStories } from '../CircleStories/CircleStories'
+import photo from '@public/assets/user/simona.jpg'
 
-import BarsMenu from "@public/assets/svgs/icons/bar.svg";
-import Comment from "@public/assets/svgs/icons/chat.svg";
-import Send from "@public/assets/svgs/icons/send.svg";
-import Favorite from "@public/assets/svgs/icons/favorite.svg";
+import BarsMenu from '@public/assets/svgs/icons/bar.svg'
+import Comment from '@public/assets/svgs/icons/chat.svg'
+import Send from '@public/assets/svgs/icons/send.svg'
+import Favorite from '@public/assets/svgs/icons/favorite.svg'
 
 export const CardPost = () => {
   return (
@@ -20,14 +20,14 @@ export const CardPost = () => {
         <BarsMenu className="" />
       </header>
 
-      {/* TODO: create carousel*/}
+      {/* TODO: create carousel */}
 
       <div className="carousel-photo">
-        <Image 
+        <Image
           height={600}
           priority
-          className="card-post__photo" 
-          src={photo} 
+          className="card-post__photo"
+          src={photo}
           alt="user-img" />
       </div>
 
@@ -81,5 +81,5 @@ export const CardPost = () => {
         </section>
       </footer>
     </div>
-  );
-};
+  )
+}

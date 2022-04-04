@@ -1,6 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-export function CardInfoProfile({ number = 0, textCard = "Info Card" }) {
+export function CardInfoProfile ({ number = 0, textCard = 'Info Card' }) {
   return (
     <Link href="/">
       <a className="cardProfile">
@@ -8,5 +8,5 @@ export function CardInfoProfile({ number = 0, textCard = "Info Card" }) {
         <p className="cardProfile__textCard">{textCard}</p>
       </a>
     </Link>
-  );
+  )
 }

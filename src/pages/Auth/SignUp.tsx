@@ -1,6 +1,6 @@
-import Logo from "@public/assets/svgs/Logo.svg";
-import { FormAuth } from "@components/auth/FormAuth";
-import { FooterForm } from "@components/auth/FooterForm";
+import Logo from '@public/assets/svgs/Logo.svg'
+import { FormAuth } from '@components/auth/FormAuth'
+import { FooterForm } from '@components/auth/FooterForm'
 
 const SignUp = () => {
   return (
@@ -16,6 +16,6 @@ const SignUp = () => {
         route="/Auth/SignIn"
       />
     </div>
-  );
-};
-export default SignUp;
+  )
+}
+export default SignUp

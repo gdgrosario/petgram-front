@@ -1,7 +1,7 @@
 export const GridCards = ({ children }) => {
-    return (
+  return (
         <div className="gird-card-profile">
             { children }
         </div>
-    )
+  )
 }

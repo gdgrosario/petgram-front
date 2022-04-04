@@ -1,5 +1,5 @@
-import ErrorSvg404 from "@public/assets/svgs/error.svg";
-import { NavPages } from "@components/NavPages";
+import ErrorSvg404 from '@public/assets/svgs/error.svg'
+import { NavPages } from '@components/NavPages'
 
 const Error404 = (props) => {
   return (
@@ -17,7 +17,7 @@ const Error404 = (props) => {
         </p>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Error404;
+export default Error404

@@ -1,11 +1,11 @@
-import { FooterActionButtons } from "@components/FooterActionButtons";
-import { NavPages } from "@components/NavPages";
+import { FooterActionButtons } from '@components/FooterActionButtons'
+import { NavPages } from '@components/NavPages'
 
-import router from "next/router";
+import router from 'next/router'
 
-export default function edit() {
+export default function edit () {
   const textValue =
-    "Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus";
+    'Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus'
   return (
     <>
       <NavPages titleHeaderPage="Edit Profile" history={router.back} />
@@ -77,5 +77,5 @@ export default function edit() {
       </section>
       <FooterActionButtons />
     </>
-  );
+  )
 }

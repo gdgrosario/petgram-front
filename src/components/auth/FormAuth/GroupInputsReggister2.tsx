@@ -1,7 +1,7 @@
-export const GroupInputsReggister2 = ({changeInputValues, inputValues}) => {
-    return (
+export const GroupInputsReggister2 = ({ changeInputValues, inputValues }) => {
+  return (
         <>
-            <input 
+            <input
                 onChange={e => changeInputValues(e)}
                 name= "name"
                 placeholder="Nombre"
@@ -9,8 +9,8 @@ export const GroupInputsReggister2 = ({changeInputValues, inputValues}) => {
                 value = {inputValues.name}
                 className="content-form-auth__input"
             />
-            
-            <input 
+
+            <input
                 onChange={e => changeInputValues(e)}
                 name= "userName"
                 placeholder="Usuario"
@@ -19,5 +19,5 @@ export const GroupInputsReggister2 = ({changeInputValues, inputValues}) => {
                 className="content-form-auth__input"
             />
         </>
-    )
+  )
 }

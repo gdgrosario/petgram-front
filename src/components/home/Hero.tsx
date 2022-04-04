@@ -1,7 +1,7 @@
-import { CardPost } from "@components/Stories/CardPost/CardPost";
-import { GridCardPost } from "@components/Stories/CardPost/GridCardPost";
+import { CardPost } from '@components/Stories/CardPost/CardPost'
+import { GridCardPost } from '@components/Stories/CardPost/GridCardPost'
 
-export function Hero() {
+export function Hero () {
   return (
     <main className="hero">
       <GridCardPost>
@@ -19,5 +19,5 @@ export function Hero() {
         <CardPost />
       </GridCardPost>
     </main>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-export function CardTeam({ name, img, rol, social }) {
+export function CardTeam ({ name, img, rol, social }) {
   return (
     <article className="team__card">
       <div className="team__card__user">
@@ -18,5 +18,5 @@ export function CardTeam({ name, img, rol, social }) {
         ))}
       </div>
     </article>
-  );
+  )
 }

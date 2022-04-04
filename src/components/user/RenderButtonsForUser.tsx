@@ -1,4 +1,4 @@
-import { Button } from "@components/user/Button";
+import { Button } from '@components/user/Button'
 
 export const RenderButtonsForUser = ({ user, isLoading }) => (
     <div className="info-user-box__box-buttons">
@@ -10,5 +10,4 @@ export const RenderButtonsForUser = ({ user, isLoading }) => (
         </>
       )}
     </div>
-);
-  
+)

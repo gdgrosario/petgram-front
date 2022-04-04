@@ -5,4 +5,4 @@ export const RenderFollowers = ({ user, isLoading }) =>
       <span className="section-friends__user-friend">carlitos.perro</span> y 19
       mascotas más siguen esta cuenta
     </p>
-);
+  )

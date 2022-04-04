@@ -1,12 +1,12 @@
 /* Components */
-import { CardInfoProfile } from "@components/CardInfoProfile";
-import { NavPages } from "@components/NavPages";
-import { SearchFollowers } from "@components/followers/SearchFollowers/SearchFollowers";
-import { CardFriend } from "@components/followers/ListFriends/CardFriend";
-import { FooterActionButtons } from "@components/FooterActionButtons";
-import { GridCards } from "@components/GridCards";
+import { CardInfoProfile } from '@components/CardInfoProfile'
+import { NavPages } from '@components/NavPages'
+import { SearchFollowers } from '@components/followers/SearchFollowers/SearchFollowers'
+import { CardFriend } from '@components/followers/ListFriends/CardFriend'
+import { FooterActionButtons } from '@components/FooterActionButtons'
+import { GridCards } from '@components/GridCards'
 
-export default function followers(props) {
+export default function followers (props) {
   return (
     <div className="container-global spacing-for-pages">
       <NavPages
@@ -34,5 +34,5 @@ export default function followers(props) {
       </section>
       <FooterActionButtons />
     </div>
-  );
+  )
 }
