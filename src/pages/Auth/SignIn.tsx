@@ -2,10 +2,12 @@ import { FormAuth } from '@components/auth/FormAuth'
 import Logo from '@public/assets/svgs/Logo.svg'
 import GradientFooter from '@public/assets/svgs/gradient.svg'
 import { FooterForm } from '@components/auth/FooterForm'
+import { HeadInfo } from '@components/HeadInfo'
 
 const SignIn = () => {
   return (
     <>
+      <HeadInfo title="Iniciar Sesión" />
       <main className="container-global content-page-auth">
         <Logo className="content-page-auth__icon" />
         <h1 className="content-page-auth__title">Ingresa en tu cuenta</h1>

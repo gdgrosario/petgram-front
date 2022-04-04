@@ -23,6 +23,7 @@ import { CardPhoto } from '@components/user/CardPhoto'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { RenderButtonsForUser } from '@components/user/RenderButtonsForUser'
+import { HeadInfo } from '@components/HeadInfo'
 
 export default function UserProfile (props) {
   const UserState = useContext(AuthContext)
@@ -33,6 +34,8 @@ export default function UserProfile (props) {
 
   return (
     <>
+      <HeadInfo title={userName} />
+
       <NavPages titleHeaderPage="Perfil" history={props.history} />
 
       <main>
