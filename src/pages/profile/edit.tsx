@@ -1,15 +1,17 @@
-import { FooterActionButtons } from "@components/FooterActionButtons";
-import { NavPages } from "@components/NavPages";
+import { FooterActionButtons } from '@components/FooterActionButtons'
+import { HeadInfo } from '@components/HeadInfo'
+import { NavPages } from '@components/NavPages'
 
-import router from "next/router";
+import router from 'next/router'
 
-export default function edit() {
+export default function edit () {
   const textValue =
-    "Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus";
+    'Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus'
   return (
     <>
+      <HeadInfo title="Editar Perfil" />
       <NavPages titleHeaderPage="Edit Profile" history={router.back} />
-      <section className="container-global">
+      <main className="container-global">
         <form className="user-edit__form">
           {/* parte 1 */}
           <section className="user-edit__img">
@@ -74,8 +76,8 @@ export default function edit() {
             <input type="text" defaultValue="+57 3223341221" />
           </section>
         </form>
-      </section>
+      </main>
       <FooterActionButtons />
     </>
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import Link from "next/link"
+import Link from 'next/link'
 
-export const FooterForm = ({title, route = "/", textLInk}) => {
-    return (
+export const FooterForm = ({ title, route = '/', textLInk }) => {
+  return (
         <footer className="footer-auth">
             <div>
                 <h3 className="footer-auth__title">
@@ -15,5 +15,5 @@ export const FooterForm = ({title, route = "/", textLInk}) => {
                 Términos y condiciones de uso
             </p>
         </footer>
-    )
+  )
 }

@@ -1,7 +1,7 @@
 /* svgs */
-import SearchSvgDark from "@public/assets/svgs/icons/search_dark.svg";
+import SearchSvgDark from '@public/assets/svgs/icons/search_dark.svg'
 
-export function SearchFollowers() {
+export function SearchFollowers () {
   return (
     <div className="box-search separationMargin">
       <SearchSvgDark className="box-search__svg" />
@@ -13,5 +13,5 @@ export function SearchFollowers() {
         placeholder="Busca en los seguidores de Quimera"
       />
     </div>
-  );
+  )
 }

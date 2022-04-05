@@ -1,5 +1,5 @@
-const withReactSvg = require("next-react-svg");
-const path = require("path");
+const withReactSvg = require('next-react-svg')
+const path = require('path')
 
 /**
  * next-react-svg permite cargar los svg en el proyecto como componentes,
@@ -26,5 +26,5 @@ const path = require("path");
  */
 
 module.exports = withReactSvg({
-  include: path.resolve(__dirname, "./public/assets/svg"),
-});
+  include: path.resolve(__dirname, './public/assets/svg')
+})

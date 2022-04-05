@@ -1,5 +1,4 @@
 .card-post {
-  height: 700px;
   &__header {
     padding: 20px 10px;
     display: flex;
@@ -30,7 +29,7 @@
 .grid-card-post {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
+  gap: 15px;
   justify-content: center;
 }
 
@@ -70,9 +69,3 @@
     padding: 0;
   }
 }
-/* 
-@media (max-width: 810px){
-    .card-post{
-        width: 100%;
-    }
-} */

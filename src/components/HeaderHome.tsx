@@ -1,9 +1,9 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-import Logo from "@public/assets/svgs/Logo.svg";
-import AddHistory from "@public/assets/svgs/icons/add_history.svg";
-import Message from "@public/assets/svgs/icons/message.svg";
-import Favorite from "@public/assets/svgs/icons/favorite.svg";
+import Logo from '@public/assets/svgs/Logo.svg'
+import AddHistory from '@public/assets/svgs/icons/add_history.svg'
+import Message from '@public/assets/svgs/icons/message.svg'
+import Favorite from '@public/assets/svgs/icons/favorite.svg'
 
 export const HeaderHome = () => {
   return (
@@ -35,5 +35,5 @@ export const HeaderHome = () => {
         </ul>
       </nav>
     </header>
-  );
-};
+  )
+}
