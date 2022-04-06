@@ -19,14 +19,26 @@
   padding: 10px;
   border: 1px solid #888;
   width: 90%; /* Could be more or less, depending on screen size */
-  height: 70%;
+  height: 60%;
+  border-radius: 7px;
+
+  .icon {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    path {
+      fill: #222;
+    }
+  }
+
+  .image {
+    margin-top: 1rem;
+  }
 }
 
 /* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
 }
 
