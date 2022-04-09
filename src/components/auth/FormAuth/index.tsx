@@ -13,7 +13,7 @@ interface FormAuthProps {
 }
 
 export const FormAuth = ({ typeForm = 'SIGN_IN' }: FormAuthProps) => {
-  const { inputValues, changeInputValues, submit } = useStateFormAuth(typeForm)
+  const { inputValues, changeInputValues, submit, errorsForm } = useStateFormAuth(typeForm)
   const [state, toggle] = useToggle()
 
   return (
