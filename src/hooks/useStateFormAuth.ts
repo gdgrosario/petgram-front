@@ -1,19 +1,19 @@
 import { TFormAuth } from '@Types/Form'
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { SignIn } from '@services/Auth'
+import { SignIn, SignUp } from '@services/Auth';
 import { validateForm } from '@helpers/validateForm'
 
 export const useStateFormAuth = (typeForm: TFormAuth) => {
   const defaulValues = {
     name: '',
-    userName: '',
+    nickname: '',
     email: '',
     raza: '',
     password: '',
     repeatPassword: '',
-    tel: '',
-    date: '',
-    sex: 'Masculino'
+    phoneNumber: '',
+    birthday: '',
+    sexo: 'Masculino'
   }
 
   const [inputValues, setinputValues] = useState(defaulValues)
@@ -47,6 +47,8 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
       }
     } else if (typeForm === 'SIGN_UP') {
       // Registro
+      const response = await SignUp(inputValues)
+      console.log(response)
     }
   }
 

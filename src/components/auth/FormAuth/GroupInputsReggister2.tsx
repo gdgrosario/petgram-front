@@ -12,10 +12,10 @@ export const GroupInputsReggister2 = ({ changeInputValues, inputValues }) => {
 
             <input
                 onChange={e => changeInputValues(e)}
-                name= "userName"
+                name= "nickname"
                 placeholder="Usuario"
                 type="text"
-                value= {inputValues.userName}
+                value= {inputValues.nickname}
                 className="content-form-auth__input"
             />
         </>

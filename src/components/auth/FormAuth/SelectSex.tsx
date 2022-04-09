@@ -11,7 +11,7 @@ export const SelectSex = ({ changeInputValues }) => {
                         value="Masculino"
                         id="masculino"
                         type="radio"
-                        name="sex"/>
+                        name="sexo"/>
                     <label className="select-sex__sex-option" htmlFor="masculino">Masculino</label>
 
                     <input
@@ -19,7 +19,7 @@ export const SelectSex = ({ changeInputValues }) => {
                         value="Femenino"
                         id="femenino"
                         type="radio"
-                        name="sex"/>
+                        name="sexo"/>
                     <label className="select-sex__sex-option" htmlFor="femenino">Femenino</label>
 
                 </div>

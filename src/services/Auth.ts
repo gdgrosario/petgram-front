@@ -9,10 +9,20 @@ const SignIn = async ({ email, password }):Promise<responseAuth> => {
     })
     return await response.data
   } catch (e) {
-    return e
+    return e.response.data
+  }
+}
+
+const SignUp = async (data) => {
+  try {
+    const response = await petgramAPI.post('auth/register', data)
+    return await response.data
+  } catch (e) {
+    return e.response.data
   }
 }
 
 export {
-  SignIn
+  SignIn,
+  SignUp
 }
