@@ -3,27 +3,27 @@
  * for validating access token to certain views.
  */
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react'
 
 export const AuthContext = createContext({
   user: null,
-  isLoading: false,
-});
+  isLoading: false
+})
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({
     user: null,
-    isLoading: true,
-  });
+    isLoading: true
+  })
 
   useEffect(() => {
-    //TODO: Create function or import for check access token.
+    // TODO: Create function or import for check access token.
 
     setUser({
       user: true,
-      isLoading: false,
-    });
-  }, []);
+      isLoading: false
+    })
+  }, [])
 
-  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
-};
+  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
+}

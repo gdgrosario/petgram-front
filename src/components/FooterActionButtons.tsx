@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { getActionButtons } from "@helpers/getActionButtons";
+import Link from 'next/link'
+import { getActionButtons } from '@helpers/getActionButtons'
 
 export const FooterActionButtons = () => {
   return (
@@ -10,8 +10,8 @@ export const FooterActionButtons = () => {
         </ul>
       </nav>
     </footer>
-  );
-};
+  )
+}
 
 const RenderButtons = () => (
   <>
@@ -20,23 +20,25 @@ const RenderButtons = () => (
         <Link href={path}>
           <a
             className={`footer-action-nav__link ${
-              alt === "avatar" ? "footer-action-nav__link--user" : ""
+              alt === 'avatar' ? 'footer-action-nav__link--user' : ''
             }`}
           >
-            {Icon ? (
+            {Icon
+              ? (
               <Icon className="footer-action-nav__svg" />
-            ) : (
+                )
+              : (
               <img
                 className={`footer-action-nav__img ${
-                  alt === "avatar" ? "footer-action-nav__svg--avatar" : ""
+                  alt === 'avatar' ? 'footer-action-nav__svg--avatar' : ''
                 }`}
                 src={src}
                 alt={alt}
               />
-            )}
+                )}
           </a>
         </Link>
       </li>
     ))}
   </>
-);
+)

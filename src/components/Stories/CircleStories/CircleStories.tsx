@@ -1,10 +1,10 @@
-import avatar from "@public/assets/user/simona.jpg";
-import Image from "next/image";
+import avatar from '@public/assets/user/simona.jpg'
+import Image from 'next/image'
 
 export const CircleStories = ({ addIstories = false }) => {
   return (
     <div
-      className={`${addIstories === true && "circle-stories--add-istories"}`}
+      className={`${addIstories === true && 'circle-stories--add-istories'}`}
     >
       <Image
         className="circle-stories__avatar"
@@ -14,5 +14,5 @@ export const CircleStories = ({ addIstories = false }) => {
         height={45}
       />
     </div>
-  );
-};
+  )
+}

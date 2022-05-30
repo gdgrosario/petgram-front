@@ -79,6 +79,20 @@
     }
 }
 
+.not-found-user{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+        word-wrap: normal;
+        font-weight: 300;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 300px;
+    }
+}
+
 @media (max-width: 424px) {
     .info-user-box{
         &__box-buttons{
