@@ -1,10 +1,13 @@
-import { TFormAuth } from '@Types/Form'
+import { TFormAuth } from 'src/models/Form'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { SignIn, SignUp } from '@services/Auth';
 import { validateForm } from '@helpers/validateForm'
+import { IFormAuthData } from '../models/Form';
+import { useRouter } from 'next/router';
 
 export const useStateFormAuth = (typeForm: TFormAuth) => {
-  const defaulValues = {
+  const router = useRouter()
+  const defaulValues: IFormAuthData = {
     name: '',
     nickname: '',
     email: '',
@@ -12,7 +15,7 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
     password: '',
     repeatPassword: '',
     phoneNumber: '',
-    birthday: '',
+    birthday: new Date(),
     sexo: 'Masculino'
   }
 
@@ -26,29 +29,32 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
 
   const submit = async (event: FormEvent) => {
     event.preventDefault()
+    const err = validateForm({
+      inputValues,
+      typeForm
+    })
+    setErrorsForm(err)
 
-    // Inicio
     if (typeForm === 'SIGN_IN') {
-      const err = validateForm({
-        inputValues,
-        typeForm
-      })
-
-      setErrorsForm(err)
-
-      if (err === '') {
+      if (!err) {
         const response = await SignIn(inputValues)
-        if (!response.message) {
+        if (response.access_token) {
           localStorage.setItem('token', response.access_token)
-          localStorage.setItem('user', JSON.stringify(response.user))
+          router.push('/')
         } else {
           setErrorsForm(response.message)
         }
       }
     } else if (typeForm === 'SIGN_UP') {
-      // Registro
-      const response = await SignUp(inputValues)
-      console.log(response)
+      if (!err) {
+        const response = await SignUp(inputValues)
+        if (response.access_token) {
+          localStorage.setItem('token', response.access_token)
+          router.push('/')
+        } else {
+          setErrorsForm(response.message)
+        }
+      }
     }
   }
 

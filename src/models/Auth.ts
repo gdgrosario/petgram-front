@@ -4,7 +4,7 @@ interface responseError {
     error: string
 }
 
-export interface responseAuth extends responseError {
+export interface ResponseAuth extends responseError {
     user: {
         email: string,
         nickname: string,

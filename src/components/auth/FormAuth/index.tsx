@@ -1,6 +1,6 @@
 import { useStateFormAuth } from '@hooks/useStateFormAuth'
 import { useToggle } from '@hooks/useToggle'
-import { TFormAuth } from '@Types/Form'
+import { TFormAuth } from 'src/models/Form'
 
 import EyePassword from '@public/assets/svgs/icons/eye-slash-solid.svg'
 

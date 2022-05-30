@@ -1,28 +1,27 @@
-import { TFormAuth } from '@Types/Form'
+import { TFormAuth } from 'src/models/Form'
+import { IFormAuthData } from '../models/Form';
 
 interface IValidateForm {
-    inputValues: any
+    inputValues: IFormAuthData
     typeForm: TFormAuth
 }
 
-const validateLogin = (inputValues: any):string => {
+const validateLogin = (inputValues: IFormAuthData):string => {
   if (!inputValues.email || inputValues.email === '') {
     return 'El email es requerido'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(inputValues.email)) {
     return 'El email no es valido'
   } else if (!inputValues.password) {
     return 'La contraseña es requerida'
-  } else return ''
+  }
 }
 
-const validateSignUp = (inputValues: any):string => {
+const validateSignUp = (inputValues: IFormAuthData):string => {
   if (!inputValues.name) {
     return 'El nombre es requerido'
-  } else if (!/^[a-zA-Z]+$/i.test(inputValues.name)) {
-    return 'El nombre no es valido'
-  } else if (!inputValues.userName) {
+  } else if (!inputValues.nickname) {
     return 'El usuario es requerido'
-  } else if (/^[a-z0-9_\.]+$/.test(inputValues.userName)) {
+  } else if (!/^[a-z0-9_\.]+$/.test(inputValues.nickname)) {
     return 'El usuario no es valido'
   } else if (!inputValues.email) {
     return 'El email es requerido'
@@ -32,7 +31,9 @@ const validateSignUp = (inputValues: any):string => {
     return 'La contraseña es requerida'
   } else if (inputValues.password !== inputValues.repeatPassword) {
     return 'Las contraseñas no coinciden'
-  } else return ''
+  } else if (!inputValues.raza) {
+    return 'La raza es requerida'
+  }
 }
 
 export const validateForm = ({ inputValues, typeForm }:IValidateForm):string => {
