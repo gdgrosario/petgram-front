@@ -33,6 +33,10 @@ const validateSignUp = (inputValues: IFormAuthData):string => {
     return 'Las contraseñas no coinciden'
   } else if (!inputValues.raza) {
     return 'La raza es requerida'
+  } else if (!inputValues.birthday) {
+    return 'La fecha de nacimiento es requerida'
+  } else if (!inputValues.sexo) {
+    return 'El sexo es requerido'
   }
 }
 

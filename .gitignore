@@ -8,3 +8,4 @@
 /node_modules
 /out
 # End of https://www.toptal.com/developers/gitignore/api/nextjs
+.env

@@ -1,9 +1,11 @@
 import { TFormAuth } from 'src/models/Form'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { SignIn, SignUp } from '@services/Auth';
+import { setCookies } from 'cookies-next';
 import { validateForm } from '@helpers/validateForm'
 import { IFormAuthData } from '../models/Form';
 import { useRouter } from 'next/router';
+import { user_token } from '../constants/Auth';
 
 export const useStateFormAuth = (typeForm: TFormAuth) => {
   const router = useRouter()
@@ -39,7 +41,7 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
       if (!err) {
         const response = await SignIn(inputValues)
         if (response.access_token) {
-          localStorage.setItem('token', response.access_token)
+          setCookies(user_token, response.access_token)
           router.push('/')
         } else {
           setErrorsForm(response.message)
@@ -49,7 +51,7 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
       if (!err) {
         const response = await SignUp(inputValues)
         if (response.access_token) {
-          localStorage.setItem('token', response.access_token)
+          setCookies(user_token, response.access_token)
           router.push('/')
         } else {
           setErrorsForm(response.message)
@@ -62,6 +64,7 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
     inputValues,
     submit,
     changeInputValues,
-    errorsForm
+    errorsForm,
+    setErrorsForm
   }
 }

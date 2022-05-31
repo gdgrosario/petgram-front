@@ -5,8 +5,13 @@ import { HeaderHome } from '@components/HeaderHome'
 import { Hero } from '@components/home/Hero'
 import { FooterActionButtons } from '@components/FooterActionButtons'
 import { HeadInfo } from '@components/HeadInfo'
+import { getAccessToken } from '@helpers/auth'
+import { useEffect } from 'react';
 
 const Home = () => {
+  useEffect(() => {
+    getAccessToken()
+  }, [])
   return (
     <>
       {/* <HeaderHome/>
