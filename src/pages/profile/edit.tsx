@@ -1,13 +1,34 @@
 import { FooterActionButtons } from '@components/FooterActionButtons'
 import { HeadInfo } from '@components/HeadInfo'
 import { NavPages } from '@components/NavPages'
-
+import { getUserProfile } from '@services/User'
 import router from 'next/router'
+import { useEffect, useState } from 'react';
+import { getAccessToken } from '@helpers/auth';
+import { User } from '../../models/User';
 
 export default function edit () {
+  const [profile, setProfile] = useState<User>()
+  const [error, setError] = useState()
+  const [loading, setLoading] = useState(true)
   const textValue =
     'Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus'
-  return (
+
+  const fetchUser = async () => {
+    const response = await getUserProfile(getAccessToken())
+    setLoading(false)
+    if (response.error) {
+      setError(error)
+    } else setProfile(response)
+  }
+
+  useEffect(() => {
+    fetchUser()
+  }, [])
+
+  if (loading) return <p>Loading...</p>
+
+  return !error && profile ? (
     <>
       <HeadInfo title="Editar Perfil" />
       <NavPages titleHeaderPage="Edit Profile" history={router.back} />
@@ -22,7 +43,7 @@ export default function edit () {
               alt="user"
             />
             <div>
-              <h2>Quimera</h2>
+              <h2>{profile.nickname}</h2>
               <span>Change Profile Photo</span>
             </div>
           </section>
@@ -31,28 +52,28 @@ export default function edit () {
             <label>
               <span>First Name</span>
             </label>
-            <input type="text" defaultValue="Hello" />
+            <input value={profile.name} type="text" defaultValue="Hello" />
           </section>
           {/* parte 3 */}
           <section className="user-edit__input">
             <label>
               <span>Username</span>
             </label>
-            <input type="text" defaultValue="g1hello" />
+            <input value={profile.nickname} type="text" defaultValue="g1hello" />
           </section>
           {/* parte 4 */}
           <section className="user-edit__input">
             <label>
               <span>Email</span>
             </label>
-            <input type="email" defaultValue="hola@hola.com" />
+            <input value={profile.email} type="email" defaultValue="hola@hola.com" />
           </section>
           {/* parte 5 */}
           <section className="user-edit__input">
             <label>
-              <span>Raza</span>
+              <span>Race</span>
             </label>
-            <input type="text" defaultValue="Macho" />
+            <input value={profile.raza} type="text" defaultValue="Macho" />
           </section>
           {/* parte 6 */}
           <section className="user-edit__input">
@@ -64,20 +85,33 @@ export default function edit () {
           {/* parte 6 */}
           <section className="user-edit__input">
             <label>
-              <span>Fecha nacimiento</span>
+              <span>Date of birth</span>
             </label>
-            <input type="text" defaultValue="2020/07/10" />
+            <input
+                    className="content-form-auth__input"
+                    name= "birthday"
+                    placeholder="Fecha de nacimiento (dd/mm/yyyy)"
+                    type="text"
+                    value= {profile.birthday as Date}
+                    /* onChange={e => changeInputValues(e)} */
+                    onFocus={
+                        (e) => {
+                          e.currentTarget.type = 'date'
+                          e.currentTarget.focus()
+                        }
+                    }
+                />
           </section>
           {/* parte 7 */}
           <section className="user-edit__input">
             <label>
-              <span>Telefono</span>
+              <span>Phone Number</span>
             </label>
-            <input type="text" defaultValue="+57 3223341221" />
+            <input value={profile.phoneNumber} type="text" defaultValue="+57 3223341221" />
           </section>
         </form>
       </main>
       <FooterActionButtons />
     </>
-  )
+  ) : <div>Se produjo un error 🤖 , intentelo más tarde</div>
 }

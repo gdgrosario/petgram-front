@@ -3,13 +3,13 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { SignIn, SignUp } from '@services/Auth';
 import { setCookies } from 'cookies-next';
 import { validateForm } from '@helpers/validateForm'
-import { IFormAuthData } from '../models/Form';
+import { User } from '../models/User';
 import { useRouter } from 'next/router';
 import { user_token } from '../constants/Auth';
 
 export const useStateFormAuth = (typeForm: TFormAuth) => {
   const router = useRouter()
-  const defaulValues: IFormAuthData = {
+  const defaulValues: User = {
     name: '',
     nickname: '',
     email: '',

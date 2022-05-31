@@ -4,7 +4,7 @@ interface responseError {
     error: string
 }
 
-export interface ResponseAuth extends responseError {
+interface ResponseAuth extends responseError {
     user: {
         email: string,
         nickname: string,
@@ -12,4 +12,9 @@ export interface ResponseAuth extends responseError {
         id: string
     }
     access_token: string
+}
+
+export type{
+  responseError,
+  ResponseAuth
 }

@@ -1,5 +1,4 @@
-import { TFormAuth } from 'src/models/Form'
-import { IFormAuthData } from '../models/Form';
+import { IFormAuthData, TFormAuth } from 'src/models/Form'
 
 interface IValidateForm {
     inputValues: IFormAuthData

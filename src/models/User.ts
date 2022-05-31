@@ -1,6 +1,6 @@
-type TFormAuth = 'SIGN_IN' | 'SIGN_UP'
+import { responseError } from './Auth';
 
-interface IFormAuthData {
+export interface User extends responseError {
     name: string,
     nickname: string,
     email: string,
@@ -10,9 +10,4 @@ interface IFormAuthData {
     phoneNumber: string,
     birthday: Date,
     sexo: string
-}
-
-export type{
-  TFormAuth,
-  IFormAuthData
 }

@@ -7,7 +7,7 @@ const getAccessToken = () => {
   if (!userToken) {
     return null
   }
-  return expiredToke(userToken as string) ? null : userToken
+  return expiredToke(userToken as string) ? null : userToken as string
 }
 
 const expiredToke = (token: string):boolean => {
