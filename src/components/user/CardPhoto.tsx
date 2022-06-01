@@ -15,7 +15,7 @@ export const CardPhoto = () => {
         />
       </div>
 
-      <ModalCardPhoto photo={Simona} />
+      {/* <ModalCardPhoto photo={Simona} /> */}
     </>
   );
 };
