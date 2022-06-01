@@ -23,9 +23,11 @@ export default function UserProfile (props) {
   const { query } = useRouter()
   const userName = query.user?.toString()
 
-  const [user, loading] = useSearchUser(userName)
+  const [user, loading, error] = useSearchUser(userName)
 
   if (loading) return <div>Loading...</div>
+
+  if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>
 
   return (
     <>

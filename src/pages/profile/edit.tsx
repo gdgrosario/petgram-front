@@ -17,7 +17,7 @@ export default function edit () {
   const fetchUser = async () => {
     const response = await getUserProfile(getAccessToken())
     setLoading(false)
-    if (response.error) {
+    if (response.error || response.message) {
       setError(error)
     } else setProfile(response)
   }
@@ -27,8 +27,10 @@ export default function edit () {
   }, [])
 
   if (loading) return <p>Loading...</p>
+  if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>
+  if (!profile) return <p>No se cargo el perfil correctamente,intentelo más tarde</p>
 
-  return !error && profile ? (
+  return (
     <>
       <HeadInfo title="Editar Perfil" />
       <NavPages titleHeaderPage="Edit Profile" history={router.back} />
@@ -113,5 +115,5 @@ export default function edit () {
       </main>
       <FooterActionButtons />
     </>
-  ) : <div>Se produjo un error 🤖 , intentelo más tarde</div>
+  )
 }

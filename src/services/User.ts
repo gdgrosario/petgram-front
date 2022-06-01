@@ -11,7 +11,10 @@ const getUserProfile = async (token: string):Promise<User> => {
 
     return response.data
   } catch (error) {
-    return error.response.data
+    if (error.response?.data) {
+      return error.response?.data
+    }
+    return error
   }
 }
 
@@ -20,7 +23,10 @@ const getUserForUserName = async (userName: string):Promise<User> => {
     const response = await petgramAPI.get<User>(`/users/get-user-name/${userName}`)
     return response.data
   } catch (error) {
-    return error.response.data
+    if (error.response?.data) {
+      return error.response?.data
+    }
+    return error
   }
 }
 export {

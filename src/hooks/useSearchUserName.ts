@@ -5,6 +5,7 @@ import { User } from '../models/User';
 export const useSearchUser = (nickName: string) => {
   const [user, setUser] = useState<User | null>()
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
   const getUserNamefromDB = async () => {
     const getUseruserbyName = nickName ? await getUserForUserName(nickName) : null
@@ -12,10 +13,16 @@ export const useSearchUser = (nickName: string) => {
 
     if (getUseruserbyName?.name) {
       setUser(getUseruserbyName)
-    } else setUser(null)
+    } else {
+      setUser(null)
+    }
+
+    if (getUseruserbyName?.message) {
+      setError(getUseruserbyName.message)
+    }
   }
 
   useEffect(() => { getUserNamefromDB() }, [nickName])
 
-  return [user, loading]
+  return [user, loading, error]
 }
