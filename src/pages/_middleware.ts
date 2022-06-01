@@ -10,8 +10,13 @@ export default function middleware (req:NextRequest) {
 
   const userToken = cookies.user_token
 
-  if (pathname.includes('/Auth/SignIn') && userToken) {
-    return NextResponse.redirect(`${origin}/`)
+  if (pathname.includes('/Auth/SignIn') || pathname.includes('/Auth/SignUp')) {
+    try {
+      jwt.verify(userToken, secretJWT)
+      return NextResponse.redirect(`${origin}/`)
+    } catch (error) {
+      return NextResponse.next()
+    }
   }
 
   for (const protectedRoute of protectedRoutes) {

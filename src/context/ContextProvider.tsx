@@ -1,28 +1,38 @@
-/**
- * This context provider is responsible
- * for validating access token to certain views.
- */
-
 import { createContext, useEffect, useState } from 'react'
+import { getUserProfile } from '@services/User';
+import { getAccessToken } from '@helpers/auth';
+import { User } from '../models/User';
 
-export const AuthContext = createContext({
+interface IAuthContext{
+  user: User | null
+  loading: boolean
+}
+
+interface IState{
+  user: User | null
+  loading: boolean
+}
+
+export const AuthContext = createContext<IAuthContext>({
   user: null,
-  isLoading: false
+  loading: false
 })
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<IState>({
     user: null,
-    isLoading: true
+    loading: true
   })
+  const accessToken = getAccessToken()
 
   useEffect(() => {
-    // TODO: Create function or import for check access token.
-
-    setUser({
-      user: true,
-      isLoading: false
-    })
+    accessToken && getUserProfile(accessToken)
+      .then(response => {
+        setUser({
+          user: response,
+          loading: false
+        })
+      })
   }, [])
 
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
