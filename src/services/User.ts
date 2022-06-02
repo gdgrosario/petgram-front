@@ -1,3 +1,4 @@
+import { getAccessToken } from '@helpers/auth';
 import { petgramAPI } from '../axios/axios';
 import { User } from '../models/User';
 
@@ -29,7 +30,25 @@ const getUserForUserName = async (userName: string):Promise<User> => {
     return error
   }
 }
+
+const updateProfile = async (user: User): Promise<User> => {
+  try {
+    const response = await petgramAPI.put<User>('/users', user, {
+      headers: {
+        Authorization: `Bearer ${getAccessToken()}`
+      }
+    })
+    return response.data
+  } catch (error) {
+    if (error.response?.data) {
+      return error.response?.data
+    }
+    return error
+  }
+}
+
 export {
   getUserProfile,
-  getUserForUserName
+  getUserForUserName,
+  updateProfile
 }

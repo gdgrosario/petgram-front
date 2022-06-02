@@ -1,6 +1,19 @@
 .user-edit__form {
   margin-top: 4rem;
   margin-bottom: 4rem;
+  button{
+    cursor: pointer;
+    border: 0;
+    color: #fff;
+    background-color: #0095F6;
+    padding: .5rem;
+    margin-top: 2rem;
+    border-radius: .3rem;
+    -webkit-border-radius: .3rem;
+    -moz-border-radius: .3rem;
+    -ms-border-radius: .3rem;
+    -o-border-radius: .3rem;
+}
 }
 .user-edit__img {
   display: flex;
@@ -46,4 +59,6 @@
     resize: vertical;
     width: 100%;
   }
+
+
 }

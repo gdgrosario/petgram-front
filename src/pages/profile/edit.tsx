@@ -1,30 +1,55 @@
 import { FooterActionButtons } from '@components/FooterActionButtons'
 import { HeadInfo } from '@components/HeadInfo'
 import { NavPages } from '@components/NavPages'
-import { getUserProfile } from '@services/User'
+import { getUserProfile, updateProfile } from '@services/User'
 import router from 'next/router'
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState, FormEvent, useContext } from 'react';
 import { getAccessToken } from '@helpers/auth';
 import { User } from '../../models/User';
+import { AuthContext } from '../../context/ContextProvider';
 
 export default function edit () {
   const [profile, setProfile] = useState<User>()
-  const [error, setError] = useState()
+  const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
-  const textValue =
-    'Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus'
+  const [nickName, setNickName] = useState('')
+  const { setUser } = useContext(AuthContext)
 
   const fetchUser = async () => {
     const response = await getUserProfile(getAccessToken())
     setLoading(false)
+
     if (response.error || response.message) {
       setError(error)
-    } else setProfile(response)
+    } else {
+      setProfile(response)
+      setNickName(response.nickname)
+    }
   }
 
   useEffect(() => {
     fetchUser()
   }, [])
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setProfile({ ...profile, [name]: value })
+  }
+
+  // TODO: validar campos
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const response = await updateProfile(profile)
+
+    if (response.error || response.message) {
+      setError(response.error)
+      console.log(response.error)
+    } else {
+      setNickName(response.nickname)
+      setUser(response)
+    }
+  }
 
   if (loading) return <p>Loading...</p>
   if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>
@@ -35,7 +60,7 @@ export default function edit () {
       <HeadInfo title="Editar Perfil" />
       <NavPages titleHeaderPage="Edit Profile" history={router.back} />
       <main className="container-global">
-        <form className="user-edit__form">
+        <form onSubmit={handleSubmit} className="user-edit__form">
           {/* parte 1 */}
           <section className="user-edit__img">
             <img
@@ -45,7 +70,7 @@ export default function edit () {
               alt="user"
             />
             <div>
-              <h2>{profile.nickname}</h2>
+              <h2>{nickName}</h2>
               <span>Change Profile Photo</span>
             </div>
           </section>
@@ -54,35 +79,60 @@ export default function edit () {
             <label>
               <span>First Name</span>
             </label>
-            <input value={profile.name} type="text" defaultValue="Hello" />
+            <input
+              value={profile.name}
+              onChange={handleChange}
+              name="name"
+              type="text"
+               />
           </section>
           {/* parte 3 */}
           <section className="user-edit__input">
             <label>
               <span>Username</span>
             </label>
-            <input value={profile.nickname} type="text" defaultValue="g1hello" />
+            <input
+              value={profile.nickname}
+              onChange={handleChange}
+              name="nickname"
+              type="text"
+               />
           </section>
           {/* parte 4 */}
           <section className="user-edit__input">
             <label>
               <span>Email</span>
             </label>
-            <input value={profile.email} type="email" defaultValue="hola@hola.com" />
+            <input
+              value={profile.email}
+              onChange={handleChange}
+              name="email"
+              type="email"
+            />
           </section>
           {/* parte 5 */}
           <section className="user-edit__input">
             <label>
               <span>Race</span>
             </label>
-            <input value={profile.raza} type="text" defaultValue="Macho" />
+            <input
+              value={profile.raza}
+              onChange={handleChange}
+              name="raza"
+              type="text"
+               />
           </section>
           {/* parte 6 */}
           <section className="user-edit__input">
             <label>
               <span>Bio</span>
             </label>
-            <textarea rows={3} defaultValue={textValue} />
+            <textarea
+              rows={3}
+              name="biography"
+              onChange={handleChange}
+              value={profile.biography}
+               />
           </section>
           {/* parte 6 */}
           <section className="user-edit__input">
@@ -90,18 +140,17 @@ export default function edit () {
               <span>Date of birth</span>
             </label>
             <input
-                    className="content-form-auth__input"
-                    name= "birthday"
-                    placeholder="Fecha de nacimiento (dd/mm/yyyy)"
-                    type="text"
-                    value= {profile.birthday as Date}
-                    /* onChange={e => changeInputValues(e)} */
-                    onFocus={
-                        (e) => {
-                          e.currentTarget.type = 'date'
-                          e.currentTarget.focus()
-                        }
-                    }
+                  name= "birthday"
+                  placeholder="Fecha de nacimiento (dd/mm/yyyy)"
+                  type="text"
+                  onChange={handleChange}
+                  value= {profile.birthday}
+                  onFocus={
+                      (e) => {
+                        e.currentTarget.type = 'date'
+                        e.currentTarget.focus()
+                      }
+                  }
                 />
           </section>
           {/* parte 7 */}
@@ -109,8 +158,15 @@ export default function edit () {
             <label>
               <span>Phone Number</span>
             </label>
-            <input value={profile.phoneNumber} type="text" defaultValue="+57 3223341221" />
+            <input
+              value={profile.phoneNumber}
+              onChange={handleChange}
+              name="phoneNumber"
+              type="text"
+            />
           </section>
+
+          <button>Submit</button>
         </form>
       </main>
       <FooterActionButtons />

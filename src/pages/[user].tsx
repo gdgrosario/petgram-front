@@ -94,8 +94,7 @@ const ProfileUser = ({ userData }: IProfileUser) => (
 
       <div className="container-global">
         <p className="box-profile__description-profile">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sunt
-          dicta provident.
+          {userData.biography}
         </p>
         <section className="section-friends">
           <GridCards>
