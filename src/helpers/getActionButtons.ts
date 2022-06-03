@@ -11,7 +11,7 @@ export const getActionButtons = [
   },
   {
     id: 2,
-    path: '/',
+    path: '/search',
     icon: search,
     alt: 'search'
   }

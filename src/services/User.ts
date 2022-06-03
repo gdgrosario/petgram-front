@@ -47,8 +47,21 @@ const updateProfile = async (user: User): Promise<User> => {
   }
 }
 
+const getUsersByNickName = async (nickName:string):Promise<User[]> => {
+  try {
+    const response = await petgramAPI.get(`/users/get-users-by-nickname/${nickName}`)
+    return response.data
+  } catch (error) {
+    if (error.response?.data) {
+      return error.response?.data
+    }
+    return error
+  }
+}
+
 export {
   getUserProfile,
   getUserForUserName,
-  updateProfile
+  updateProfile,
+  getUsersByNickName
 }
