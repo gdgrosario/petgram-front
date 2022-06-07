@@ -17,6 +17,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "comma-dangle": ["error", "never"],
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/prop-types": "off",
