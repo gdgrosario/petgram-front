@@ -1,10 +1,12 @@
-import { TFormAuth } from '@Types/Form'
+import { TFormAuth, IFormAuthData } from 'src/models/Form';
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { SignIn, SignUp } from '@services/Auth';
+import { setCookies } from 'cookies-next';
 import { validateForm } from '@helpers/validateForm'
+import { user_token } from '../constants/Auth';
 
 export const useStateFormAuth = (typeForm: TFormAuth) => {
-  const defaulValues = {
+  const defaulValues: IFormAuthData = {
     name: '',
     nickname: '',
     email: '',
@@ -12,7 +14,7 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
     password: '',
     repeatPassword: '',
     phoneNumber: '',
-    birthday: '',
+    birthday: new Date(),
     sexo: 'Masculino'
   }
 
@@ -26,29 +28,32 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
 
   const submit = async (event: FormEvent) => {
     event.preventDefault()
+    const err = validateForm({
+      inputValues,
+      typeForm
+    })
+    setErrorsForm(err)
 
-    // Inicio
     if (typeForm === 'SIGN_IN') {
-      const err = validateForm({
-        inputValues,
-        typeForm
-      })
-
-      setErrorsForm(err)
-
-      if (err === '') {
+      if (!err) {
         const response = await SignIn(inputValues)
-        if (!response.message) {
-          localStorage.setItem('token', response.access_token)
-          localStorage.setItem('user', JSON.stringify(response.user))
+        if (response.access_token) {
+          setCookies(user_token, response.access_token)
+          window.location.href = '/'
         } else {
           setErrorsForm(response.message)
         }
       }
     } else if (typeForm === 'SIGN_UP') {
-      // Registro
-      const response = await SignUp(inputValues)
-      console.log(response)
+      if (!err) {
+        const response = await SignUp(inputValues)
+        if (response.access_token) {
+          setCookies(user_token, response.access_token)
+          window.location.href = '/'
+        } else {
+          setErrorsForm(response.message)
+        }
+      }
     }
   }
 
@@ -56,6 +61,7 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
     inputValues,
     submit,
     changeInputValues,
-    errorsForm
+    errorsForm,
+    setErrorsForm
   }
 }

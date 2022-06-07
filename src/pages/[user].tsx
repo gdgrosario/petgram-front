@@ -1,12 +1,5 @@
-import { useContext } from 'react'
-
 /* Hooks */
-import { UseValidateUser } from '@hooks/UseValidateUser'
-
-/* Context */
-import { AuthContext } from '@context/ContextProvider'
-
-/* Components */
+import { useSearchUser } from '@hooks/useSearchUserName'
 
 // globals
 import { NavPages } from '@components/NavPages'
@@ -24,13 +17,17 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { RenderButtonsForUser } from '@components/user/RenderButtonsForUser'
 import { HeadInfo } from '@components/HeadInfo'
+import { User } from '../models/User';
 
 export default function UserProfile (props) {
-  const UserState = useContext(AuthContext)
   const { query } = useRouter()
-  const userName = query.user?.toString() || ''
+  const userName = query.user?.toString()
 
-  const validUser = UseValidateUser(userName)
+  const [user, loading, error] = useSearchUser(userName)
+
+  if (loading) return <div>Loading...</div>
+
+  if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>
 
   return (
     <>
@@ -40,10 +37,9 @@ export default function UserProfile (props) {
 
       <main>
         {
-          validUser
+          user
             ? <ProfileUser
-                userName={userName}
-                UserState={UserState}
+                userData={user as User}
               />
             : <NotFoundUser userName={userName} />
         }
@@ -60,7 +56,10 @@ const NotFoundUser = ({ userName }) => (
   </div>
 )
 
-const ProfileUser = ({ userName, UserState }) => (
+interface IProfileUser {
+  userData: User
+}
+const ProfileUser = ({ userData }: IProfileUser) => (
   <>
     <div className="spacing-for-pages">
       <section className="box-profile">
@@ -85,18 +84,17 @@ const ProfileUser = ({ userName, UserState }) => (
           </div>
 
           <div className="info-user-box__box-user-names">
-            <h1 className="info-user-box__name"> {userName || 'Anonimo'} </h1>
-            <p className="info-user-box__user-name">Gata Siamesa</p>
+            <h1 className="info-user-box__name"> {userData.nickname || 'Anonimo'} </h1>
+            <p className="info-user-box__user-name">{userData.name}</p>
 
-            <RenderButtonsForUser {...UserState} />
+            {/* <RenderButtonsForUser {...userData} /> */}
           </div>
         </div>
       </section>
 
       <div className="container-global">
         <p className="box-profile__description-profile">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sunt
-          dicta provident.
+          {userData.biography}
         </p>
         <section className="section-friends">
           <GridCards>
@@ -105,7 +103,7 @@ const ProfileUser = ({ userName, UserState }) => (
             <CardInfoProfile number={10} textCard="Publicaciones" />
           </GridCards>
 
-          <RenderButtonsForUser {...UserState} />
+          {/* <RenderButtonsForUser {...UserState} /> */}
         </section>
 
         <GridCards>

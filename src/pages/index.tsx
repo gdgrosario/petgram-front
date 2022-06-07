@@ -9,11 +9,6 @@ import { HeadInfo } from '@components/HeadInfo'
 const Home = () => {
   return (
     <>
-      {/* <HeaderHome/>
-      <section className="container-global home animate__animated animate__rubberBand">
-        <ContentCircleStories/>
-      </section>
-    */}
       <HeadInfo title="Petgram" />
       <HeaderHome />
 

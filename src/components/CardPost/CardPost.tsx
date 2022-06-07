@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { CircleStories } from '../CircleStories/CircleStories'
+import { CircleStories } from './ProfilePhoto'
 import photo from '@public/assets/user/simona.jpg'
 
 import BarsMenu from '@public/assets/svgs/icons/bar.svg'

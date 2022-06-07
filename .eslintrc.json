@@ -23,6 +23,8 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "no-useless-escape": "off",
+    "multiline-ternary": "off",
+    "camelcase": "off",
     "semi": [0]
   }
 }

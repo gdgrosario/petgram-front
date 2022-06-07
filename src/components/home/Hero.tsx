@@ -1,5 +1,5 @@
-import { CardPost } from '@components/Stories/CardPost/CardPost'
-import { GridCardPost } from '@components/Stories/CardPost/GridCardPost'
+import { CardPost } from '@components/CardPost/CardPost'
+import { GridCardPost } from '@components/CardPost/GridCardPost'
 
 export function Hero () {
   return (

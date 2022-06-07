@@ -1,7 +1,7 @@
-import { responseAuth } from '@Types/Auth'
 import { petgramAPI } from '../axios/axios'
+import { ResponseAuth } from '../models/Auth';
 
-const SignIn = async ({ email, password }):Promise<responseAuth> => {
+const SignIn = async ({ email, password }):Promise<ResponseAuth> => {
   try {
     const response = await petgramAPI.post('auth/login', {
       email,
@@ -13,7 +13,7 @@ const SignIn = async ({ email, password }):Promise<responseAuth> => {
   }
 }
 
-const SignUp = async (data) => {
+const SignUp = async (data): Promise<ResponseAuth> => {
   try {
     const response = await petgramAPI.post('auth/register', data)
     return await response.data

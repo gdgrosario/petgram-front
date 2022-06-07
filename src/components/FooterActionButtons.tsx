@@ -1,44 +1,48 @@
 import Link from 'next/link'
 import { getActionButtons } from '@helpers/getActionButtons'
-
+import { useContext } from 'react';
+import { AuthContext } from '../context/ContextProvider';
+const avatar =
+  'https://assets.teenvogue.com/photos/5776b76d924ce46478f244de/master/w_1080,h_1236,c_limit/01.png'
 export const FooterActionButtons = () => {
+  const { user, error } = useContext(AuthContext)
+
   return (
     <footer className="footer-action-nav">
       <nav className="footer-action-nav__nav">
         <ul className="footer-action-nav__list">
           <RenderButtons />
+          {user && !error && <li className='footer-action-nav__item'>
+           <Link href={`/${user.nickname}`}>
+              <a className='footer-action-nav__link footer-action-nav__link--user'>
+                <img
+                  className='footer-action-nav__img footer-action-nav__svg--avatar'
+                  src={avatar}
+                  alt={user.nickname}
+                />
+              </a>
+           </Link>
+          </li>}
         </ul>
       </nav>
     </footer>
   )
 }
 
-const RenderButtons = () => (
+const RenderButtons = () => {
+  return (
   <>
-    {getActionButtons.map(({ id, path, alt, icon: Icon, src }) => (
+    {getActionButtons.map(({ id, path, alt, icon: Icon }) => (
       <li key={id} className="footer-action-nav__item">
         <Link href={path}>
           <a
-            className={`footer-action-nav__link ${
-              alt === 'avatar' ? 'footer-action-nav__link--user' : ''
-            }`}
+            className="footer-action-nav__link"
           >
-            {Icon
-              ? (
               <Icon className="footer-action-nav__svg" />
-                )
-              : (
-              <img
-                className={`footer-action-nav__img ${
-                  alt === 'avatar' ? 'footer-action-nav__svg--avatar' : ''
-                }`}
-                src={src}
-                alt={alt}
-              />
-                )}
           </a>
         </Link>
       </li>
     ))}
   </>
-)
+  )
+}
