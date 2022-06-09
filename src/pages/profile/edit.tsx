@@ -7,6 +7,7 @@ import { ChangeEvent, useEffect, useState, FormEvent, useContext } from 'react';
 import { getAccessToken } from '@helpers/auth';
 import { User } from '../../models/User';
 import { AuthContext } from '../../context/ContextProvider';
+import { validateFieldsProfile } from '@helpers/validateForm'
 
 export default function edit () {
   const [profile, setProfile] = useState<User>()
@@ -14,6 +15,7 @@ export default function edit () {
   const [loading, setLoading] = useState(true)
   const [nickName, setNickName] = useState('')
   const { setUser } = useContext(AuthContext)
+  const [invalidFieldsProfile, setinvalidFieldsProfile] = useState(false)
 
   const fetchUser = async () => {
     const response = await getUserProfile(getAccessToken())
@@ -33,10 +35,14 @@ export default function edit () {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setProfile({ ...profile, [name]: value })
-  }
 
-  // TODO: validar campos
+    setProfile({ ...profile, [name]: value })
+
+    setinvalidFieldsProfile(validateFieldsProfile(
+      { ...profile, [name]: value }
+    ))
+
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -166,7 +172,7 @@ export default function edit () {
             />
           </section>
 
-          <button>Submit</button>
+          <button disabled={invalidFieldsProfile}>Submit</button>
         </form>
       </main>
       <FooterActionButtons />
