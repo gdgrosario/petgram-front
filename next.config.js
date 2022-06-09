@@ -14,19 +14,25 @@ const config = {
 module.exports = withPlugins(
   [
     [
-      withReactSvg({
+      withReactSvg,
+      {
         include: path.resolve(__dirname, './public/assets/svg'),
-      }),
-      withPWA({
+      },
+    ],
+    [
+      withPWA,
+      {
         pwa: {
           dest: 'public',
           disable: process.env.NODE_ENV === 'development',
+          register: true,
+          skipWaiting: true,
         },
         reactStrictMode: true,
         images: {
           domains: [],
         },
-      }),
+      },
     ],
   ],
   config
