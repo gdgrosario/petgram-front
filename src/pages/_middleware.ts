@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { protectedRoutes } from '../routes/protected.routes';
-import jwt from 'jsonwebtoken'
+import jwt from '@tsndr/cloudflare-worker-jwt';
 
 const secretJWT = process.env.JWT_SECRET
 
@@ -12,8 +12,11 @@ export default function middleware (req:NextRequest) {
 
   if (pathname.includes('/Auth/SignIn') || pathname.includes('/Auth/SignUp')) {
     try {
-      jwt.verify(userToken, secretJWT)
-      return NextResponse.redirect(`${origin}/`)
+     if(userToken) {
+       jwt.verify(userToken, secretJWT)
+       return NextResponse.redirect(`${origin}/`)
+      }
+      else return NextResponse.next()
     } catch (error) {
       return NextResponse.next()
     }
@@ -22,8 +25,12 @@ export default function middleware (req:NextRequest) {
   for (const protectedRoute of protectedRoutes) {
     if (pathname.includes(protectedRoute)) {
       try {
-        jwt.verify(userToken, secretJWT)
-        return NextResponse.next()
+        if(userToken) {
+          jwt.verify(userToken, secretJWT)
+          return NextResponse.next()
+        }else {
+          return NextResponse.redirect(`${origin}/Auth/SignIn`)
+        }
       } catch (err) {
         return NextResponse.redirect(`${origin}/Auth/SignIn`)
       }
