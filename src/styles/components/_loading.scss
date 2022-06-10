@@ -1,7 +1,14 @@
+/* .container-loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+} */
 .content-loading {
   position: absolute;
-  top: 35%;
-  left: 40%;
+  left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
   display: inline-flex;
   align-items: center;
   justify-content: space-between;

@@ -15,7 +15,7 @@ export const CardPost = () => {
         <CircleStories />
         <div className="card-post__user-info">
           <h2 className="card-post__user-name">Simona</h2>
-          <b className="card-post__location">Rosario, Santa Fe</b>
+          <b className="card-post__name">Rosario, Santa Fe</b>
         </div>
         <BarsMenu className="" />
       </header>

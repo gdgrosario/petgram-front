@@ -18,6 +18,7 @@ import { useRouter } from 'next/router'
 import { RenderButtonsForUser } from '@components/user/RenderButtonsForUser'
 import { HeadInfo } from '@components/HeadInfo'
 import { User } from '../models/User';
+import { Loading } from '@components/Loading'
 
 export default function UserProfile (props) {
   const { query } = useRouter()
@@ -25,7 +26,7 @@ export default function UserProfile (props) {
 
   const [user, loading, error] = useSearchUser(userName)
 
-  if (loading) return <div>Loading...</div>
+  if (loading) return <Loading/>
 
   if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>
 

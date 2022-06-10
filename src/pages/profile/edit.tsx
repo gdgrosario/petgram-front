@@ -8,6 +8,7 @@ import { getAccessToken } from '@helpers/auth';
 import { User } from '../../models/User';
 import { AuthContext } from '../../context/ContextProvider';
 import { validateFieldsProfile } from '@helpers/validateForm'
+import { Loading } from '../../components/Loading';
 
 export default function edit () {
   const [profile, setProfile] = useState<User>()
@@ -57,7 +58,7 @@ export default function edit () {
     }
   }
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <Loading/>
   if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>
   if (!profile) return <p>No se cargo el perfil correctamente,intentelo más tarde</p>
 
