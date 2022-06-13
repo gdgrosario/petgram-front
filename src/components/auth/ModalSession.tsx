@@ -7,11 +7,11 @@ export const ModalSession = () => {
         <h2>Debes iniciar sesion para continuar</h2>
         <div>
           <Link href="/Auth/SignIn">
-            <button className="btn-form">iniciar sesion</button>
+            <a className="btn-form">iniciar sesion</a>
           </Link>
 
           <Link href="/Auth/SignUp">
-            <button className="modal__btn">crear cuenta</button>
+            <a className="modal__btn">crear cuenta</a>
           </Link>
         </div>
       </div>
