@@ -1,4 +1,8 @@
-export const Button = ({ textButtonn }) => {
+export const Button = ({ textButtonn, ...rootDOMAttributes }) => {
   // {textButtonn, action}
-  return <button className="btn-profile">{textButtonn}</button>
-}
+  return (
+    <button className="btn-profile" {...rootDOMAttributes}>
+      {textButtonn}
+    </button>
+  );
+};
