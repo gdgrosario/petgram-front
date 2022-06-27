@@ -13,9 +13,24 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
 
   const router = useRouter();
 
+  const followeds: string[] = user.followeds || [];
+
+  const isFollowed = followeds.includes(userData.id);
+
   const handleAction = (action: string) => {
     if (!user) {
       router.push('/Auth/SignIn');
+      return;
+    }
+
+    if (action === 'follower') {
+      console.log('follower');
+      return;
+    }
+
+    if (action === 'unfollower') {
+      console.log('unfollower');
+      return;
     }
   };
 
@@ -42,12 +57,14 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
       )}
       {(!user || user.email !== userData.email) && (
         <>
-          <Button
-            textButtonn="Seguir"
-            onClick={() => handleAction('follower')}
-          />
+          {!isFollowed && (
+            <Button
+              textButtonn="Seguir"
+              onClick={() => handleAction('follower')}
+            />
+          )}
 
-          {user.email !== userData.email && (
+          {user.email !== userData.email && isFollowed && (
             <Button
               textButtonn="Dejar de seguir"
               onClick={() => handleAction('unfollower')}
