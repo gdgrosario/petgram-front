@@ -1,5 +1,10 @@
-import axios from 'axios'
+import { getAccessToken } from '@helpers/auth';
+import axios from 'axios';
 
+const accessToken = getAccessToken();
 export const petgramAPI = axios.create({
-  baseURL: 'http://localhost:3000/'
-})
+  baseURL: 'http://localhost:3000/',
+  headers: {
+    Authorization: `Bearer ${accessToken || ''}`,
+  },
+});
