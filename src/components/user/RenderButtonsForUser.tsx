@@ -2,9 +2,11 @@ import { Button } from '@components/user/Button';
 import { AuthContext } from '@context/ContextProvider';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { User } from '../../models/User';
 import { setCookie } from '../../helpers/getCookies';
+import { Follow, UnFollow } from '@services/Followers';
+
 interface IProfileUser {
   userData: User;
 }
@@ -15,21 +17,27 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
 
   const followeds: string[] = user.followeds || [];
 
-  const isFollowed = followeds.includes(userData.id);
+  const [isFollowed, setIsFollowed] = useState(followeds.includes(userData.id));
 
-  const handleAction = (action: string) => {
+  const handleAction = async (action: string) => {
     if (!user) {
       router.push('/Auth/SignIn');
       return;
     }
 
     if (action === 'follower') {
-      console.log('follower');
+      const status = await Follow(userData.id);
+
+      status === 200 && setIsFollowed(true);
+
       return;
     }
 
     if (action === 'unfollower') {
-      console.log('unfollower');
+      const status = await UnFollow(userData.id);
+
+      status === 200 && setIsFollowed(false);
+
       return;
     }
   };
