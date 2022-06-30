@@ -1,6 +1,7 @@
 import { responseError } from './Auth';
 
 export interface User extends responseError {
+  id: string;
   name: string;
   nickname: string;
   email: string;
@@ -11,4 +12,5 @@ export interface User extends responseError {
   birthday: string;
   sexo: string;
   biography: string;
+  followeds: string[];
 }
