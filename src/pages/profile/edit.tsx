@@ -10,6 +10,12 @@ import { AuthContext } from '../../context/ContextProvider';
 import { validateFieldsProfile } from '@helpers/validateForm'
 import { Loading } from '../../components/Loading';
 
+/**
+ * TODO: Mandar solo los datos necessarios para poder actualizar el perfil,
+ * ya que dentro de Profile incluye todos los datos del usuario, como lo son
+ * sus seguidores, seguidos, en un formato de array de strings, y esto ocaciona
+ * que el servidor los reciba y trate de actualizarlos tambien. 
+ */
 export default function edit () {
   const [profile, setProfile] = useState<User>()
   const [error, setError] = useState(null)

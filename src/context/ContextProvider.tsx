@@ -1,13 +1,14 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, SetStateAction, useEffect, useState } from 'react'
 import { getUserProfile } from '@services/User';
 import { getAccessToken } from '@helpers/auth';
 import { User } from '../models/User';
+import { Dispatch } from 'react';
 
 interface IAuthContext{
   user: User | null
   loading: boolean
   error : string | null
-  setUser: (user: User) => void
+  setUser: Dispatch<SetStateAction<User>>
 }
 
 export const AuthContext = createContext<IAuthContext>({
@@ -18,7 +19,7 @@ export const AuthContext = createContext<IAuthContext>({
 })
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState<User>(null)
+  const [user, setUser] = useState<User | null>(null)
 
   const [loading, setLoading] = useState(true)
 
