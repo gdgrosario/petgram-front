@@ -28,19 +28,17 @@
 
   &__btn {
     display: block;
-    width: 100%;
     margin-top: 1rem;
     color: #f5f5f5;
     font-size: 18px;
-    height: 45px;
+    text-align: center;
+    padding: 1rem;
     border-radius: 10px;
-    border: none;
     background: rgba(23, 143, 238, 0.6);
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    position: relative;
   }
 }
 
