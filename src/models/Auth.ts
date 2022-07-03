@@ -1,10 +1,10 @@
-interface responseError {
+interface ResponseError {
     statusCode: number
     message: string
     error: string
 }
 
-interface ResponseAuth extends responseError {
+interface ResponseAuth extends ResponseError {
     user: {
         email: string,
         nickname: string,
@@ -15,6 +15,6 @@ interface ResponseAuth extends responseError {
 }
 
 export type{
-  responseError,
+  ResponseError ,
   ResponseAuth
 }

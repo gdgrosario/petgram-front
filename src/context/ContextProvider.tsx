@@ -36,8 +36,8 @@ export const AuthProvider = ({ children }) => {
         } else {
           setUser(response)
         }
+        setLoading(false)
       })
-    setLoading(false)
   }, [])
 
   return <AuthContext.Provider value={{

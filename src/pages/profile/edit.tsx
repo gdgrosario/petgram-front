@@ -1,44 +1,21 @@
 import { FooterActionButtons } from '@components/FooterActionButtons'
 import { HeadInfo } from '@components/HeadInfo'
 import { NavPages } from '@components/NavPages'
-import { getUserProfile, updateProfile } from '@services/User'
+import { updateProfile } from '@services/User'
 import router from 'next/router'
 import { ChangeEvent, useEffect, useState, FormEvent, useContext } from 'react';
-import { getAccessToken } from '@helpers/auth';
 import { User } from '../../models/User';
 import { AuthContext } from '../../context/ContextProvider';
 import { validateFieldsProfile } from '@helpers/validateForm'
 import { Loading } from '../../components/Loading';
 
-/**
- * TODO: Mandar solo los datos necessarios para poder actualizar el perfil,
- * ya que dentro de Profile incluye todos los datos del usuario, como lo son
- * sus seguidores, seguidos, en un formato de array de strings, y esto ocaciona
- * que el servidor los reciba y trate de actualizarlos tambien. 
- */
 export default function edit () {
+  const { user, setUser, loading:loadingFetchUsser} = useContext(AuthContext)
   const [profile, setProfile] = useState<User>()
   const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [nickName, setNickName] = useState('')
-  const { setUser } = useContext(AuthContext)
+  const [loading, setLoading] = useState(false)
   const [invalidFieldsProfile, setinvalidFieldsProfile] = useState(false)
 
-  const fetchUser = async () => {
-    const response = await getUserProfile(getAccessToken())
-    setLoading(false)
-
-    if (response.error || response.message) {
-      setError(error)
-    } else {
-      setProfile(response)
-      setNickName(response.nickname)
-    }
-  }
-
-  useEffect(() => {
-    fetchUser()
-  }, [])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -53,21 +30,32 @@ export default function edit () {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const response = await updateProfile(profile)
+    setLoading(true)
+    const response = await updateProfile({
+      name: profile.name,
+      nickname: profile.nickname,
+      email: profile.email,
+      biography: profile.biography,
+      raza: profile.raza,
+      birthday: profile.birthday,
+      phoneNumber: profile.phoneNumber,
+    })
+    setLoading(false)
 
     if (response.error || response.message) {
       setError(response.error)
-      console.log(response.error)
     } else {
-      setNickName(response.nickname)
       setUser(response)
     }
   }
 
-  if (loading) return <Loading/>
+  useEffect(() => {
+    setProfile(user)
+  }, [user])
+
+  if (loadingFetchUsser) return <Loading/>
   if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>
   if (!profile) return <p>No se cargo el perfil correctamente,intentelo más tarde</p>
-
   return (
     <>
       <HeadInfo title="Editar Perfil" />
@@ -83,7 +71,7 @@ export default function edit () {
               alt="user"
             />
             <div>
-              <h2>{nickName}</h2>
+              <h2>{user.nickname}</h2>
               <span>Change Profile Photo</span>
             </div>
           </section>
@@ -179,7 +167,7 @@ export default function edit () {
             />
           </section>
 
-          <button disabled={invalidFieldsProfile}>Submit</button>
+          <button disabled={invalidFieldsProfile || loading}>Submit</button>
         </form>
       </main>
       <FooterActionButtons />
