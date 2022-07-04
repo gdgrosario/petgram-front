@@ -35,6 +35,7 @@ export const AuthProvider = ({ children }) => {
           setUser(null)
         } else {
           setUser(response)
+          console.log(response)
         }
         setLoading(false)
       })

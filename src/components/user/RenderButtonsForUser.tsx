@@ -3,7 +3,7 @@ import { AuthContext } from '@context/ContextProvider';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useState, useEffect } from 'react';
-import { User } from '../../models/User';
+import { Friend, User } from '../../models/User';
 import { setCookie } from '../../helpers/getCookies';
 import { Follow, UnFollow } from '@services/Followers';
 
@@ -15,9 +15,9 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
 
   const router = useRouter();
 
-  const followeds: string[] = user && user.followeds || [];
+  const followeds: Friend[] = user && user.followeds || [];
 
-  const [isFollowed, setIsFollowed] = useState(followeds.includes(userData.id));
+  const [isFollowed, setIsFollowed] = useState(followeds.some(friend => friend.id === userData.id));
 
   /**
    * SetUser es llamado para actualizar el estado global del usuario,
@@ -40,7 +40,12 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
         setIsFollowed(true);
         setUser({
           ...user,
-          followeds: [...user.followeds, userData.id]
+          followeds: [...user.followeds, {
+            id: userData.id,
+            name: userData.name,
+            nickname: userData.nickname,
+            avatar: userData.avatar,
+          }]
         });
       }
 
@@ -52,7 +57,7 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
       if(status === 200) {
         setUser({
           ...user,
-          followeds: user.followeds.filter(id => id !== userData.id)
+          followeds: user.followeds.filter(friend => friend.id !== userData.id)
         })
         setIsFollowed(false);
       }
@@ -61,9 +66,9 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
   };
 
   const handleCloseSession = () => {
-    setUser(null);
     setCookie('user_token', '', -1);
     router.push('/');
+    setUser(null);
   };
 
   return (
