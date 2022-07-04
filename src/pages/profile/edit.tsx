@@ -45,7 +45,16 @@ export default function edit () {
     if (response.error || response.message) {
       setError(response.error)
     } else {
-      setUser(response)
+      console.log(response)
+      setUser({ ...user,
+        name: response.name,
+        nickname: response.nickname,
+        email: response.email,
+        biography: response.biography,
+        raza: response.raza,
+        birthday: response.birthday,
+        phoneNumber: response.phoneNumber,
+      })
     }
   }
 
