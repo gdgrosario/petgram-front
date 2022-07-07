@@ -24,5 +24,5 @@ export const useSearchUser = (nickName: string) => {
 
   useEffect(() => { getUserNamefromDB() }, [nickName])
 
-  return [user, loading, error]
+  return {user, loading, error}
 }

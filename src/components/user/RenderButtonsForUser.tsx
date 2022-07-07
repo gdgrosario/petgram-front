@@ -33,20 +33,35 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
       router.push('/Auth/SignIn');
     }
 
-    if (action === 'follower') {
+    if (user && action === 'follower') {
       const status = await Follow(userData.id);
 
       if(status === 200 ){
         setIsFollowed(true);
-        setUser({
-          ...user,
-          followeds: [...user.followeds, {
-            id: userData.id,
-            name: userData.name,
-            nickname: userData.nickname,
-            avatar: userData.avatar,
-          }]
-        });
+        if(user.followeds){
+          setUser({
+            ...user,
+            followeds: [...user.followeds, {
+              id: userData.id,
+              name: userData.name,
+              nickname: userData.nickname,
+              avatar: userData.avatar || '',
+            }],
+            numberOfFollowed: user.numberOfFollowed + 1
+          });
+        }else{
+          setUser({
+            ...user,
+            followeds: [{
+              id: userData.id,
+              name: userData.name,
+              nickname: userData.nickname,
+              avatar: userData.avatar || '',
+            }],
+            numberOfFollowed: user.numberOfFollowed + 1
+          });
+        }
+        
       }
 
     }
@@ -57,7 +72,8 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
       if(status === 200) {
         setUser({
           ...user,
-          followeds: user.followeds.filter(friend => friend.id !== userData.id)
+          followeds: user.followeds.filter(friend => friend.id !== userData.id),
+          numberOfFollowed: user.numberOfFollowed - 1
         })
         setIsFollowed(false);
       }

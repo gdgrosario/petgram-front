@@ -6,6 +6,7 @@ import { NavPages } from '@components/NavPages';
 import { FooterActionButtons } from '@components/FooterActionButtons';
 import { GridCards } from '@components/GridCards';
 import { CardInfoProfile } from '@components/CardInfoProfile';
+import { NotFoundUser } from '../../components/NotFoundUser';
 
 // internal
 import Wave from '@public/assets/svgs/wave.svg';
@@ -17,14 +18,14 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { RenderButtonsForUser } from '@components/user/RenderButtonsForUser';
 import { HeadInfo } from '@components/HeadInfo';
-import { User } from '../models/User';
+import { User } from '../../models/User';
 import { Loading } from '@components/Loading';
 
 export default function UserProfile(props) {
   const { query } = useRouter();
   const userName = query.user?.toString();
 
-  const [user, loading, error] = useSearchUser(userName);
+  const{ user, loading, error }= useSearchUser(userName);
 
   if (loading) return <Loading />;
 
@@ -34,11 +35,11 @@ export default function UserProfile(props) {
     <>
       <HeadInfo title={userName} />
 
-      <NavPages titleHeaderPage="Perfil" history={props.history} />
+      <NavPages titleHeaderPage="Perfil" />
 
       <main>
         {user ? (
-          <ProfileUser userData={user as User} />
+          <ProfileUser userData={user} />
         ) : (
           <NotFoundUser userName={userName} />
         )}
@@ -49,11 +50,6 @@ export default function UserProfile(props) {
   );
 }
 
-const NotFoundUser = ({ userName }) => (
-  <div className="not-found-user">
-    <h1>{userName} no fue encontrado</h1>
-  </div>
-);
 
 interface IProfileUser {
   userData: User;
@@ -97,9 +93,18 @@ const ProfileUser = ({ userData }: IProfileUser) => (
         <p className="box-profile__description-profile">{userData.biography}</p>
         <section className="section-friends">
           <GridCards>
-            <CardInfoProfile number={200} textCard="Seguidos" />
-            <CardInfoProfile number={100} textCard="Seguidores" />
-            <CardInfoProfile number={10} textCard="Publicaciones" />
+            <CardInfoProfile 
+              navPage={`${userData.nickname}/followeds`}
+              amount={userData.numberOfFollowed}
+              textCard="Seguidos" />
+            <CardInfoProfile 
+              navPage={`${userData.nickname}/followers`}
+              amount={userData.numberOfFollowers}
+              textCard="Seguidores" />
+            <CardInfoProfile 
+              navPage={`${userData.nickname}`}
+              amount={10}
+              textCard="Publicaciones" />
           </GridCards>
 
           {/* <RenderButtonsForUser {...UserState} /> */}
