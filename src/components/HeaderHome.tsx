@@ -8,8 +8,10 @@ import { useContext, useRef } from 'react';
 import { UploadContext } from '../context/ContextUpload';
 import { useRouter } from 'next/router';
 import { getCompressor } from '@helpers/getCompressor';
+import { AuthContext } from '@context/ContextProvider';
 
 export const HeaderHome = () => {
+  const { user } = useContext(AuthContext);
   const router = useRouter();
 
   const imageSelector = useRef(null);
@@ -39,22 +41,24 @@ export const HeaderHome = () => {
       <Logo className="header-logo" />
       <nav className="header-home__nav">
         <ul className="header-home__list">
-          <li className="header-home__item header-home__item--box">
-            <button
-              onClick={() => onSelectImage()}
-              className="header-home__link"
-            >
-              <AddHistory className="header-home__icon" />
-            </button>
+          {user && (
+            <li className="header-home__item header-home__item--box">
+              <button
+                onClick={() => onSelectImage()}
+                className="header-home__link"
+              >
+                <AddHistory className="header-home__icon" />
+              </button>
 
-            <input
-              type="file"
-              capture="user"
-              accept="image/*"
-              onChange={(event) => onSelectedImage(event)}
-              ref={imageSelector}
-            />
-          </li>
+              <input
+                type="file"
+                capture="user"
+                accept="image/*"
+                onChange={(event) => onSelectedImage(event)}
+                ref={imageSelector}
+              />
+            </li>
+          )}
           <li className="header-home__item">
             <Link href="/">
               <a className="header-home__link">
