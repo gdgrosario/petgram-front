@@ -19,7 +19,7 @@ export const HeaderHome = () => {
     imageSelector.current.click();
   };
 
-  const onSelectedImage = async (event: Event) => {
+  const onSelectedImage = async (event) => {
     const target = event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
     if (!file) return;
@@ -29,7 +29,7 @@ export const HeaderHome = () => {
 
     const result = await getCompressor(file);
 
-    setimageBlob(result);
+    setimageBlob(result as File);
 
     router.push('/upload');
   };
@@ -51,7 +51,7 @@ export const HeaderHome = () => {
               type="file"
               capture="user"
               accept="image/*"
-              onChange={() => onSelectedImage(event)}
+              onChange={(event) => onSelectedImage(event)}
               ref={imageSelector}
             />
           </li>
