@@ -50,7 +50,7 @@ export default function edit() {
       </header>
 
       <section className="container__upload">
-        <img src={image} alt="" width={70} height={70} />
+        <img src={image} alt="" width={120} height={120} />
         <textarea
           defaultValue={description}
           onChange={(event) => handleChange(event)}
