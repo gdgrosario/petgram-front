@@ -12,16 +12,20 @@ interface IRenderFollowersData {
 }
 
 export const RenderFollowData = ({numberFolloweds, numberFollowers, friends, nickName}:IRenderFollowersData) => {
-    console.log(numberFolloweds, numberFollowers)
+    console.log(numberFolloweds, numberFollowers, friends)
     return (
         <>
             <GridCards>
             <CardInfoProfile 
                 amount={numberFolloweds} 
+                navPage={`/${nickName}/followeds`}
                 textCard="Seguidos" />
+                
             <CardInfoProfile 
                 amount={numberFollowers} 
+                navPage={`/${nickName}/followers`}
                 textCard="Seguidores" />
+                
             {/* <CardInfoProfile number={5} textCard="Seguidores en común" /> */}
             </GridCards>
     
@@ -29,7 +33,7 @@ export const RenderFollowData = ({numberFolloweds, numberFollowers, friends, nic
     
             <section className="section-listUser">
                 {
-                    friends.length > 0 ?  friends.map((friend) => (
+                    friends && friends.length > 0 ? friends.map((friend) => (
                         <CardFriend 
                             key={friend.id}
                             userName={friend.nickname} 
