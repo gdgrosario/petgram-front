@@ -16,12 +16,11 @@
   './components/button', './components/cardFriend', './components/cardPhoto',
   './components/searchFollowers', './components/formAuth', './components/modal',
   './components/stories', './components/navPages', './components/upload',
-  './components/loading', "./components/skeletons";
-
+  './components/loading', './components/skeletons';
 
 //pages
 @import './pages/error404', './pages/followers', './pages/home', './pages/team',
-  './pages/signUp', './pages/userProfile', './pages/userEdit';
+  './pages/signUp', './pages/userProfile', './pages/userEdit', './pages/upload';
 
 html,
 body {
