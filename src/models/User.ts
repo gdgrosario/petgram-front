@@ -18,8 +18,27 @@ interface User {
   followers: Friend[]
   numberOfFollowed: number
   numberOfFollowers: number
+  posts: Post[]
 }
 
+interface Post {
+  id: string
+  description: string
+  image: string
+  likes: number
+  comments: Comment[]
+  user: {
+    nickname: string
+    name: string
+    avatar: string
+  }
+}
+
+interface Comment {
+  id: string
+  comment: string
+  user: string
+}
 interface Friend {
   id: string
   name: string
@@ -31,9 +50,18 @@ interface UserResponse extends User, ResponseError{}
 
 interface UpdateUser extends Partial<User>{}
 
+interface PostResponse extends Omit<Post, "image">, ResponseError{
+  image: {
+    public_id: string
+    url: string
+  }
+}
 export type{
   User,
   UserResponse,
   UpdateUser,
-  Friend
+  Friend,
+  Post,
+  Comment,
+  PostResponse
 }

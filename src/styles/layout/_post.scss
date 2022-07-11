@@ -5,8 +5,13 @@
     align-items: center;
     justify-content: space-between;
   }
+  &__description{
+    margin: 10px 20px;
+  }
   &__user-info {
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
     margin-left: 10px;
   }
   &__user-name {
@@ -14,6 +19,7 @@
   }
   &__user-name,
   &__name {
+    color: #000;
     font-size: 17px;
     line-height: 25px;
     margin: 0;
@@ -21,7 +27,7 @@
 
   &__photo {
     width: 100%;
-    height: 100%;
+    height: 20rem;
     object-fit: cover;
   }
 }
@@ -61,7 +67,7 @@
   }
 
   &__section {
-    margin: 20px 0 10px 20px;
+    margin: 0 20px;
   }
 
   &__list-hashtag {

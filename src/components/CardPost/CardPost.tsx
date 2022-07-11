@@ -1,21 +1,35 @@
 import Image from 'next/image'
 
 import { CircleStories } from './ProfilePhoto'
-import photo from '@public/assets/user/simona.jpg'
 
 import BarsMenu from '@public/assets/svgs/icons/bar.svg'
 import Comment from '@public/assets/svgs/icons/chat.svg'
 import Send from '@public/assets/svgs/icons/send.svg'
 import Favorite from '@public/assets/svgs/icons/favorite.svg'
+import Link from 'next/link'
 
-export const CardPost = () => {
+interface ICardPost {
+  user: {
+    name: string
+    nickname: string
+    avatar?: string
+  }
+  description: string
+  image: string
+  
+}
+export const CardPost = ({user, description, image}:ICardPost) => {
   return (
     <div className="card-post">
       <header className="card-post__header">
         <CircleStories />
         <div className="card-post__user-info">
-          <h2 className="card-post__user-name">Simona</h2>
-          <b className="card-post__name">Rosario, Santa Fe</b>
+          <Link href={`/${user.nickname}`}>
+            <a className="card-post__user-name">
+              {user.nickname}
+            </a>
+          </Link>
+          <b className="card-post__name">{user.name}</b>
         </div>
         <BarsMenu className="" />
       </header>
@@ -25,11 +39,16 @@ export const CardPost = () => {
       <div className="carousel-photo">
         <Image
           height={600}
+          width={600}
           priority
           className="card-post__photo"
-          src={photo}
+          src={image}
           alt="user-img" />
       </div>
+
+      <p className='card-post__description'>
+        {description}
+      </p>
 
       <footer className="footer-card-post">
         <section className="footer-card-post__section">
@@ -57,23 +76,6 @@ export const CardPost = () => {
           </h4>
           <div className="footer-card-post__comment">
             <b>Simona</b> Hola a todos!
-            <ul className="footer-card-post__list-hashtag">
-              <li className="footer-card-post__item-hashtag">
-                <a href="/">#mantita</a>
-              </li>
-
-              <li className="footer-card-post__item-hashtag">
-                <a href="/">#POTD</a>
-              </li>
-
-              <li className="footer-card-post__item-hashtag">
-                <a href="/">#casa</a>
-              </li>
-
-              <li className="footer-card-post__item-hashtag">
-                <a href="/">#Petgram</a>
-              </li>
-            </ul>
           </div>
           <p className="footer-card-post__comment-follower">
             <b>Snoopy</b> Buena Manta!.

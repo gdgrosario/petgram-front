@@ -12,7 +12,6 @@ interface IRenderFollowersData {
 }
 
 export const RenderFollowData = ({numberFolloweds, numberFollowers, friends, nickName}:IRenderFollowersData) => {
-    console.log(numberFolloweds, numberFollowers, friends)
     return (
         <>
             <GridCards>

@@ -9,6 +9,9 @@ const config = {
   env: {
     MY_ENV: '',
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+  }
 };
 
 module.exports = withPlugins(
@@ -34,6 +37,6 @@ module.exports = withPlugins(
         },
       },
     ],
+    config
   ],
-  config
 );
