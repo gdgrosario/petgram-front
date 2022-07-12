@@ -5,7 +5,7 @@ import { HeadInfo } from '@components/HeadInfo'
 const Error404 = (props) => {
   return (
     <>
-      <NavPages titleHeaderPage="Volver" history={props.history} />
+      <NavPages titleHeaderPage="Volver"  />
       <HeadInfo title="404 | Página no encontrada" />
       <main className="container-404">
         <div className="container-404__content">

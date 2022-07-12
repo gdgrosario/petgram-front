@@ -68,7 +68,7 @@ export default function edit () {
   return (
     <>
       <HeadInfo title="Editar Perfil" />
-      <NavPages titleHeaderPage="Edit Profile" history={router.back} />
+      <NavPages titleHeaderPage="Edit Profile" />
       <main className="container-global">
         <form onSubmit={handleSubmit} className="user-edit__form">
           {/* parte 1 */}

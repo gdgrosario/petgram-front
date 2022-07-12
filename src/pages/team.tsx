@@ -5,12 +5,12 @@ import { CardTeam } from '@components/CardTeam'
 import { getTeam } from '@helpers/getTeam'
 import { HeadInfo } from '@components/HeadInfo'
 
-export default function Team ({ history }) {
+export default function Team () {
   return (
     <>
       <HeadInfo title="Equipo" />
       <main className="container-global spacing-for-pages">
-        <NavPages titleHeaderPage="Volver" history={history} />
+        <NavPages titleHeaderPage="Volver" />
 
         <section className="team__description">
           <h1 className="team__description__title">Team</h1>
