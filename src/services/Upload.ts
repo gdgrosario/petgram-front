@@ -1,5 +1,7 @@
+import { getError } from '@helpers/errors';
 import { AxiosError } from 'axios';
 import { petgramAPI } from 'src/axios/axios';
+import { PostResponse } from 'src/models/User';
 
 interface Data {
   image: File;
@@ -10,21 +12,18 @@ export const Upload = async (data: Data): Promise<number> => {
   try {
     const formData = new FormData();
 
-    formData.append('name', data.image.name as string);
-    formData.append('file', data.image);
+    formData.append('img', data.image);
+    formData.append('description', data.description);
 
-    console.log({
-      formData,
-      des: data.description,
-      image: data.image,
+    const response = await petgramAPI.post('/posts', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     });
 
-    // const response = await petgramAPI.post<Response>(`/users/follow/${id}`);
-
-    // return response.status;
-  } catch (error: unknown) {
-    const err = error as AxiosError;
-
-    return err.response?.status || 400;
+    return response.status;
+  } catch (error) {
+    const err: AxiosError = error;
+    return err.response.status;
   }
 };

@@ -1,36 +1,36 @@
-import { FooterActionButtons } from '@components/FooterActionButtons'
-import { HeadInfo } from '@components/HeadInfo'
-import { NavPages } from '@components/NavPages'
-import { updateProfile } from '@services/User'
-import router from 'next/router'
+import { FooterActionButtons } from '@components/FooterActionButtons';
+import { HeadInfo } from '@components/HeadInfo';
+import { NavPages } from '@components/NavPages';
+import { updateProfile } from '@services/User';
+import router from 'next/router';
 import { ChangeEvent, useEffect, useState, FormEvent, useContext } from 'react';
 import { User } from '../../models/User';
 import { AuthContext } from '../../context/ContextProvider';
-import { validateFieldsProfile } from '@helpers/validateForm'
+import { validateFieldsProfile } from '@helpers/validateForm';
 import { Loading } from '../../components/Loading';
 
-export default function edit () {
-  const { user, setUser, loading:loadingFetchUsser} = useContext(AuthContext)
-  const [profile, setProfile] = useState<User>()
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [invalidFieldsProfile, setinvalidFieldsProfile] = useState(false)
+export default function edit() {
+  const { user, setUser, loading: loadingFetchUsser } = useContext(AuthContext);
+  const [profile, setProfile] = useState<User>();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [invalidFieldsProfile, setinvalidFieldsProfile] = useState(false);
 
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
+    setProfile({ ...profile, [name]: value });
 
-    setProfile({ ...profile, [name]: value })
-
-    setinvalidFieldsProfile(validateFieldsProfile(
-      { ...profile, [name]: value }
-    ))
-
-  }
+    setinvalidFieldsProfile(
+      validateFieldsProfile({ ...profile, [name]: value })
+    );
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
     const response = await updateProfile({
       name: profile.name,
       nickname: profile.nickname,
@@ -39,14 +39,14 @@ export default function edit () {
       raza: profile.raza,
       birthday: profile.birthday,
       phoneNumber: profile.phoneNumber,
-    })
-    setLoading(false)
+    });
+    setLoading(false);
 
     if (response.error || response.message) {
-      setError(response.error)
+      setError(response.error);
     } else {
-      console.log(response)
-      setUser({ ...user,
+      setUser({
+        ...user,
         name: response.name,
         nickname: response.nickname,
         email: response.email,
@@ -54,17 +54,18 @@ export default function edit () {
         raza: response.raza,
         birthday: response.birthday,
         phoneNumber: response.phoneNumber,
-      })
+      });
     }
-  }
+  };
 
   useEffect(() => {
-    setProfile(user)
-  }, [user])
+    setProfile(user);
+  }, [user]);
 
-  if (loadingFetchUsser) return <Loading/>
-  if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>
-  if (!profile) return <p>No se cargo el perfil correctamente,intentelo más tarde</p>
+  if (loadingFetchUsser) return <Loading />;
+  if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>;
+  if (!profile)
+    return <p>No se cargo el perfil correctamente,intentelo más tarde</p>;
   return (
     <>
       <HeadInfo title="Editar Perfil" />
@@ -94,7 +95,7 @@ export default function edit () {
               onChange={handleChange}
               name="name"
               type="text"
-               />
+            />
           </section>
           {/* parte 3 */}
           <section className="user-edit__input">
@@ -106,7 +107,7 @@ export default function edit () {
               onChange={handleChange}
               name="nickname"
               type="text"
-               />
+            />
           </section>
           {/* parte 4 */}
           <section className="user-edit__input">
@@ -130,7 +131,7 @@ export default function edit () {
               onChange={handleChange}
               name="raza"
               type="text"
-               />
+            />
           </section>
           {/* parte 6 */}
           <section className="user-edit__input">
@@ -142,7 +143,7 @@ export default function edit () {
               name="biography"
               onChange={handleChange}
               value={profile.biography}
-               />
+            />
           </section>
           {/* parte 6 */}
           <section className="user-edit__input">
@@ -150,18 +151,16 @@ export default function edit () {
               <span>Date of birth</span>
             </label>
             <input
-                  name= "birthday"
-                  placeholder="Fecha de nacimiento (dd/mm/yyyy)"
-                  type="text"
-                  onChange={handleChange}
-                  value= {profile.birthday}
-                  onFocus={
-                      (e) => {
-                        e.currentTarget.type = 'date'
-                        e.currentTarget.focus()
-                      }
-                  }
-                />
+              name="birthday"
+              placeholder="Fecha de nacimiento (dd/mm/yyyy)"
+              type="text"
+              onChange={handleChange}
+              value={profile.birthday}
+              onFocus={(e) => {
+                e.currentTarget.type = 'date';
+                e.currentTarget.focus();
+              }}
+            />
           </section>
           {/* parte 7 */}
           <section className="user-edit__input">
@@ -181,5 +180,5 @@ export default function edit () {
       </main>
       <FooterActionButtons />
     </>
-  )
+  );
 }

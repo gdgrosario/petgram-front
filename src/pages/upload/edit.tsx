@@ -3,10 +3,11 @@ import { UploadContext } from '@context/ContextUpload';
 import Close from '@public/assets/svgs/icons/close.svg';
 import { Upload } from '@services/Upload';
 import { useRouter } from 'next/router';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export default function edit() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const {
     image,
     imageBlob,
@@ -34,7 +35,16 @@ export default function edit() {
   };
 
   const handleSubmit = async () => {
-    await Upload({ image: imageBlob, description });
+    setLoading(true);
+    const response = await Upload({ image: imageBlob, description });
+    setLoading(false);
+    if (response === 201) {
+      router.push('/');
+
+      setUpload(null);
+      setDescription('');
+      setimageBlob(null);
+    }
   };
 
   return (
@@ -46,7 +56,9 @@ export default function edit() {
 
         <h2>Nuevo post</h2>
 
-        <button onClick={handleSubmit}>siguiente</button>
+        <button onClick={handleSubmit}>
+          {loading ? 'Subiendo...' : 'Subir'}
+        </button>
       </header>
 
       <section className="container__upload">
