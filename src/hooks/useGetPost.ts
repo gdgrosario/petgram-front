@@ -10,7 +10,7 @@ export const useGetPosts = () => {
   useEffect(() => {
     getAllPost()
       .then((res) => {
-        setPosts(res);
+        setPosts(res as Post[]);
       })
       .catch((err) => {
         setError(err);

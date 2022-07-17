@@ -1,20 +1,18 @@
 interface ResponseError {
-    statusCode: number
-    message: string
-    error: string
+  statusCode: number;
+  message: string;
+  [key: string]: any;
 }
 
-interface ResponseAuth extends ResponseError {
-    user: {
-        email: string,
-        nickname: string,
-        role: string,
-        id: string
-    }
-    access_token: string
+interface ResponseAuth {
+  user: {
+    email: string;
+    nickname: string;
+    role: string;
+    id: string;
+  };
+  access_token: string;
+  [key: string]: any;
 }
 
-export type{
-  ResponseError ,
-  ResponseAuth
-}
+export type { ResponseError, ResponseAuth };

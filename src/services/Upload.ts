@@ -1,7 +1,4 @@
-import { getError } from '@helpers/errors';
-import { AxiosError } from 'axios';
 import { petgramAPI } from 'src/axios/axios';
-import { PostResponse } from 'src/models/User';
 
 interface Data {
   image: File;
@@ -23,7 +20,9 @@ export const Upload = async (data: Data): Promise<number> => {
 
     return response.status;
   } catch (error) {
-    const err: AxiosError = error;
-    return err.response.status;
+    if (error.response) {
+      return error.response.status;
+    }
+    return 400;
   }
 };

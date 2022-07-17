@@ -1,28 +1,32 @@
-import { useEffect, useState } from 'react'
-import { getUserForUserName } from '@services/User'
+import { useEffect, useState } from 'react';
+import { getUserForUserName } from '@services/User';
 import { User } from '../models/User';
 
 export const useSearchUser = (nickName: string) => {
-  const [user, setUser] = useState<User | null>()
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [user, setUser] = useState<User | null>();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const getUserNamefromDB = async () => {
-    const getUseruserbyName = nickName ? await getUserForUserName(nickName) : null
-    nickName && setLoading(false)
+    const getUseruserbyName = nickName
+      ? await getUserForUserName(nickName)
+      : null;
+    nickName && setLoading(false);
 
     if (getUseruserbyName?.name) {
-      setUser(getUseruserbyName)
+      setUser(getUseruserbyName as User);
     } else {
-      setUser(null)
+      setUser(null);
     }
 
     if (getUseruserbyName?.message) {
-      setError(getUseruserbyName.message)
+      setError(getUseruserbyName.message);
     }
-  }
+  };
 
-  useEffect(() => { getUserNamefromDB() }, [nickName])
+  useEffect(() => {
+    getUserNamefromDB();
+  }, [nickName]);
 
-  return {user, loading, error}
-}
+  return { user, loading, error };
+};

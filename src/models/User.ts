@@ -19,6 +19,7 @@ interface User {
   numberOfFollowed: number;
   numberOfFollowers: number;
   posts: Post[];
+  [key: string]: any;
 }
 
 interface Post {
@@ -27,36 +28,31 @@ interface Post {
   image: string;
   likes: number;
   comments: Comment[];
-  user: {
-    nickname: string;
-    name: string;
-    avatar: string;
-  };
+  user: UserBasic;
+  [key: string]: any;
 }
 
+interface UserBasic {
+  nickname: string;
+  name: string;
+  avatar: string;
+}
 interface Comment {
   id: string;
   comment: string;
-  user: string;
+  user: UserBasic;
+  [key: string]: any;
 }
 interface Friend {
   id: string;
   name: string;
   nickname: string;
   avatar: string;
+  [key: string]: any;
 }
 
-interface UserResponse extends User, ResponseError {}
+interface UpdateUser extends Partial<User> {
+  [key: string]: any;
+}
 
-interface UpdateUser extends Partial<User> {}
-
-interface PostResponse extends Post, ResponseError {}
-export type {
-  User,
-  UserResponse,
-  UpdateUser,
-  Friend,
-  Post,
-  Comment,
-  PostResponse,
-};
+export type { User, UpdateUser, Friend, Post, Comment, UserBasic };

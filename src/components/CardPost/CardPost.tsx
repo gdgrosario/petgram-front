@@ -1,33 +1,28 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
-import { CircleStories } from './ProfilePhoto'
+import { CircleStories } from './ProfilePhoto';
 
-import BarsMenu from '@public/assets/svgs/icons/bar.svg'
-import Comment from '@public/assets/svgs/icons/chat.svg'
-import Send from '@public/assets/svgs/icons/send.svg'
-import Favorite from '@public/assets/svgs/icons/favorite.svg'
-import Link from 'next/link'
+import BarsMenu from '@public/assets/svgs/icons/bar.svg';
+import Comment from '@public/assets/svgs/icons/chat.svg';
+import Send from '@public/assets/svgs/icons/send.svg';
+import Favorite from '@public/assets/svgs/icons/favorite.svg';
+import Link from 'next/link';
+import { Comment as CommentType, UserBasic } from 'src/models/User';
 
 interface ICardPost {
-  user: {
-    name: string
-    nickname: string
-    avatar?: string
-  }
-  description: string
-  image: string
-  
+  user: UserBasic;
+  description: string;
+  image: string;
+  comments: CommentType[];
 }
-export const CardPost = ({user, description, image}:ICardPost) => {
+export const CardPost = ({ user, description, image, comments }: ICardPost) => {
   return (
     <div className="card-post">
       <header className="card-post__header">
         <CircleStories />
         <div className="card-post__user-info">
           <Link href={`/${user.nickname}`}>
-            <a className="card-post__user-name">
-              {user.nickname}
-            </a>
+            <a className="card-post__user-name">{user.nickname}</a>
           </Link>
           <b className="card-post__name">{user.name}</b>
         </div>
@@ -43,12 +38,11 @@ export const CardPost = ({user, description, image}:ICardPost) => {
           priority
           className="card-post__photo"
           src={image}
-          alt="user-img" />
+          alt="user-img"
+        />
       </div>
 
-      <p className='card-post__description'>
-        {description}
-      </p>
+      <p className="card-post__description">{description}</p>
 
       <footer className="footer-card-post">
         <section className="footer-card-post__section">
@@ -74,6 +68,7 @@ export const CardPost = ({user, description, image}:ICardPost) => {
           <h4 className="footer-card-post__follower-like">
             Le gusta a Snoopy y 30 más
           </h4>
+          {JSON.stringify(comments)}
           <div className="footer-card-post__comment">
             <b>Simona</b> Hola a todos!
           </div>
@@ -83,5 +78,5 @@ export const CardPost = ({user, description, image}:ICardPost) => {
         </section>
       </footer>
     </div>
-  )
-}
+  );
+};

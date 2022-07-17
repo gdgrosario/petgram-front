@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
           setError(response.message);
           setUser(null);
         } else {
-          setUser(response);
+          setUser(response as User);
         }
         setLoading(false);
       });
