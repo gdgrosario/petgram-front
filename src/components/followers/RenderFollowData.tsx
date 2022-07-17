@@ -3,6 +3,7 @@ import { GridCards } from '../GridCards';
 import { CardInfoProfile } from '../CardInfoProfile';
 import { SearchFriends } from './SearchFollowers/SearchFollowers';
 import { CardFriend } from './ListFriends/CardFriend';
+import { useSearchFilter } from '../../hooks/useSearchFilter';
 
 interface IRenderFollowersData {
     numberFollowers: number
@@ -12,27 +13,30 @@ interface IRenderFollowersData {
 }
 
 export const RenderFollowData = ({numberFolloweds, numberFollowers, friends, nickName}:IRenderFollowersData) => {
+    const {filterData, setSearch} = useSearchFilter<Friend>(friends, "nickname")
     return (
         <>
             <GridCards>
-            <CardInfoProfile 
-                amount={numberFolloweds} 
-                navPage={`/${nickName}/followeds`}
-                textCard="Seguidos" />
+                <CardInfoProfile 
+                    amount={numberFolloweds} 
+                    navPage={`/${nickName}/followeds`}
+                    textCard="Seguidos" />
+                    
+                <CardInfoProfile 
+                    amount={numberFollowers} 
+                    navPage={`/${nickName}/followers`}
+                    textCard="Seguidores" />
                 
-            <CardInfoProfile 
-                amount={numberFollowers} 
-                navPage={`/${nickName}/followers`}
-                textCard="Seguidores" />
-                
-            {/* <CardInfoProfile number={5} textCard="Seguidores en común" /> */}
             </GridCards>
     
-            <SearchFriends placeholderNickName={nickName}/>
+            <SearchFriends 
+                setSearch={setSearch}
+                placeholderNickName={nickName}
+            />
     
             <section className="section-listUser">
                 {
-                    friends && friends.length > 0 ? friends.map((friend) => (
+                    filterData && filterData.length > 0 ? filterData.map((friend) => (
                         <CardFriend 
                             key={friend.id}
                             userName={friend.nickname} 
