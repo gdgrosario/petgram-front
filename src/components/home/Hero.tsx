@@ -18,6 +18,8 @@ export function Hero() {
             <CardPost
               key={post.id}
               user={post.user}
+              likes={post.likes}
+              postId={post.id}
               description={post.description}
               image={post.image}
               comments={post.comments}
