@@ -1,14 +1,13 @@
-import { petgramAPI } from '../axios/axios';
-import { ResponseError } from 'src/models/Auth';
-import { catchError } from '@helpers/errors';
-import { Post } from 'src/models/User';
+import { petgramAPI } from "../axios/axios";
+import { catchError } from "@helpers/errors";
+import { Post, GenericResponse } from "src/models/User";
 
-const getAllPost = async (): Promise<Post[] | ResponseError> => {
+const getAllPost = async (): Promise<GenericResponse<Post[]>> => {
   try {
-    const response = await petgramAPI.get('/posts');
-    return response.data;
+    const response = await petgramAPI.get<Post[]>("/posts");
+    return { data: response.data };
   } catch (error) {
-    return catchError(error);
+    return { error: catchError(error) };
   }
 };
 

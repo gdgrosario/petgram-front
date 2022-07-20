@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { getUserForUserName } from '@services/User';
-import { User } from '../models/User';
+import { useEffect, useState } from "react";
+import { getUserForUserName } from "@services/User";
+import { User } from "../models/User";
 
 export const useSearchUser = (nickName: string) => {
   const [user, setUser] = useState<User | null>();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const getUserNamefromDB = async () => {
     const getUseruserbyName = nickName
@@ -13,14 +13,18 @@ export const useSearchUser = (nickName: string) => {
       : null;
     nickName && setLoading(false);
 
-    if (getUseruserbyName?.name) {
-      setUser(getUseruserbyName as User);
-    } else {
-      setUser(null);
-    }
+    if (getUseruserbyName) {
+      const { data, error } = getUseruserbyName;
 
-    if (getUseruserbyName?.message) {
-      setError(getUseruserbyName.message);
+      if (data?.name) {
+        setUser(data);
+      } else {
+        setUser(null);
+      }
+
+      if (error?.message) {
+        setError(error.message);
+      }
     }
   };
 

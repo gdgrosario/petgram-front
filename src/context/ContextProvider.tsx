@@ -1,8 +1,8 @@
-import { createContext, SetStateAction, useEffect, useState } from 'react';
-import { getUserProfile } from '@services/User';
-import { getAccessToken } from '@helpers/auth';
-import { User } from '../models/User';
-import { Dispatch } from 'react';
+import { createContext, SetStateAction, useEffect, useState } from "react";
+import { getUserProfile } from "@services/User";
+import { getAccessToken } from "@helpers/auth";
+import { User } from "../models/User";
+import { Dispatch } from "react";
 
 interface IAuthContext {
   user: User | null;
@@ -29,12 +29,12 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     accessToken &&
-      getUserProfile(accessToken).then((response) => {
-        if (response.message) {
-          setError(response.message);
+      getUserProfile().then(({ data, error }) => {
+        if (error) {
+          setError(error.message);
           setUser(null);
         } else {
-          setUser(response as User);
+          setUser(data);
         }
         setLoading(false);
       });

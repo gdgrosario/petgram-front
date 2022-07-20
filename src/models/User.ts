@@ -1,4 +1,4 @@
-import { ResponseError } from './Auth';
+import { ResponseError } from "./Auth";
 
 /* TODO: Crear mas interfaces pata distintos casos de uso para mantener 
 un orden y solo lo que se necesita */
@@ -19,7 +19,6 @@ interface User {
   numberOfFollowed: number;
   numberOfFollowers: number;
   posts: Post[];
-  [key: string]: any;
 }
 
 interface Post {
@@ -29,7 +28,6 @@ interface Post {
   likes: number;
   comments: Comment[];
   user: UserBasic;
-  [key: string]: any;
 }
 
 interface UserBasic {
@@ -41,18 +39,27 @@ interface Comment {
   id: string;
   comment: string;
   user: UserBasic;
-  [key: string]: any;
 }
 interface Friend {
   id: string;
   name: string;
   nickname: string;
   avatar: string;
-  [key: string]: any;
 }
 
-interface UpdateUser extends Partial<User> {
-  [key: string]: any;
+interface UpdateUser extends Partial<User> {}
+
+interface GenericResponse<T> {
+  data?: T;
+  error?: ResponseError;
 }
 
-export type { User, UpdateUser, Friend, Post, Comment, UserBasic };
+export type {
+  User,
+  UpdateUser,
+  Friend,
+  Post,
+  Comment,
+  UserBasic,
+  GenericResponse,
+};

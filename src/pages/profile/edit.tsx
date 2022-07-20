@@ -1,13 +1,12 @@
-import { FooterActionButtons } from '@components/FooterActionButtons';
-import { HeadInfo } from '@components/HeadInfo';
-import { NavPages } from '@components/NavPages';
-import { updateProfile } from '@services/User';
-import router from 'next/router';
-import { ChangeEvent, useEffect, useState, FormEvent, useContext } from 'react';
-import { User } from '../../models/User';
-import { AuthContext } from '../../context/ContextProvider';
-import { validateFieldsProfile } from '@helpers/validateForm';
-import { Loading } from '../../components/Loading';
+import { FooterActionButtons } from "@components/FooterActionButtons";
+import { HeadInfo } from "@components/HeadInfo";
+import { NavPages } from "@components/NavPages";
+import { updateProfile } from "@services/User";
+import { ChangeEvent, useEffect, useState, FormEvent, useContext } from "react";
+import { User } from "../../models/User";
+import { AuthContext } from "../../context/ContextProvider";
+import { validateFieldsProfile } from "@helpers/validateForm";
+import { Loading } from "../../components/Loading";
 
 export default function edit() {
   const { user, setUser, loading: loadingFetchUsser } = useContext(AuthContext);
@@ -31,7 +30,7 @@ export default function edit() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    const response = await updateProfile({
+    const { data, error } = await updateProfile({
       name: profile.name,
       nickname: profile.nickname,
       email: profile.email,
@@ -42,18 +41,18 @@ export default function edit() {
     });
     setLoading(false);
 
-    if (response.error || response.message) {
-      setError(response.error);
+    if (error) {
+      setError(error.message);
     } else {
       setUser({
         ...user,
-        name: response.name,
-        nickname: response.nickname,
-        email: response.email,
-        biography: response.biography,
-        raza: response.raza,
-        birthday: response.birthday,
-        phoneNumber: response.phoneNumber,
+        name: data.name,
+        nickname: data.nickname,
+        email: data.email,
+        biography: data.biography,
+        raza: data.raza,
+        birthday: data.birthday,
+        phoneNumber: data.phoneNumber,
       });
     }
   };
@@ -157,7 +156,7 @@ export default function edit() {
               onChange={handleChange}
               value={profile.birthday}
               onFocus={(e) => {
-                e.currentTarget.type = 'date';
+                e.currentTarget.type = "date";
                 e.currentTarget.focus();
               }}
             />

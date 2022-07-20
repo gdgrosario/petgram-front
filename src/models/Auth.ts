@@ -1,7 +1,6 @@
 interface ResponseError {
   statusCode: number;
   message: string;
-  [key: string]: any;
 }
 
 interface ResponseAuth {
@@ -12,7 +11,6 @@ interface ResponseAuth {
     id: string;
   };
   access_token: string;
-  [key: string]: any;
 }
 
 export type { ResponseError, ResponseAuth };
