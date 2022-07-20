@@ -54,6 +54,10 @@ interface GenericResponse<T> {
   error?: ResponseError;
 }
 
+interface Pagination {
+  skip: number;
+  limit: number;
+}
 export type {
   User,
   UpdateUser,
@@ -62,4 +66,5 @@ export type {
   Comment,
   UserBasic,
   GenericResponse,
+  Pagination,
 };

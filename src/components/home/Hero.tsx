@@ -1,7 +1,7 @@
-import { CardPost } from '@components/CardPost/CardPost';
-import { GridCardPost } from '@components/CardPost/GridCardPost';
-import { PostSkeleton } from '@components/skeleton/PostSkeleton';
-import { useGetPosts } from '../../hooks/useGetPost';
+import { CardPost } from "@components/CardPost/CardPost";
+import { GridCardPost } from "@components/CardPost/GridCardPost";
+import { PostSkeleton } from "@components/skeleton/PostSkeleton";
+import { useGetPosts } from "../../hooks/useGetPost";
 
 export function Hero() {
   const { posts, loading, error } = useGetPosts();

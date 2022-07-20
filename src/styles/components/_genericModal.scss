@@ -1,18 +1,18 @@
-.generic-modal{
-    &__container-modal{
-        background: linear-gradient(91.28deg, #f6f6f6 0%, #fbfbfb 100%);
-        position: fixed;
-        padding: 20px;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        z-index: 2;
-        header{
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
+.generic-modal {
+  &__container-modal {
+    background: linear-gradient(91.28deg, #f6f6f6 0%, #fbfbfb 100%);
+    position: fixed;
+    padding: 20px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-bottom: 300px;
+    z-index: 2;
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
-
+  }
 }

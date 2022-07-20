@@ -118,24 +118,32 @@ const ModalComment = ({ setToggleModal, postId }: any) => {
   const [comments, setComments] = useState<CommentType[]>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(4);
 
   useEffect(() => {
-    getCommentsInPost(postId).then((response) => {
+    getCommentsInPost(postId, {
+      skip: page,
+      limit: totalPages,
+    }).then((response) => {
       if (response.error) {
         setError(response.error.message);
       } else {
-        setComments(response.data);
+        if (comments) {
+          setTotalPages(totalPages * 2);
+          setComments([...comments, ...response.data]);
+        } else {
+          setComments(response.data);
+        }
       }
     });
 
     setLoading(false);
-  }, []);
+  }, [page]);
 
   return (
     <Modal toggleModal={setToggleModal} title="Comentarios">
       {loading && <p>loading....</p>}
-
-      {error && <p>{error}</p>}
 
       <div
         style={{
@@ -143,11 +151,11 @@ const ModalComment = ({ setToggleModal, postId }: any) => {
           flexDirection: "column",
           gap: "10px",
           overflowY: "auto",
-          height: "100vh",
-          padding: "20px",
-          marginBottom: "20px",
+          height: "90vh",
+          padding: "20px 20px 40px 20px",
         }}
       >
+        {error && <p>{error}</p>}
         {comments &&
           comments.map(({ id, user, comment }) => (
             <div key={id} className="footer-card-post__comment">
@@ -160,9 +168,9 @@ const ModalComment = ({ setToggleModal, postId }: any) => {
               {comment}
             </div>
           ))}
+        <button onClick={() => setPage(totalPages)}>Ver más</button>
+        <input placeholder="Escribe un comentario..." type="text" />
       </div>
-
-      <input type="text" />
     </Modal>
   );
 };
