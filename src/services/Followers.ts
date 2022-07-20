@@ -1,4 +1,4 @@
-import { petgramAPI } from 'src/axios/axios';
+import { petgramAPI } from "src/axios/axios";
 
 interface Response {
   message: string;

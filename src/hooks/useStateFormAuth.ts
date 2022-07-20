@@ -1,12 +1,15 @@
 import { TFormAuth, IFormAuthData } from "src/models/Form";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useContext } from "react";
 import { SignIn, SignUp } from "@services/Auth";
 import { setCookies } from "cookies-next";
 import { validateForm } from "@helpers/validateForm";
 import { user_token } from "../constants/Auth";
 import router from "next/router";
+import { AuthContext } from "../context/ContextProvider";
+import axios from "axios";
 
 export const useStateFormAuth = (typeForm: TFormAuth) => {
+  const { setUser } = useContext(AuthContext);
   const defaulValues: IFormAuthData = {
     name: "",
     nickname: "",
@@ -39,7 +42,11 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
       if (!err) {
         const { data, error } = await SignIn(inputValues);
         if (data?.access_token) {
+          setUser(data.user);
           setCookies(user_token, data.access_token);
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${data.access_token}`;
           router.push("/");
         } else {
           setErrorsForm(error.message);
@@ -49,7 +56,11 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
       if (!err) {
         const { data, error } = await SignUp(inputValues);
         if (data?.access_token) {
+          setUser(data.user);
           setCookies(user_token, data.access_token);
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${data.access_token}`;
           router.push("/");
         } else {
           setErrorsForm(error.message);

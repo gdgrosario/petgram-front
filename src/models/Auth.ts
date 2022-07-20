@@ -1,15 +1,12 @@
+import { User } from "./User";
+
 interface ResponseError {
   statusCode: number;
   message: string;
 }
 
 interface ResponseAuth {
-  user: {
-    email: string;
-    nickname: string;
-    role: string;
-    id: string;
-  };
+  user: User;
   access_token: string;
 }
 
