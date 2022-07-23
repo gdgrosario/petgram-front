@@ -8,9 +8,10 @@ import Send from "@public/assets/svgs/icons/send.svg";
 import Favorite from "@public/assets/svgs/icons/favorite.svg";
 import Link from "next/link";
 import { Comment as CommentType, UserBasic } from "src/models/User";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch } from "react";
 import { Modal } from "@components/Modal";
 import { getCommentsInPost } from "@services/Comments";
+import { usePaginateResponse } from "../../hooks/usePaginateResponse";
 
 interface ICardPost {
   user: UserBasic;
@@ -114,32 +115,21 @@ export const CardPost = ({
   );
 };
 
-const ModalComment = ({ setToggleModal, postId }: any) => {
-  const [comments, setComments] = useState<CommentType[]>();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [page, setPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(4);
-
-  useEffect(() => {
-    getCommentsInPost(postId, {
-      skip: page,
-      limit: totalPages,
-    }).then((response) => {
-      if (response.error) {
-        setError(response.error.message);
-      } else {
-        if (comments) {
-          setTotalPages(totalPages * 2);
-          setComments([...comments, ...response.data]);
-        } else {
-          setComments(response.data);
-        }
-      }
+interface IModalComment {
+  postId: string;
+  setToggleModal: Dispatch<boolean>;
+}
+const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
+  const { loading, error, data, totalResponses, setPage, totalPages, page } =
+    usePaginateResponse<CommentType>({
+      callBackRequest() {
+        return getCommentsInPost(postId, {
+          skip: page,
+          limit: totalPages,
+        });
+      },
+      totalP: 4,
     });
-
-    setLoading(false);
-  }, [page]);
 
   return (
     <Modal toggleModal={setToggleModal} title="Comentarios">
@@ -156,8 +146,8 @@ const ModalComment = ({ setToggleModal, postId }: any) => {
         }}
       >
         {error && <p>{error}</p>}
-        {comments &&
-          comments.map(({ id, user, comment }) => (
+        {data &&
+          data.map(({ id, user, comment }) => (
             <div key={id} className="footer-card-post__comment">
               <Link href={`/${user.nickname}`}>
                 <a>
@@ -168,7 +158,9 @@ const ModalComment = ({ setToggleModal, postId }: any) => {
               {comment}
             </div>
           ))}
-        <button onClick={() => setPage(totalPages)}>Ver más</button>
+        {totalResponses > totalPages && (
+          <button onClick={() => setPage(totalPages)}>Ver más</button>
+        )}
         <input placeholder="Escribe un comentario..." type="text" />
       </div>
     </Modal>

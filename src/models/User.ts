@@ -58,6 +58,11 @@ interface Pagination {
   skip: number;
   limit: number;
 }
+
+interface ResponsePagination<T> {
+  data: T;
+  count: number;
+}
 export type {
   User,
   UpdateUser,
@@ -67,4 +72,5 @@ export type {
   UserBasic,
   GenericResponse,
   Pagination,
+  ResponsePagination,
 };
