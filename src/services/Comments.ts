@@ -7,6 +7,16 @@ import {
 } from "src/models/User";
 import { petgramAPI } from "../axios/axios";
 
+interface ICreateComment {
+  postId: string;
+  comment: string;
+}
+
+interface ResponseComment {
+  data: Comment;
+  message: string;
+}
+
 const getCommentsInPost = async (
   postId: string,
   { skip, limit }: Pagination
@@ -31,4 +41,18 @@ const getCommentsInPost = async (
   }
 };
 
-export { getCommentsInPost };
+const createComment = async (
+  data: ICreateComment
+): Promise<GenericResponse<Comment>> => {
+  try {
+    const response = await petgramAPI.post<ResponseComment>("/comments", data);
+    return {
+      data: response.data.data,
+    };
+  } catch (e) {
+    return {
+      error: catchError(e),
+    };
+  }
+};
+export { getCommentsInPost, createComment };

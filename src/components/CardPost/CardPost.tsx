@@ -8,9 +8,9 @@ import Send from "@public/assets/svgs/icons/send.svg";
 import Favorite from "@public/assets/svgs/icons/favorite.svg";
 import Link from "next/link";
 import { Comment as CommentType, UserBasic } from "src/models/User";
-import { useState, useEffect, Dispatch } from "react";
+import { useState, Dispatch, FormEvent } from "react";
 import { Modal } from "@components/Modal";
-import { getCommentsInPost } from "@services/Comments";
+import { createComment, getCommentsInPost } from "@services/Comments";
 import { usePaginateResponse } from "../../hooks/usePaginateResponse";
 
 interface ICardPost {
@@ -120,21 +120,50 @@ interface IModalComment {
   setToggleModal: Dispatch<boolean>;
 }
 const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
-  const { loading, error, data, totalResponses, setPage, totalPages, page } =
-    usePaginateResponse<CommentType>({
-      callBackRequest() {
-        return getCommentsInPost(postId, {
-          skip: page,
-          limit: totalPages,
-        });
-      },
-      totalP: 4,
+  const {
+    loading,
+    error,
+    data,
+    totalResponses,
+    setPage,
+    totalPages,
+    page,
+    setData,
+  } = usePaginateResponse<CommentType>({
+    callBackRequest() {
+      return getCommentsInPost(postId, {
+        skip: page,
+        limit: totalPages,
+      });
+    },
+    totalP: 4,
+  });
+
+  const [errorComment, setErrorComment] = useState<string>("");
+  const [loadingComment, setLoadingComment] = useState<boolean>(false);
+  const [comment, setComment] = useState("");
+
+  const handleComment = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoadingComment(true);
+    const response = await createComment({
+      postId,
+      comment,
     });
+    if (response.error) {
+      setErrorComment(response.error.message);
+    } else {
+      if (data) {
+        setData([...data, response.data]);
+      } else {
+        setData([response.data]);
+      }
+    }
+    setLoadingComment(false);
+  };
 
   return (
     <Modal toggleModal={setToggleModal} title="Comentarios">
-      {loading && <p>loading....</p>}
-
       <div
         style={{
           display: "flex",
@@ -145,8 +174,8 @@ const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
           padding: "20px 20px 40px 20px",
         }}
       >
-        {error && <p>{error}</p>}
         {data &&
+          !error &&
           data.map(({ id, user, comment }) => (
             <div key={id} className="footer-card-post__comment">
               <Link href={`/${user.nickname}`}>
@@ -158,10 +187,18 @@ const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
               {comment}
             </div>
           ))}
+        {error && <p>{error}</p>}
+        {loading && <p>loading....</p>}
         {totalResponses > totalPages && (
           <button onClick={() => setPage(totalPages)}>Ver más</button>
         )}
-        <input placeholder="Escribe un comentario..." type="text" />
+        <form onSubmit={handleComment}>
+          <textarea
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Escribe un comentario"
+          />
+          <button>{loadingComment ? "Loading...." : "Comentar"}</button>
+        </form>
       </div>
     </Modal>
   );
