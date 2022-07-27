@@ -1,22 +1,24 @@
-import Simona from "@public/assets/user/simona.jpg";
 import Image, { StaticImageData } from "next/image";
 import { ModalCardPhoto } from "./ModalCardPhoto";
-import { NextPage } from "next";
 import { Post } from "src/models/User";
+import { UploadContext } from "@context/ContextUpload";
+import { useContext } from "react";
 
 interface Props {
   post: Post;
 }
 
 export const CardPhoto = ({ post }: Props) => {
-  const handlePhoto = (url: StaticImageData) => {
-    console.log(url);
+  const { setViewImage, viewImage } = useContext(UploadContext);
+
+  const handlePhoto = () => {
+    setViewImage(true);
   };
   return (
     <>
       <div className="card-photo">
         <Image
-          onClick={() => handlePhoto(Simona)}
+          onClick={() => handlePhoto()}
           src={post.image}
           className="card-photo__photo"
           width={300}
@@ -24,7 +26,7 @@ export const CardPhoto = ({ post }: Props) => {
         />
       </div>
 
-      {/* <ModalCardPhoto photo={post.image} /> */}
+      {viewImage && <ModalCardPhoto photo={post.image} />}
     </>
   );
 };
