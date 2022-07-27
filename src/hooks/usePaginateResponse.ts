@@ -1,3 +1,4 @@
+import { excludeDataWithSameId } from "@helpers/responses";
 import { useState, useEffect } from "react";
 import { ResponsePagination, GenericResponse } from "src/models/User";
 
@@ -6,11 +7,7 @@ interface IUsePaginateResponse<DType> {
   totalP: number;
 }
 
-export const usePaginateResponse = <
-  DType extends {
-    id: string;
-  }
->({
+export const usePaginateResponse = <DType>({
   callBackRequest,
   totalP,
 }: IUsePaginateResponse<DType>) => {
@@ -21,21 +18,6 @@ export const usePaginateResponse = <
   const [page, setPage] = useState<number>(0);
   const [totalResponses, setTotalResponses] = useState(0);
 
-  const excludeDataWithSameId = (newData: DType[]) => {
-    var array = [];
-    for (var i = 0; i < data.length; i++) {
-      var same = false;
-      for (var j = 0; j < newData.length && !same; j++) {
-        if (data[i]["id"] === newData[j]["id"]) same = true;
-      }
-      if (!same) array.push(data[i]);
-    }
-    console.table(data);
-    console.table(array);
-
-    return array;
-  };
-
   useEffect(() => {
     setLoading(true);
     callBackRequest().then((response) => {
@@ -44,8 +26,7 @@ export const usePaginateResponse = <
       } else {
         if (data) {
           setTotalPages(totalPages * 2);
-          setData([...data, ...response.data.data]);
-          excludeDataWithSameId([...response.data.data]);
+          setData(excludeDataWithSameId(response.data.data, data));
         } else {
           setData(response.data.data);
         }
