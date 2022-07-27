@@ -1,3 +1,4 @@
+import { excludeDataWithSameId } from "@helpers/responses";
 import { useState, useEffect } from "react";
 import { ResponsePagination, GenericResponse } from "src/models/User";
 
@@ -18,21 +19,21 @@ export const usePaginateResponse = <DType>({
   const [totalResponses, setTotalResponses] = useState(0);
 
   useEffect(() => {
+    setLoading(true);
     callBackRequest().then((response) => {
       if (response.error) {
         setError(response.error.message);
       } else {
         if (data) {
           setTotalPages(totalPages * 2);
-          setData([...data, ...response.data.data]);
+          setData(excludeDataWithSameId(response.data.data, data));
         } else {
           setData(response.data.data);
         }
         setTotalResponses(response.data.count);
       }
+      setLoading(false);
     });
-
-    setLoading(false);
   }, [page]);
 
   return {
@@ -43,5 +44,6 @@ export const usePaginateResponse = <DType>({
     totalResponses,
     totalPages,
     page,
+    setData,
   };
 };
