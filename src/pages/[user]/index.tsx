@@ -114,7 +114,7 @@ const ProfileUser = ({ userData }: IProfileUser) => {
               />
               <CardInfoProfile
                 navPage={`${userData.nickname}`}
-                amount={userData.posts.length}
+                amount={userData.posts ? userData.posts.length : 0}
                 textCard="Publicaciones"
               />
             </GridCards>
@@ -123,9 +123,9 @@ const ProfileUser = ({ userData }: IProfileUser) => {
           </section>
 
           <GridCards>
-            {userData.posts.map((post) => (
+            {userData.posts && userData.posts.map((post) => (
               <CardPhoto key={post.id} post={post} />
-            ))}
+             ))}
           </GridCards>
         </div>
       </div>
