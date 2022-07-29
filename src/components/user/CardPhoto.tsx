@@ -1,21 +1,32 @@
-import Simona from '@public/assets/user/simona.jpg';
-import Image, { StaticImageData } from 'next/image';
-import { ModalCardPhoto } from './ModalCardPhoto';
-export const CardPhoto = () => {
-  const handlePhoto = (url: StaticImageData) => {
-    console.log(url);
+import Image, { StaticImageData } from "next/image";
+import { ModalCardPhoto } from "./ModalCardPhoto";
+import { Post } from "src/models/User";
+import { UploadContext } from "@context/ContextUpload";
+import { useContext } from "react";
+
+interface Props {
+  post: Post;
+}
+
+export const CardPhoto = ({ post }: Props) => {
+  const { setViewImage, viewImage } = useContext(UploadContext);
+
+  const handlePhoto = () => {
+    setViewImage(true);
   };
   return (
     <>
       <div className="card-photo">
         <Image
-          onClick={() => handlePhoto(Simona)}
-          src={Simona}
+          onClick={() => handlePhoto()}
+          src={post.image}
           className="card-photo__photo"
+          width={300}
+          height={300}
         />
       </div>
 
-      {/* <ModalCardPhoto photo={Simona} /> */}
+      {viewImage && <ModalCardPhoto photo={post.image} />}
     </>
   );
 };
