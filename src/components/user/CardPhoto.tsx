@@ -26,7 +26,7 @@ export const CardPhoto = ({ post }: Props) => {
         />
       </div>
 
-      {viewImage && <ModalCardPhoto photo={post.image} />}
+      {viewImage && <ModalCardPhoto photo={post.image} post={post} />}
     </>
   );
 };
