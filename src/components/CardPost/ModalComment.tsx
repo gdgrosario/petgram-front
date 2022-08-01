@@ -1,10 +1,10 @@
-import { Modal } from "@components/Modal";
-import Link from "next/link";
-import { ProfilePhoto } from "./ProfilePhoto";
-import { FormEvent, useState, Dispatch } from "react";
-import { createComment, getCommentsInPost } from "@services/Comments";
-import { usePaginateResponse } from "@hooks/usePaginateResponse";
-import { Comment } from "src/models/User";
+import { Modal } from '@components/Modal';
+import Link from 'next/link';
+import { ProfilePhoto } from './ProfilePhoto';
+import { FormEvent, useState, Dispatch } from 'react';
+import { createComment, getCommentsInPost } from '@services/Comments';
+import { usePaginateResponse } from '@hooks/usePaginateResponse';
+import { Comment } from 'src/models/User';
 
 interface IModalComment {
   postId: string;
@@ -30,14 +30,14 @@ export const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
     totalP: 4,
   });
 
-  const [errorComment, setErrorComment] = useState<string>("");
+  const [errorComment, setErrorComment] = useState<string>('');
   const [loadingComment, setLoadingComment] = useState<boolean>(false);
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
 
   const handleComment = async (e: FormEvent) => {
     e.preventDefault();
-    setErrorComment("");
-    if (comment.trim() !== "") {
+    setErrorComment('');
+    if (comment.trim() !== '') {
       setLoadingComment(true);
       const response = await createComment({
         postId,
@@ -52,7 +52,7 @@ export const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
           setData([response.data]);
         }
       }
-      setComment("");
+      setComment('');
       setLoadingComment(false);
     }
   };
@@ -61,12 +61,12 @@ export const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
     <Modal toggleModal={setToggleModal} title="Comentarios">
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          overflowY: "auto",
-          height: "90vh",
-          padding: "20px 20px 40px 20px",
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+          overflowY: 'auto',
+          height: '90vh',
+          padding: '20px 20px 40px 20px',
         }}
       >
         {data &&
@@ -78,7 +78,7 @@ export const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
                   <ProfilePhoto size="small" profileAvatar={user.avatar} />
                   <b>{user.nickname}</b>
                 </a>
-              </Link>{" "}
+              </Link>{' '}
               {comment}
             </div>
           ))}
@@ -94,7 +94,7 @@ export const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
             onChange={(e) => setComment(e.target.value)}
             placeholder="Escribe un comentario"
           />
-          <button>{loadingComment ? "Loading...." : "Comentar"}</button>
+          <button>{loadingComment ? 'Loading....' : 'Comentar'}</button>
         </form>
       </div>
     </Modal>

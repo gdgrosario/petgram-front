@@ -1,10 +1,10 @@
-import { getUsersByNickName } from "@services/User";
-import { useState, ChangeEvent } from "react";
-import { User } from "../models/User";
-import Link from "next/link";
+import { getUsersByNickName } from '@services/User';
+import { useState, ChangeEvent } from 'react';
+import { User } from '../models/User';
+import Link from 'next/link';
 
 const search = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [usersSearch, setUsersSearch] = useState<User[]>();

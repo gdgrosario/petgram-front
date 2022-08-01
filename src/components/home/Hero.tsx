@@ -1,30 +1,49 @@
-import { CardPost } from "@components/CardPost/CardPost";
-import { GridCardPost } from "@components/CardPost/GridCardPost";
-import { PostSkeleton } from "@components/skeleton/PostSkeleton";
-import { useGetPosts } from "../../hooks/useGetPost";
+import { CardPost } from '@components/CardPost/CardPost';
+import { GridCardPost } from '@components/CardPost/GridCardPost';
+import { InfiniteScroll } from '@components/InfiniteScroll';
+import { PostSkeleton } from '@components/skeleton/PostSkeleton';
+import { usePaginateResponse } from '@hooks/usePaginateResponse';
+import { getAllPost } from '@services/Posts';
+import { Post } from 'src/models/User';
 
 export function Hero() {
-  const { posts, loading, error } = useGetPosts();
+  const {
+    loading,
+    error,
+    data: posts,
+    totalResponses,
+    setPage,
+    totalPages,
+    page,
+  } = usePaginateResponse<Post>({
+    callBackRequest() {
+      return getAllPost({
+        skip: page,
+        limit: totalPages,
+      });
+    },
+    totalP: 10,
+  });
 
   if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>;
 
   return (
     <main className="hero">
       <GridCardPost>
-        {loading &&
-          Array.from({ length: 10 }, (_, i) => <PostSkeleton key={i} />)}
-        {posts &&
-          posts.map((post) => (
-            <CardPost
-              key={post.id}
-              user={post.user}
-              likes={post.likes}
-              postId={post.id}
-              description={post.description}
-              image={post.image}
-              comments={post.comments}
+        <>
+          {posts && (
+            <InfiniteScroll
+              data={posts}
+              loading={loading}
+              actionData={() => {
+                totalResponses > totalPages && setPage(totalPages);
+              }}
+              component={CardPost}
             />
-          ))}
+          )}
+          {loading &&
+            Array.from({ length: 10 }, (_, i) => <PostSkeleton key={i} />)}
+        </>
       </GridCardPost>
     </main>
   );
