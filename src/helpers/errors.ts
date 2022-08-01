@@ -5,10 +5,10 @@ const getError = (error: Array<string> | string): string =>
 
 const catchError = (error: any): ResponseError => {
   console.clear();
-  if (error.response) {
+  if (error.response.data) {
     return {
       statusCode: error.response.status,
-      message: getError(error?.response.data.message || error.message),
+      message: getError(error.response.data.message || error.message),
     };
   } else {
     return {
