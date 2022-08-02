@@ -1,10 +1,10 @@
-import { CardPost } from '@components/CardPost/CardPost';
-import { GridCardPost } from '@components/CardPost/GridCardPost';
-import { InfiniteScroll } from '@components/InfiniteScroll';
-import { PostSkeleton } from '@components/skeleton/PostSkeleton';
-import { usePaginateResponse } from '@hooks/usePaginateResponse';
-import { getAllPost } from '@services/Posts';
-import { Post } from 'src/models/User';
+import { CardPost } from "@components/CardPost/CardPost";
+import { GridCardPost } from "@components/CardPost/GridCardPost";
+import { InfiniteScroll } from "@components/InfiniteScroll";
+import { PostSkeleton } from "@components/skeleton/PostSkeleton";
+import { usePaginateResponse } from "@hooks/usePaginateResponse";
+import { getAllPost } from "@services/Posts";
+import { Post } from "src/models/User";
 
 export function Hero() {
   const {
@@ -33,13 +33,15 @@ export function Hero() {
         <>
           {posts && (
             <InfiniteScroll
-              data={posts}
               loading={loading}
               actionData={() => {
                 totalResponses > totalPages && setPage(totalPages);
               }}
-              component={CardPost}
-            />
+            >
+              {posts.map((post) => (
+                <CardPost key={post.id} {...post} postId={post.id} />
+              ))}
+            </InfiniteScroll>
           )}
           {loading &&
             Array.from({ length: 10 }, (_, i) => <PostSkeleton key={i} />)}

@@ -1,18 +1,23 @@
-import { useRef, useCallback, FC } from 'react';
+import {
+  useRef,
+  useCallback,
+  FC,
+  Children,
+  cloneElement,
+  ReactElement,
+} from "react";
 
 interface IInfiniteScroll {
   actionData: () => void;
-  component: FC<any>;
-  data: any[];
   loading: boolean;
 }
-export const InfiniteScroll = ({
-  component: Component,
-  data,
+export const InfiniteScroll: FC<IInfiniteScroll> = ({
   loading,
   actionData,
-}: IInfiniteScroll) => {
+  children,
+}) => {
   const observer = useRef<any>();
+
   const lasElement = useCallback(
     (node) => {
       if (loading) return;
@@ -31,15 +36,14 @@ export const InfiniteScroll = ({
 
   return (
     <>
-      {data.map((item, index) =>
-        data.length === index + 1 ? (
-          <div key={item.id} ref={lasElement}>
-            <Component {...item} />
-          </div>
-        ) : (
-          <Component key={item.id} {...item} />
-        )
-      )}
+      {Children.map(children, (child, index) => {
+        if (Children.count(children) === index + 1) {
+          return cloneElement(child as ReactElement, {
+            ref: lasElement,
+          });
+        }
+        return child;
+      })}
     </>
   );
 };
