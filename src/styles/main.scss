@@ -1,26 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 
 //utilities
-@import './utilities/colors', './utilities/mixins';
+@import "./utilities/colors", "./utilities/mixins";
 
 //base
-@import './base/resets', './base/base';
+@import "./base/resets", "./base/base";
 
 //layout
 
-@import './layout/gridCards', './layout/post', './layout/carousel',
-  './layout/header';
+@import "./layout/gridCards", "./layout/post", "./layout/carousel",
+  "./layout/header";
 
 //Components
-@import './components/cardInfoProfile', './components/footerActionsButtons',
-  './components/button', './components/cardFriend', './components/cardPhoto',
-  './components/searchFollowers', './components/formAuth', './components/modal',
-  './components/stories', './components/navPages', './components/upload',
-  './components/loading', './components/skeletons',"./components/genericModal";
+@import "./components/cardInfoProfile", "./components/footerActionsButtons",
+  "./components/button", "./components/cardFriend", "./components/cardPhoto",
+  "./components/searchFollowers", "./components/formAuth", "./components/modal",
+  "./components/stories", "./components/navPages", "./components/upload",
+  "./components/loading", "./components/skeletons", "./components/genericModal",
+  "./components/cardComment";
 
 //pages
-@import './pages/error404', './pages/followers', './pages/home', './pages/team',
-  './pages/signUp', './pages/userProfile', './pages/userEdit', './pages/upload';
+@import "./pages/error404", "./pages/followers", "./pages/home", "./pages/team",
+  "./pages/signUp", "./pages/userProfile", "./pages/userEdit", "./pages/upload";
 
 html,
 body {

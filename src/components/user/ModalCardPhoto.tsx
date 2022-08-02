@@ -2,7 +2,7 @@ import Image from "next/image";
 import Close from "@public/assets/svgs/icons/close.svg";
 import { useContext, useState } from "react";
 import { UploadContext } from "@context/ContextUpload";
-import { ModalComment } from "@components/CardPost/ModalComment";
+import { ModalComment } from "@components/Comment/ModalComment";
 import Comment from "@public/assets/svgs/icons/chat.svg";
 
 export const ModalCardPhoto = ({ photo, post }) => {

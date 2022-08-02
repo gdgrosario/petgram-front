@@ -9,7 +9,8 @@ import Favorite from "@public/assets/svgs/icons/favorite.svg";
 import Link from "next/link";
 import { Comment as CommentType, UserBasic } from "src/models/User";
 import { forwardRef, LegacyRef, useState } from "react";
-import { ModalComment } from "./ModalComment";
+import { ModalComment } from "../Comment/ModalComment";
+import { CardComment } from "../Comment/CardComment";
 interface ICardPost {
   user: UserBasic;
   description: string;
@@ -84,20 +85,14 @@ export const CardPost = forwardRef(
 
               {comments &&
                 comments.map(({ user, comment, id }) => (
-                  <div key={id} className="footer-card-post__comment">
-                    <Link href={`/${user.nickname}`}>
-                      <a>
-                        <ProfilePhoto
-                          size="small"
-                          profileAvatar={user.avatar}
-                        />
-                        <b>{user.nickname}</b>
-                      </a>
-                    </Link>{" "}
-                    {comment}
-                  </div>
+                  <CardComment
+                    key={id}
+                    avatar={user.avatar}
+                    nickname={user.nickname}
+                    comment={comment}
+                  />
                 ))}
-              {comments && (
+              {comments && comments.length > 0 && (
                 <button onClick={() => setToggleModal(!toggleModal)}>
                   Ver más
                 </button>

@@ -1,11 +1,11 @@
-import { petgramAPI } from '../axios/axios';
-import { catchError } from '@helpers/errors';
+import { petgramAPI } from "../axios/axios";
+import { catchError } from "@helpers/errors";
 import {
   Post,
   GenericResponse,
   Pagination,
   ResponsePagination,
-} from 'src/models/User';
+} from "src/models/User";
 
 const getAllPost = async ({
   skip,

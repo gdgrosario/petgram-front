@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: space-between;
   }
-  &__description{
+  &__description {
     margin: 10px 20px;
   }
   &__user-info {
@@ -47,9 +47,8 @@
     display: flex;
     align-items: center;
     padding: 0;
-    margin: .5rem 0;
+    margin: 0.5rem 0;
   }
-
   &__items-footer-btns {
     button {
       border: 0;
@@ -61,18 +60,6 @@
   &__follower-like {
     font-weight: 400;
     margin: 0;
-  }
-
-  &__comment {
-    line-height: 25px;
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    a{
-      color: #000;
-      display: flex;
-      gap: 1rem;
-    }
   }
 
   &__section {

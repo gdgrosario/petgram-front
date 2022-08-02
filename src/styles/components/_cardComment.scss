@@ -1,0 +1,16 @@
+.card-comment {
+  line-height: 25px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  &__bars-menu-btn {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  a {
+    color: #000;
+    display: flex;
+    gap: 1rem;
+  }
+}

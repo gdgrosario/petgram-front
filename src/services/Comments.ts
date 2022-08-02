@@ -55,4 +55,40 @@ const createComment = async (
     };
   }
 };
-export { getCommentsInPost, createComment };
+
+const deleteComment = async (id: string): Promise<GenericResponse<number>> => {
+  try {
+    const response = await petgramAPI.delete<{ message: string }>(
+      `/comments/${id}`
+    );
+
+    return {
+      data: response.status,
+    };
+  } catch (error) {
+    return {
+      error: catchError(error),
+    };
+  }
+};
+
+const updateComment = async (
+  id: string,
+  comment: string
+): Promise<GenericResponse<Comment>> => {
+  try {
+    const response = await petgramAPI.put<ResponseComment>(`/comments/${id}`, {
+      comment,
+    });
+    const { data: commentData } = response.data;
+    return {
+      data: commentData,
+    };
+  } catch (error) {
+    return {
+      error: catchError(error),
+    };
+  }
+};
+
+export { getCommentsInPost, createComment, deleteComment, updateComment };
