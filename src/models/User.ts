@@ -34,6 +34,7 @@ interface UserBasic {
   nickname: string;
   name: string;
   avatar: string;
+  id: string;
 }
 interface Comment {
   id: string;

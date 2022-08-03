@@ -1,3 +1,4 @@
+import { JwtPayload } from "jwt-decode";
 import { User } from "./User";
 
 interface ResponseError {
@@ -10,4 +11,10 @@ interface ResponseAuth {
   access_token: string;
 }
 
-export type { ResponseError, ResponseAuth };
+interface PayloadToken extends JwtPayload {
+  name: string;
+  nickName: string;
+  role: string;
+  sub: string;
+}
+export type { ResponseError, ResponseAuth, PayloadToken };
