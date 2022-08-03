@@ -25,6 +25,11 @@ const Home = () => {
         setState(true);
       }
     });
+
+    return () => {
+      window.removeEventListener("scroll", () => {});
+      setState(false);
+    };
   }, []);
   return (
     <>
