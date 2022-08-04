@@ -1,4 +1,4 @@
-import { ProfilePhoto } from "@components/CardPost/ProfilePhoto";
+import { ProfilePhoto } from "@components/ProfilePhoto";
 import Link from "next/link";
 import { Dispatch, useState, useContext } from "react";
 import BarsMenu from "@public/assets/svgs/icons/bar.svg";

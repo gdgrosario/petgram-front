@@ -1,11 +1,11 @@
-import { ResponseError } from 'src/models/Auth';
+import { ResponseError } from "src/models/Auth";
 
 const getError = (error: Array<string> | string): string =>
-  typeof error === 'string' ? error : error[0];
+  typeof error === "string" ? error : error[0];
 
 const catchError = (error: any): ResponseError => {
   console.clear();
-  if (error.response.data) {
+  if (error.response) {
     return {
       statusCode: error.response.status,
       message: getError(error.response.data.message || error.message),
@@ -13,7 +13,7 @@ const catchError = (error: any): ResponseError => {
   } else {
     return {
       statusCode: 500,
-      message: 'Something went wrong',
+      message: "Something went wrong",
     };
   }
 };

@@ -12,7 +12,8 @@ import { createLike, removeLike as removeLikeService } from "@services/Posts";
 import { AuthContext } from "../../context/ContextProvider";
 import { UserBasic } from "src/models/User";
 import { useRef } from "react";
-import { ProfilePhoto } from "./ProfilePhoto";
+import { ProfilePhoto } from "../ProfilePhoto";
+import { GenericAlert } from "../alerts/GenericAlert";
 
 interface IControllerLikes {
   numberOfLikes: number;
@@ -80,45 +81,50 @@ export const ControllerLikes = ({
       : `Le gusta a ${userLikes[0].nickname}`;
 
   return (
-    <section className="footer-card-post__section">
-      <ul className="footer-card-post__list-footer-btns">
-        <li className="footer-card-post__items-footer-btns">
-          <div>
-            <button onClick={handleLike}>
-              <Favorite
-                className={`like ${isLiked ? "isLiked" : ""} ${
-                  activeAnimation ? "animation" : ""
-                }`}
-              />
-            </button>
-            <b>{numberLikes}</b>
+    <>
+      <section className="footer-card-post__section">
+        <ul className="footer-card-post__list-footer-btns">
+          <li className="footer-card-post__items-footer-btns">
             <div>
-              {userLikes &&
-                userLikes.map((userLike) => (
-                  <ProfilePhoto
-                    key={userLike.id}
-                    className="profile-photo-preview"
-                    size="extraSmall"
-                  />
-                ))}
+              <button onClick={handleLike}>
+                <Favorite
+                  className={`like ${isLiked ? "isLiked" : ""} ${
+                    activeAnimation ? "animation" : ""
+                  }`}
+                />
+              </button>
+              <b>{numberLikes}</b>
+              <div>
+                {userLikes &&
+                  userLikes.map((userLike) => (
+                    <ProfilePhoto
+                      key={userLike.id}
+                      className="profile-photo-preview"
+                      size="extraSmall"
+                    />
+                  ))}
+              </div>
             </div>
-          </div>
-        </li>
-        <li
-          onClick={() => setToggleModal((prevState) => !prevState)}
-          className="footer-card-post__items-footer-btns"
-        >
-          <button>
-            <Comment />
-          </button>
-          {<b>{numberOfComments}</b>}
-        </li>
-      </ul>
-      {numberLikes && userLikes && numberLikes > 0 ? (
-        <h4 className="footer-card-post__follower-like">
-          {showMessageLikes()}
-        </h4>
-      ) : null}
-    </section>
+          </li>
+          <li
+            onClick={() => setToggleModal((prevState) => !prevState)}
+            className="footer-card-post__items-footer-btns"
+          >
+            <button>
+              <Comment />
+            </button>
+            {<b>{numberOfComments}</b>}
+          </li>
+        </ul>
+        {numberLikes && userLikes && numberLikes > 0 ? (
+          <h4 className="footer-card-post__follower-like">
+            {showMessageLikes()}
+          </h4>
+        ) : null}
+      </section>
+      {errorAction && (
+        <GenericAlert message={errorAction} closeAlert={setErrorAction} />
+      )}
+    </>
   );
 };

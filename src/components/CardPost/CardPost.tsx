@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ProfilePhoto } from "./ProfilePhoto";
+import { ProfilePhoto } from "../ProfilePhoto";
 
 import BarsMenu from "@public/assets/svgs/icons/bar.svg";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { forwardRef, LegacyRef, useState } from "react";
 import { ModalComment } from "../Comment/ModalComment";
 import { CardComment } from "../Comment/CardComment";
 import { ControllerLikes } from "./ControllerLikes";
+import { CommentProvider } from "../../context/ContextComment";
 interface ICardPost {
   user: UserBasic;
   description: string;
@@ -32,7 +33,7 @@ export const CardPost = forwardRef(
     } = props;
 
     return (
-      <>
+      <CommentProvider>
         <div ref={ref} className="card-post">
           <header className="card-post__header">
             <ProfilePhoto size="medium" />
@@ -91,7 +92,7 @@ export const CardPost = forwardRef(
         {toggleModal && (
           <ModalComment postId={postId} setToggleModal={setToggleModal} />
         )}
-      </>
+      </CommentProvider>
     );
   }
 );

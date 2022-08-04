@@ -25,6 +25,7 @@ export const FormComment = ({ postId, setData, data }: IFomComment) => {
     const response = await callBack();
     if (response.error) {
       setErrorActionComment(response.error.message);
+      setCurrentIdComment("");
     } else {
       if (currentIdComment) {
         const newData = data.map((cm) =>
@@ -74,8 +75,6 @@ export const FormComment = ({ postId, setData, data }: IFomComment) => {
 
   return (
     <>
-      {errorActionComment && <p>{errorActionComment}</p>}
-
       <form onSubmit={handleComment}>
         <textarea
           value={inputComment}
