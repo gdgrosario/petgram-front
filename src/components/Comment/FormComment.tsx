@@ -2,6 +2,7 @@ import { Dispatch, useEffect, useState, FormEvent, useContext } from "react";
 import { Comment, GenericResponse } from "src/models/User";
 import { createComment, updateComment } from "@services/Comments";
 import { CommentContext } from "../../context/ContextComment";
+import { GenericAlert } from "@components/alerts/GenericAlert";
 interface IFomComment {
   postId: string;
   setData: Dispatch<Comment[]>;
@@ -89,6 +90,12 @@ export const FormComment = ({ postId, setData, data }: IFomComment) => {
             : "Commentar"}
         </button>
       </form>
+      {errorActionComment && (
+        <GenericAlert
+          closeAlert={setErrorActionComment}
+          message={errorActionComment}
+        />
+      )}
     </>
   );
 };

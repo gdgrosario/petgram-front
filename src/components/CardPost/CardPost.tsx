@@ -33,7 +33,7 @@ export const CardPost = forwardRef(
     } = props;
 
     return (
-      <CommentProvider>
+      <>
         <div ref={ref} className="card-post">
           <header className="card-post__header">
             <ProfilePhoto size="medium" />
@@ -92,7 +92,7 @@ export const CardPost = forwardRef(
         {toggleModal && (
           <ModalComment postId={postId} setToggleModal={setToggleModal} />
         )}
-      </CommentProvider>
+      </>
     );
   }
 );
