@@ -49,6 +49,7 @@ export const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
               <CardComment
                 key={cmData.id}
                 {...cmData}
+                userId={cmData.user.id}
                 nickname={cmData.user.nickname}
                 avatar={cmData.user.avatar}
                 showButton

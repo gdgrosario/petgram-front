@@ -6,6 +6,7 @@ import { useContext, useState, useEffect } from "react";
 import { Friend, User } from "../../models/User";
 import { setCookie } from "../../helpers/getCookies";
 import { Follow, UnFollow } from "@services/Followers";
+import { useOwner } from "../../hooks/useOwner";
 
 interface IProfileUser {
   userData: User;
@@ -13,6 +14,7 @@ interface IProfileUser {
 export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
   const { user, setUser } = useContext(AuthContext);
 
+  const isOwner = useOwner(userData.id);
   const router = useRouter();
 
   const followeds: Friend[] = (user && user.followeds) || [];
@@ -95,7 +97,7 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
 
   return (
     <div className="info-user-box__box-buttons">
-      {user?.email === userData.email && (
+      {isOwner && (
         <>
           <Link href={`/profile/edit`}>
             <a>
