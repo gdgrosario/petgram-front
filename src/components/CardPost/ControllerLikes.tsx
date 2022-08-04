@@ -37,7 +37,9 @@ export const ControllerLikes = ({
   const [activeAnimation, setActiveAnimation] = useState(false);
 
   useEffect(() => {
-    setIsLiked(userLikes.some((userLike) => userLike.id === user?.id));
+    if (userLikes) {
+      setIsLiked(userLikes.some((userLike) => userLike.id === user?.id));
+    }
   }, [user]);
 
   const addLike = async () => {
@@ -69,6 +71,13 @@ export const ControllerLikes = ({
       await addLike();
     }
   };
+
+  const showMessageLikes = () =>
+    userLikes.length > 1
+      ? `Le gusta a ${userLikes[0].nickname} y ${
+          userLikes.length - 1
+        } personas mas`
+      : `Le gusta a ${userLikes[0].nickname}`;
 
   return (
     <section className="footer-card-post__section">
@@ -104,15 +113,10 @@ export const ControllerLikes = ({
           </button>
           {<b>{numberOfComments}</b>}
         </li>
-        <li className="footer-card-post__items-footer-btns">
-          <button>
-            <Send />
-          </button>
-        </li>
       </ul>
-      {numberLikes && numberLikes > 0 ? (
+      {numberLikes && userLikes && numberLikes > 0 ? (
         <h4 className="footer-card-post__follower-like">
-          Le gusta a {userLikes[0].name} y {numberLikes - 1} personas más
+          {showMessageLikes()}
         </h4>
       ) : null}
     </section>
