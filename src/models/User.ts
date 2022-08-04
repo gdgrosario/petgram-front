@@ -25,7 +25,8 @@ interface Post {
   id: string;
   description: string;
   image: string;
-  likes: number;
+  numberOflikes: number;
+  userLikes: UserBasic[];
   comments: Comment[];
   user: UserBasic;
 }

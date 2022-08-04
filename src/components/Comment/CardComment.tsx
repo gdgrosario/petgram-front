@@ -10,7 +10,7 @@ interface ICardComment {
   nickname: string;
   comment: string;
   avatar: string;
-  userId: string;
+  userId?: string;
   id?: string;
   showButton?: boolean;
   setData?: Dispatch<Comment[]>;

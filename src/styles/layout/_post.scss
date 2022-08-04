@@ -54,6 +54,15 @@
       border: 0;
       outline: none;
       background: none;
+      .like {
+        fill: #000;
+        &.isLiked {
+          fill: red;
+        }
+        &.animation {
+          animation: likeAnimation 0.5s ease-in-out;
+        }
+      }
     }
   }
 
@@ -70,5 +79,17 @@
     display: flex;
     margin: 0;
     padding: 0;
+  }
+}
+
+@keyframes likeAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }
