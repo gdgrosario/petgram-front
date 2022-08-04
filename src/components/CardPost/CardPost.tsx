@@ -70,12 +70,6 @@ export const CardPost = forwardRef(
               numberOfLikes={numberOflikes}
             />
             <section className="footer-card-post__section">
-              {numberOflikes && numberOflikes > 0 ? (
-                <h4 className="footer-card-post__follower-like">
-                  Le gusta a Snoopy y 30 más
-                </h4>
-              ) : null}
-
               {comments &&
                 comments.map(({ user, comment, id }) => (
                   <CardComment

@@ -50,6 +50,15 @@
     margin: 0.5rem 0;
   }
   &__items-footer-btns {
+    display: flex;
+    align-items: center;
+    div {
+      display: flex;
+      margin: 0 10px 0 3px;
+      .profile-photo-preview {
+        margin-right: -10px;
+      }
+    }
     button {
       border: 0;
       outline: none;

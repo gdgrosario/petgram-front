@@ -12,6 +12,7 @@ import { createLike, removeLike as removeLikeService } from "@services/Posts";
 import { AuthContext } from "../../context/ContextProvider";
 import { UserBasic } from "src/models/User";
 import { useRef } from "react";
+import { ProfilePhoto } from "./ProfilePhoto";
 
 interface IControllerLikes {
   numberOfLikes: number;
@@ -73,14 +74,26 @@ export const ControllerLikes = ({
     <section className="footer-card-post__section">
       <ul className="footer-card-post__list-footer-btns">
         <li className="footer-card-post__items-footer-btns">
-          <button onClick={handleLike}>
-            <Favorite
-              className={`like ${isLiked ? "isLiked" : ""} ${
-                activeAnimation ? "animation" : ""
-              }`}
-            />
-          </button>
-          <b>{numberLikes}</b>
+          <div>
+            <button onClick={handleLike}>
+              <Favorite
+                className={`like ${isLiked ? "isLiked" : ""} ${
+                  activeAnimation ? "animation" : ""
+                }`}
+              />
+            </button>
+            <b>{numberLikes}</b>
+            <div>
+              {userLikes &&
+                userLikes.map((userLike) => (
+                  <ProfilePhoto
+                    key={userLike.id}
+                    className="profile-photo-preview"
+                    size="extraSmall"
+                  />
+                ))}
+            </div>
+          </div>
         </li>
         <li
           onClick={() => setToggleModal((prevState) => !prevState)}
@@ -97,6 +110,11 @@ export const ControllerLikes = ({
           </button>
         </li>
       </ul>
+      {numberLikes && numberLikes > 0 ? (
+        <h4 className="footer-card-post__follower-like">
+          Le gusta a {userLikes[0].name} y {numberLikes - 1} personas más
+        </h4>
+      ) : null}
     </section>
   );
 };
