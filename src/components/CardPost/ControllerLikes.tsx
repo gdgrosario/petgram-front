@@ -21,12 +21,14 @@ interface IControllerLikes {
   postId: string;
   userLikes: UserBasic[];
   setToggleModal: Dispatch<SetStateAction<boolean>>;
+  showMessageLike?: boolean;
 }
 
 export const ControllerLikes = ({
   numberOfComments,
   numberOfLikes,
   postId,
+  showMessageLike,
   setToggleModal,
   userLikes,
 }: IControllerLikes) => {
@@ -116,11 +118,11 @@ export const ControllerLikes = ({
             {<b>{numberOfComments}</b>}
           </li>
         </ul>
-        {numberLikes && userLikes && numberLikes > 0 ? (
+        {userLikes && numberLikes > 0 && showMessageLike && (
           <h4 className="footer-card-post__follower-like">
             {showMessageLikes()}
           </h4>
-        ) : null}
+        )}
       </section>
       {errorAction && (
         <GenericAlert message={errorAction} closeAlert={setErrorAction} />

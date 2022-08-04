@@ -4,8 +4,14 @@ import { useContext, useState } from "react";
 import { UploadContext } from "@context/ContextUpload";
 import { ModalComment } from "@components/Comment/ModalComment";
 import Comment from "@public/assets/svgs/icons/chat.svg";
+import { ControllerLikes } from "@components/CardPost/ControllerLikes";
+import { Post } from "src/models/User";
 
-export const ModalCardPhoto = ({ photo, post }) => {
+interface IModalCardPhoto {
+  post: Post;
+  photo: string;
+}
+export const ModalCardPhoto = ({ photo, post }: IModalCardPhoto) => {
   const { setViewImage, viewImage } = useContext(UploadContext);
 
   const [toggleModal, setToggleModal] = useState<boolean>(false);
@@ -29,7 +35,14 @@ export const ModalCardPhoto = ({ photo, post }) => {
             layout="responsive"
           />
 
-          <Comment onClick={() => setToggleModal(true)}></Comment>
+          {/* <Comment onClick={() => setToggleModal(true)}></Comment> */}
+          <ControllerLikes
+            postId={post.id}
+            userLikes={post.userLikes}
+            setToggleModal={setToggleModal}
+            numberOfComments={post.comments ? post.comments.length : 0}
+            numberOfLikes={post.numberOflikes}
+          />
         </div>
 
         {toggleModal && (

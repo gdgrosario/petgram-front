@@ -64,6 +64,7 @@ export const CardPost = forwardRef(
 
           <footer className="footer-card-post">
             <ControllerLikes
+              showMessageLike
               postId={postId}
               userLikes={userLikes}
               setToggleModal={setToggleModal}

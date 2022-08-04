@@ -28,7 +28,6 @@ export default function UserProfile(props) {
   const { user, loading, error } = useSearchUser(userName);
 
   if (loading) return <Loading />;
-
   if (error) return <div>Se produjo un error 🤖 , intentelo más tarde</div>;
 
   return (
@@ -123,9 +122,10 @@ const ProfileUser = ({ userData }: IProfileUser) => {
           </section>
 
           <GridCards>
-            {userData.posts && userData.posts.map((post) => (
-              <CardPhoto key={post.id} post={post} />
-             ))}
+            {userData.posts &&
+              userData.posts.map((post) => (
+                <CardPhoto key={post.id} post={post} />
+              ))}
           </GridCards>
         </div>
       </div>

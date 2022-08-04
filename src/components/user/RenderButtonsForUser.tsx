@@ -111,7 +111,7 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
           />
         </>
       )}
-      {user?.email !== userData.email && (
+      {!isOwner && (
         <>
           {!isFollowed && (
             <Button
@@ -120,7 +120,7 @@ export const RenderButtonsForUser = ({ userData }: IProfileUser) => {
             />
           )}
 
-          {user?.email !== userData.email && isFollowed && (
+          {!isOwner && isFollowed && (
             <Button
               textButtonn="Dejar de seguir"
               onClick={() => handleAction("unFollowed")}
