@@ -36,7 +36,7 @@ export const CardPost = forwardRef(
       <>
         <div ref={ref} className="card-post">
           <header className="card-post__header">
-            <ProfilePhoto size="medium" />
+            <ProfilePhoto size="medium" profileAvatar={user.avatar} />
             <div className="card-post__user-info">
               <Link href={`/${user.nickname}`}>
                 <a className="card-post__user-name">{user.nickname}</a>

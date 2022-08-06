@@ -54,9 +54,6 @@ interface IProfileUser {
 }
 
 const ProfileUser = ({ userData }: IProfileUser) => {
-  const avatar =
-    userData?.avatar ||
-    "https://res.cloudinary.com/dlgvxohur/image/upload/v1658799916/proyectos/dhiyydnlicxpfnlabicl.webp";
   return (
     <>
       <div className="spacing-for-pages">
@@ -77,7 +74,7 @@ const ProfileUser = ({ userData }: IProfileUser) => {
             <div className="info-user-box__box-perfil-photo">
               <Image
                 className="info-user-box__perfil-photo"
-                src={avatar}
+                src={userData.avatar}
                 alt="perfil"
                 width={300}
                 height={300}

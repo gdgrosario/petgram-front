@@ -1,4 +1,3 @@
-import avatar from "@public/assets/user/simona.jpg";
 import Image from "next/image";
 
 interface IProfilePhoto {
@@ -25,7 +24,11 @@ export const ProfilePhoto = ({
     <div className={`${className}`}>
       <Image
         className={`circle-stories__avatar`}
-        src={profileAvatar || avatar}
+        src={
+          profileAvatar
+            ? profileAvatar
+            : "https://res.cloudinary.com/dlgvxohur/image/upload/v1658799916/proyectos/dhiyydnlicxpfnlabicl.webp"
+        }
         alt="avatar"
         width={getSize()}
         height={getSize()}
