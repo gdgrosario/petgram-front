@@ -1,14 +1,14 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-import Logo from '@public/assets/svgs/Logo.svg';
-import AddHistory from '@public/assets/svgs/icons/add_history.svg';
-import Message from '@public/assets/svgs/icons/message.svg';
-import Favorite from '@public/assets/svgs/icons/favorite.svg';
-import { useContext, useRef } from 'react';
-import { UploadContext } from '../context/ContextUpload';
-import { useRouter } from 'next/router';
-import { getCompressor } from '@helpers/getCompressor';
-import { AuthContext } from '@context/ContextProvider';
+import Logo from "@public/assets/svgs/Logo.svg";
+import AddHistory from "@public/assets/svgs/icons/add_history.svg";
+import Message from "@public/assets/svgs/icons/message.svg";
+import Favorite from "@public/assets/svgs/icons/favorite.svg";
+import { useContext, useRef } from "react";
+import { UploadContext } from "../context/ContextUpload";
+import { useRouter } from "next/router";
+import { getCompressor } from "@helpers/getCompressor";
+import { AuthContext } from "@context/ContextProvider";
 
 export const HeaderHome = () => {
   const { user } = useContext(AuthContext);
@@ -33,7 +33,7 @@ export const HeaderHome = () => {
 
     setimageBlob(result as File);
 
-    router.push('/upload');
+    router.push("/upload");
   };
 
   return (
@@ -59,20 +59,6 @@ export const HeaderHome = () => {
               />
             </li>
           )}
-          <li className="header-home__item">
-            <Link href="/">
-              <a className="header-home__link">
-                <Favorite className="header-home__icon" />
-              </a>
-            </Link>
-          </li>
-          <li className="header-home__item">
-            <Link href="/">
-              <a className="header-home__link">
-                <Message className="header-home__icon" />
-              </a>
-            </Link>
-          </li>
         </ul>
       </nav>
     </header>
