@@ -1,10 +1,10 @@
-import avatar from "@public/assets/user/simona.jpg";
-import Image from "next/image";
+import avatar from '@public/assets/user/simona.jpg';
+import Image from 'next/image';
 
 interface IProfilePhoto {
   profileAvatar?: string;
   className?: string;
-  size: "small" | "medium" | "large" | "extraSmall";
+  size: 'small' | 'medium' | 'large' | 'extraSmall';
 }
 export const ProfilePhoto = ({
   profileAvatar,

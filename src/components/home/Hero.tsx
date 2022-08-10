@@ -1,10 +1,10 @@
-import { CardPost } from "@components/CardPost/CardPost";
-import { GridCardPost } from "@components/CardPost/GridCardPost";
-import { InfiniteScroll } from "@components/InfiniteScroll";
-import { PostSkeleton } from "@components/skeleton/PostSkeleton";
-import { getAllPost } from "@services/Posts";
-import { Post } from "src/models/User";
-import { usePaginateResponse } from "../../hooks/usePaginateResponse";
+import { CardPost } from '@components/CardPost/CardPost';
+import { GridCardPost } from '@components/CardPost/GridCardPost';
+import { InfiniteScroll } from '@components/InfiniteScroll';
+import { PostSkeleton } from '@components/skeleton/PostSkeleton';
+import { getAllPost } from '@services/Posts';
+import { Post } from 'src/models/User';
+import { usePaginateResponse } from '../../hooks/usePaginateResponse';
 
 export function Hero() {
   const totalPages = 8;

@@ -1,14 +1,14 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { ProfilePhoto } from "../ProfilePhoto";
+import { ProfilePhoto } from '../ProfilePhoto';
 
-import BarsMenu from "@public/assets/svgs/icons/bar.svg";
-import Link from "next/link";
-import { Comment as CommentType, UserBasic } from "src/models/User";
-import { forwardRef, LegacyRef, useState } from "react";
-import { ModalComment } from "../Comment/ModalComment";
-import { CardComment } from "../Comment/CardComment";
-import { ControllerLikes } from "./ControllerLikes";
+import BarsMenu from '@public/assets/svgs/icons/bar.svg';
+import Link from 'next/link';
+import { Comment as CommentType, UserBasic } from 'src/models/User';
+import { forwardRef, LegacyRef, useState } from 'react';
+import { ModalComment } from '../Comment/ModalComment';
+import { CardComment } from '../Comment/CardComment';
+import { ControllerLikes } from './ControllerLikes';
 interface ICardPost {
   user: UserBasic;
   description: string;
@@ -35,7 +35,7 @@ export const CardPost = forwardRef(
       <>
         <div ref={ref} className="card-post">
           <header className="card-post__header">
-            <ProfilePhoto size="medium" />
+            <ProfilePhoto profileAvatar={user.avatar} size="medium" />
             <div className="card-post__user-info">
               <Link href={`/${user.nickname}`}>
                 <a className="card-post__user-name">{user.nickname}</a>

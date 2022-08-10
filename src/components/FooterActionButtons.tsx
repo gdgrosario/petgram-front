@@ -2,8 +2,6 @@ import Link from 'next/link';
 import { getActionButtons } from '@helpers/getActionButtons';
 import { useContext } from 'react';
 import { AuthContext } from '../context/ContextProvider';
-const avatar =
-  'https://assets.teenvogue.com/photos/5776b76d924ce46478f244de/master/w_1080,h_1236,c_limit/01.png';
 export const FooterActionButtons = () => {
   const { user, error } = useContext(AuthContext);
 
@@ -18,7 +16,7 @@ export const FooterActionButtons = () => {
                 <a className="footer-action-nav__link footer-action-nav__link--user">
                   <img
                     className="footer-action-nav__img footer-action-nav__svg--avatar"
-                    src={avatar}
+                    src={user.avatar}
                     alt={user.nickname}
                   />
                 </a>

@@ -1,12 +1,13 @@
-import { FooterActionButtons } from "@components/FooterActionButtons";
-import { HeadInfo } from "@components/HeadInfo";
-import { NavPages } from "@components/NavPages";
-import { updateProfile } from "@services/User";
-import { ChangeEvent, useEffect, useState, FormEvent, useContext } from "react";
-import { User } from "../../models/User";
-import { AuthContext } from "../../context/ContextProvider";
-import { validateFieldsProfile } from "@helpers/validateForm";
-import { Loading } from "../../components/Loading";
+import { FooterActionButtons } from '@components/FooterActionButtons';
+import { HeadInfo } from '@components/HeadInfo';
+import { NavPages } from '@components/NavPages';
+import { updateProfile } from '@services/User';
+import { ChangeEvent, useEffect, useState, FormEvent, useContext } from 'react';
+import { User } from '../../models/User';
+import { AuthContext } from '../../context/ContextProvider';
+import { validateFieldsProfile } from '@helpers/validateForm';
+import { Loading } from '../../components/Loading';
+import { ProfilePhoto } from '../../components/ProfilePhoto';
 
 export default function edit() {
   const { user, setUser, loading: loadingFetchUsser } = useContext(AuthContext);
@@ -73,12 +74,13 @@ export default function edit() {
         <form onSubmit={handleSubmit} className="user-edit__form">
           {/* parte 1 */}
           <section className="user-edit__img">
-            <img
+            {/* <img
               width="60"
               height="60"
               src="https://assets.teenvogue.com/photos/5776b76d924ce46478f244de/master/w_1080,h_1236,c_limit/01.png"
               alt="user"
-            />
+            /> */}
+            <ProfilePhoto size="large" profileAvatar={user.avatar} />
             <div>
               <h2>{user.nickname}</h2>
               <span>Change Profile Photo</span>
@@ -156,7 +158,7 @@ export default function edit() {
               onChange={handleChange}
               value={profile.birthday}
               onFocus={(e) => {
-                e.currentTarget.type = "date";
+                e.currentTarget.type = 'date';
                 e.currentTarget.focus();
               }}
             />
