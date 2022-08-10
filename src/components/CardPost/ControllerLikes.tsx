@@ -17,7 +17,6 @@ import { GenericAlert } from "../alerts/GenericAlert";
 
 interface IControllerLikes {
   numberOfLikes: number;
-  numberOfComments: number;
   postId: string;
   userLikes: UserBasic[];
   setToggleModal: Dispatch<SetStateAction<boolean>>;
@@ -25,7 +24,6 @@ interface IControllerLikes {
 }
 
 export const ControllerLikes = ({
-  numberOfComments,
   numberOfLikes,
   postId,
   showMessageLike,
@@ -38,6 +36,7 @@ export const ControllerLikes = ({
   const [numberLikes, setNumberLikes] = useState(numberOfLikes);
   const [errorAction, setErrorAction] = useState("");
   const [activeAnimation, setActiveAnimation] = useState(false);
+  const [numberOfComments, setNumberOfComments] = useState(0);
 
   useEffect(() => {
     if (userLikes) {

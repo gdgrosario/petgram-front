@@ -9,7 +9,6 @@ import { forwardRef, LegacyRef, useState } from "react";
 import { ModalComment } from "../Comment/ModalComment";
 import { CardComment } from "../Comment/CardComment";
 import { ControllerLikes } from "./ControllerLikes";
-import { CommentProvider } from "../../context/ContextComment";
 interface ICardPost {
   user: UserBasic;
   description: string;
@@ -68,7 +67,6 @@ export const CardPost = forwardRef(
               postId={postId}
               userLikes={userLikes}
               setToggleModal={setToggleModal}
-              numberOfComments={comments ? comments.length : 0}
               numberOfLikes={numberOflikes}
             />
             <section className="footer-card-post__section">
