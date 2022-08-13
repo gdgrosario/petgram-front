@@ -10,11 +10,15 @@ import {
 interface IInfiniteScroll {
   actionData: () => void;
   loading: boolean;
+  min: number;
+  max: number;
 }
 export const InfiniteScroll: FC<IInfiniteScroll> = ({
   loading,
   actionData,
   children,
+  min,
+  max,
 }) => {
   const observer = useRef<any>();
 
@@ -26,12 +30,12 @@ export const InfiniteScroll: FC<IInfiniteScroll> = ({
       }
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-          actionData();
+          min < max && actionData();
         }
       });
       if (node) observer.current.observe(node);
     },
-    [loading]
+    [loading, min]
   );
 
   return (

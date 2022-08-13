@@ -1,10 +1,11 @@
 import { petgramAPI } from "../axios/axios";
 import { catchError } from "@helpers/errors";
+import { ResponsePagination } from "src/models/User";
 import {
   Post,
   GenericResponse,
   Pagination,
-  ResponsePagination,
+  ResponsePaginationPost,
 } from "src/models/User";
 
 const getAllPost = async ({

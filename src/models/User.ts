@@ -65,6 +65,11 @@ interface ResponsePagination<T> {
   data: T;
   count: number;
 }
+interface ResponsePaginationPost<T> {
+  data: T;
+  countPost: number;
+  countComment: number;
+}
 export type {
   User,
   UpdateUser,
@@ -75,4 +80,5 @@ export type {
   GenericResponse,
   Pagination,
   ResponsePagination,
+  ResponsePaginationPost
 };

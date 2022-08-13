@@ -1,9 +1,10 @@
+
 import Image from "next/image";
 
 interface IProfilePhoto {
   profileAvatar?: string;
   className?: string;
-  size: "small" | "medium" | "large" | "extraSmall";
+  size: 'small' | 'medium' | 'large' | 'extraSmall';
 }
 export const ProfilePhoto = ({
   profileAvatar,

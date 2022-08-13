@@ -89,7 +89,6 @@ export const CardPost = forwardRef(
               postId={postId}
               userLikes={userLikes}
               setToggleModal={setToggleModal}
-              numberOfComments={comments ? comments.length : 0}
               numberOfLikes={numberOflikes}
             />
             <section className="footer-card-post__section">

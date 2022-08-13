@@ -12,24 +12,17 @@ interface IModalComment {
   setToggleModal: Dispatch<boolean>;
 }
 export const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
-  const {
-    loading,
-    error,
-    data,
-    totalResponses,
-    setPage,
-    totalPages,
-    page,
-    setData,
-  } = usePaginateResponse<Comment>({
-    callBackRequest() {
-      return getCommentsInPost(postId, {
-        skip: page,
-        limit: totalPages,
-      });
-    },
-    totalP: 4,
-  });
+  const totalPages = 8;
+
+  const { loading, error, data, totalResponses, setPage, page, setData } =
+    usePaginateResponse<Comment>({
+      callBackRequest() {
+        return getCommentsInPost(postId, {
+          skip: page,
+          limit: totalPages,
+        });
+      },
+    });
 
   return (
     <CommentProvider>
@@ -57,8 +50,10 @@ export const ModalComment = ({ setToggleModal, postId }: IModalComment) => {
               />
             ))}
           {loading && <p>loading....</p>}
-          {totalResponses > totalPages && (
-            <button onClick={() => setPage(totalPages)}>Ver más</button>
+          {data && data.length < totalResponses && (
+            <button onClick={() => setPage((prev) => (prev += 1))}>
+              Ver más
+            </button>
           )}
           <FormComment setData={setData} data={data} postId={postId} />
         </div>
