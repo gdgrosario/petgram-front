@@ -41,7 +41,13 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
       if (!err) {
         const { data, error } = await SignIn(inputValues);
         if (data?.access_token) {
-          setUser(data.user);
+          const mapData = {
+            ...data.user,
+            avatar: data.user.avatar
+              ? data.user.avatar
+              : "https://res.cloudinary.com/dlgvxohur/image/upload/v1658799916/proyectos/dhiyydnlicxpfnlabicl.webp",
+          };
+          setUser(mapData);
           setCookies(user_token, data.access_token);
           router.push("/");
         } else {
@@ -52,7 +58,13 @@ export const useStateFormAuth = (typeForm: TFormAuth) => {
       if (!err) {
         const { data, error } = await SignUp(inputValues);
         if (data?.access_token) {
-          setUser(data.user);
+          const mapData = {
+            ...data.user,
+            avatar: data.user.avatar
+              ? data.user.avatar
+              : "https://res.cloudinary.com/dlgvxohur/image/upload/v1658799916/proyectos/dhiyydnlicxpfnlabicl.webp",
+          };
+          setUser(mapData);
           setCookies(user_token, data.access_token);
           router.push("/");
         } else {

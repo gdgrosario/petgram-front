@@ -1,7 +1,9 @@
-import Link from 'next/link';
-import { getActionButtons } from '@helpers/getActionButtons';
-import { useContext } from 'react';
-import { AuthContext } from '../context/ContextProvider';
+
+import Link from "next/link";
+import { getActionButtons } from "@helpers/getActionButtons";
+import { useContext } from "react";
+import { AuthContext } from "../context/ContextProvider";
+
 export const FooterActionButtons = () => {
   const { user, error } = useContext(AuthContext);
 

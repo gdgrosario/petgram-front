@@ -8,7 +8,13 @@ const getUserProfile = async (): Promise<GenericResponse<User>> => {
   try {
     const response = await petgramAPI.get<User>("/users/profile");
 
-    return { data: response.data };
+    const mapData = {
+      ...response.data,
+      avatar: response.data.avatar
+        ? response.data.avatar
+        : "https://res.cloudinary.com/dlgvxohur/image/upload/v1658799916/proyectos/dhiyydnlicxpfnlabicl.webp",
+    };
+    return { data: mapData };
   } catch (error) {
     return { error: catchError(error) };
   }
@@ -21,7 +27,13 @@ const getUserForUserName = async (
     const response = await petgramAPI.get<User>(
       `/users/get-user-name/${userName}`
     );
-    return { data: response.data };
+    const mapData = {
+      ...response.data,
+      avatar: response.data.avatar
+        ? response.data.avatar
+        : "https://res.cloudinary.com/dlgvxohur/image/upload/v1658799916/proyectos/dhiyydnlicxpfnlabicl.webp",
+    };
+    return { data: mapData };
   } catch (error) {
     return { error: catchError(error) };
   }
@@ -32,7 +44,13 @@ const updateProfile = async (
 ): Promise<GenericResponse<User>> => {
   try {
     const response = await petgramAPI.put<User>("/users", user);
-    return { data: response.data };
+    const mapData = {
+      ...response.data,
+      avatar: response.data.avatar
+        ? response.data.avatar
+        : "https://res.cloudinary.com/dlgvxohur/image/upload/v1658799916/proyectos/dhiyydnlicxpfnlabicl.webp",
+    };
+    return { data: mapData };
   } catch (error) {
     return { error: catchError(error) };
   }
