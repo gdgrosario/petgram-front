@@ -1,13 +1,21 @@
-import { FooterActionButtons } from '@components/FooterActionButtons';
-import { HeadInfo } from '@components/HeadInfo';
-import { NavPages } from '@components/NavPages';
-import { updateProfile } from '@services/User';
-import { ChangeEvent, useEffect, useState, FormEvent, useContext } from 'react';
-import { User } from '../../models/User';
-import { AuthContext } from '../../context/ContextProvider';
-import { validateFieldsProfile } from '@helpers/validateForm';
-import { Loading } from '../../components/Loading';
-import { ProfilePhoto } from '../../components/ProfilePhoto';
+import { FooterActionButtons } from "@components/FooterActionButtons";
+import { HeadInfo } from "@components/HeadInfo";
+import { NavPages } from "@components/NavPages";
+import { updateProfile, uploadAvatar } from "@services/User";
+import {
+  ChangeEvent,
+  useEffect,
+  useState,
+  FormEvent,
+  useContext,
+  useRef,
+} from "react";
+import { User } from "../../models/User";
+import { AuthContext } from "../../context/ContextProvider";
+import { validateFieldsProfile } from "@helpers/validateForm";
+import { Loading } from "../../components/Loading";
+import { ProfilePhoto } from "../../components/ProfilePhoto";
+import { getCompressor } from "@helpers/getCompressor";
 
 export default function edit() {
   const { user, setUser, loading: loadingFetchUsser } = useContext(AuthContext);
@@ -15,6 +23,29 @@ export default function edit() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [invalidFieldsProfile, setinvalidFieldsProfile] = useState(false);
+
+  const [image, setImage] = useState("");
+
+  const [upload, setUpload] = useState<Blob>();
+
+  const imageSelector = useRef(null);
+
+  const onSelectImage = () => {
+    imageSelector.current.click();
+  };
+
+  const onSelectedImage = async (event) => {
+    const target = event.target as HTMLInputElement;
+    const file: File = (target.files as FileList)[0];
+    if (!file) return;
+    const fr = new FileReader();
+    fr.onload = () => setImage(fr.result as string);
+    fr.readAsDataURL(file);
+
+    const result = await getCompressor(file);
+
+    setUpload(result);
+  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,6 +71,12 @@ export default function edit() {
       birthday: profile.birthday,
       phoneNumber: profile.phoneNumber,
     });
+
+    let response;
+
+    if (upload) {
+      response = await uploadAvatar(user.id, upload);
+    }
     setLoading(false);
 
     if (error) {
@@ -54,6 +91,7 @@ export default function edit() {
         raza: data.raza,
         birthday: data.birthday,
         phoneNumber: data.phoneNumber,
+        avatar: upload && response.data === 200 ? image : user.avatar,
       });
     }
   };
@@ -80,10 +118,22 @@ export default function edit() {
               src="https://assets.teenvogue.com/photos/5776b76d924ce46478f244de/master/w_1080,h_1236,c_limit/01.png"
               alt="user"
             /> */}
-            <ProfilePhoto size="large" profileAvatar={user.avatar} />
+            <ProfilePhoto
+              size="large"
+              profileAvatar={image ? image : user.avatar}
+            />
+
+            <input
+              type="file"
+              capture="user"
+              accept="image/*"
+              onChange={(event) => onSelectedImage(event)}
+              ref={imageSelector}
+              hidden={true}
+            />
             <div>
               <h2>{user.nickname}</h2>
-              <span>Change Profile Photo</span>
+              <span onClick={onSelectImage}>Change Profile Photo</span>
             </div>
           </section>
           {/* parte 2 */}
@@ -158,7 +208,7 @@ export default function edit() {
               onChange={handleChange}
               value={profile.birthday}
               onFocus={(e) => {
-                e.currentTarget.type = 'date';
+                e.currentTarget.type = "date";
                 e.currentTarget.focus();
               }}
             />

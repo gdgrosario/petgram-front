@@ -69,6 +69,30 @@ const getUsersByNickName = async (
   }
 };
 
+export const uploadAvatar = async (
+  id: string,
+  image: Blob
+): Promise<GenericResponse<number>> => {
+  try {
+    const formData = new FormData();
+
+    formData.append("img", image);
+    formData.append("id", id);
+
+    const response = await petgramAPI.patch("/users/upload-avatar", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    return {
+      data: response.status,
+    };
+  } catch (error) {
+    return { error: catchError(error) };
+  }
+};
+
 export {
   getUserProfile,
   getUserForUserName,
