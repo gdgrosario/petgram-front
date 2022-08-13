@@ -1,15 +1,14 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { ProfilePhoto } from "../ProfilePhoto";
+import { ProfilePhoto } from '../ProfilePhoto';
 
-import BarsMenu from "@public/assets/svgs/icons/bar.svg";
-import Link from "next/link";
-import { Comment as CommentType, UserBasic } from "src/models/User";
-import { forwardRef, LegacyRef, useState } from "react";
-import { ModalComment } from "../Comment/ModalComment";
-import { CardComment } from "../Comment/CardComment";
-import { ControllerLikes } from "./ControllerLikes";
-import { CommentProvider } from "../../context/ContextComment";
+import BarsMenu from '@public/assets/svgs/icons/bar.svg';
+import Link from 'next/link';
+import { Comment as CommentType, UserBasic } from 'src/models/User';
+import { forwardRef, LegacyRef, useState } from 'react';
+import { ModalComment } from '../Comment/ModalComment';
+import { CardComment } from '../Comment/CardComment';
+import { ControllerLikes } from './ControllerLikes';
 interface ICardPost {
   user: UserBasic;
   description: string;
@@ -68,7 +67,6 @@ export const CardPost = forwardRef(
               postId={postId}
               userLikes={userLikes}
               setToggleModal={setToggleModal}
-              numberOfComments={comments ? comments.length : 0}
               numberOfLikes={numberOflikes}
             />
             <section className="footer-card-post__section">
