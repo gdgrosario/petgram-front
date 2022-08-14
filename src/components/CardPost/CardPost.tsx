@@ -1,14 +1,16 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-import { ProfilePhoto } from '../ProfilePhoto';
+import { ProfilePhoto } from "../ProfilePhoto";
 
-import BarsMenu from '@public/assets/svgs/icons/bar.svg';
-import Link from 'next/link';
-import { Comment as CommentType, UserBasic } from 'src/models/User';
-import { forwardRef, LegacyRef, useState } from 'react';
-import { ModalComment } from '../Comment/ModalComment';
-import { CardComment } from '../Comment/CardComment';
-import { ControllerLikes } from './ControllerLikes';
+import BarsMenu from "@public/assets/svgs/icons/bar.svg";
+import Link from "next/link";
+import { Comment as CommentType, UserBasic } from "src/models/User";
+import { forwardRef, LegacyRef, useState } from "react";
+import { ModalComment } from "../Comment/ModalComment";
+import { CardComment } from "../Comment/CardComment";
+import { ControllerLikes } from "./ControllerLikes";
+import { CommentProvider } from "../../context/ContextComment";
+import { deletePost } from "@services/Posts";
 interface ICardPost {
   user: UserBasic;
   description: string;
@@ -21,6 +23,9 @@ interface ICardPost {
 export const CardPost = forwardRef(
   (props: ICardPost, ref: LegacyRef<HTMLDivElement>) => {
     const [toggleModal, setToggleModal] = useState(false);
+
+    const [btnDeletePost, setBtnDeletePost] = useState(false);
+
     const {
       user,
       description,
@@ -30,6 +35,13 @@ export const CardPost = forwardRef(
       comments,
       userLikes,
     } = props;
+
+    const handleDeletePost = () => {
+      //TODO: como elimino el estado del post?
+      const status = deletePost(postId);
+
+      console.log(status);
+    };
 
     return (
       <>
@@ -42,7 +54,17 @@ export const CardPost = forwardRef(
               </Link>
               <b className="card-post__name">{user.name}</b>
             </div>
-            <BarsMenu className="" />
+            <div className="card-post__btn">
+              <BarsMenu onClick={() => setBtnDeletePost(!btnDeletePost)} />
+              {btnDeletePost && (
+                <button
+                  onClick={() => handleDeletePost()}
+                  className="card-post__btn-delete"
+                >
+                  Eliminar
+                </button>
+              )}
+            </div>
           </header>
 
           {/* TODO: create carousel */}

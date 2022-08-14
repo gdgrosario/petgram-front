@@ -29,6 +29,20 @@ const getAllPost = async ({
   }
 };
 
+const deletePost = async (postId: string): Promise<GenericResponse<number>> => {
+  try {
+    const response = await petgramAPI.delete(`/posts/${postId}`);
+
+    return {
+      data: response.status,
+    };
+  } catch (error) {
+    return {
+      error: catchError(error),
+    };
+  }
+};
+
 const createLike = async (postId: string): Promise<GenericResponse<number>> => {
   try {
     const response = await petgramAPI.patch(`/posts/like/${postId}`);
@@ -54,4 +68,4 @@ const removeLike = async (postId: string): Promise<GenericResponse<number>> => {
     };
   }
 };
-export { getAllPost, removeLike, createLike };
+export { getAllPost, removeLike, createLike, deletePost };
