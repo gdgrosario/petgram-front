@@ -10,6 +10,7 @@ export function Hero() {
   const totalPages = 8;
   const {
     data: post,
+    setData: setPost,
     totalResponses,
     page,
     setPage,
@@ -38,7 +39,12 @@ export function Hero() {
               actionData={() => setPage((prev) => (prev += 1))}
             >
               {post.map((post) => (
-                <CardPost key={post.id} {...post} postId={post.id} />
+                <CardPost
+                  key={post.id}
+                  {...post}
+                  setPost={setPost}
+                  postId={post.id}
+                />
               ))}
             </InfiniteScroll>
           )}

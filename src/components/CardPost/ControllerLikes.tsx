@@ -4,16 +4,14 @@ import {
   useState,
   useContext,
   useEffect,
-} from "react";
-import Comment from "@public/assets/svgs/icons/chat.svg";
-import Send from "@public/assets/svgs/icons/send.svg";
-import Favorite from "@public/assets/svgs/icons/favorite.svg";
-import { createLike, removeLike as removeLikeService } from "@services/Posts";
-import { AuthContext } from "../../context/ContextProvider";
-import { UserBasic } from "src/models/User";
-import { useRef } from "react";
-import { ProfilePhoto } from "../ProfilePhoto";
-import { GenericAlert } from "../alerts/GenericAlert";
+} from 'react';
+import Comment from '@public/assets/svgs/icons/chat.svg';
+import Favorite from '@public/assets/svgs/icons/favorite.svg';
+import { createLike, removeLike as removeLikeService } from '@services/Posts';
+import { AuthContext } from '../../context/ContextProvider';
+import { UserBasic } from 'src/models/User';
+import { ProfilePhoto } from '../ProfilePhoto';
+import { GenericAlert } from '../alerts/GenericAlert';
 
 interface IControllerLikes {
   numberOfLikes: number;
@@ -34,7 +32,7 @@ export const ControllerLikes = ({
   const [isLiked, setIsLiked] = useState(false);
 
   const [numberLikes, setNumberLikes] = useState(numberOfLikes);
-  const [errorAction, setErrorAction] = useState("");
+  const [errorAction, setErrorAction] = useState('');
   const [activeAnimation, setActiveAnimation] = useState(false);
   const [numberOfComments, setNumberOfComments] = useState(0);
 
@@ -89,8 +87,8 @@ export const ControllerLikes = ({
             <div>
               <button onClick={handleLike}>
                 <Favorite
-                  className={`like ${isLiked ? "isLiked" : ""} ${
-                    activeAnimation ? "animation" : ""
+                  className={`like ${isLiked ? 'isLiked' : ''} ${
+                    activeAnimation ? 'animation' : ''
                   }`}
                 />
               </button>

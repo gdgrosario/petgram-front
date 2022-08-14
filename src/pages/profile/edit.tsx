@@ -1,7 +1,7 @@
-import { FooterActionButtons } from "@components/FooterActionButtons";
-import { HeadInfo } from "@components/HeadInfo";
-import { NavPages } from "@components/NavPages";
-import { updateProfile, uploadAvatar } from "@services/User";
+import { FooterActionButtons } from '@components/FooterActionButtons';
+import { HeadInfo } from '@components/HeadInfo';
+import { NavPages } from '@components/NavPages';
+import { updateProfile, uploadAvatar } from '@services/User';
 import {
   ChangeEvent,
   useEffect,
@@ -9,13 +9,13 @@ import {
   FormEvent,
   useContext,
   useRef,
-} from "react";
-import { User } from "../../models/User";
-import { AuthContext } from "../../context/ContextProvider";
-import { validateFieldsProfile } from "@helpers/validateForm";
-import { Loading } from "../../components/Loading";
-import { ProfilePhoto } from "../../components/ProfilePhoto";
-import { getCompressor } from "@helpers/getCompressor";
+} from 'react';
+import { User } from '../../models/User';
+import { AuthContext } from '../../context/ContextProvider';
+import { validateFieldsProfile } from '@helpers/validateForm';
+import { Loading } from '../../components/Loading';
+import { ProfilePhoto } from '../../components/ProfilePhoto';
+import { getCompressor } from '@helpers/getCompressor';
 
 export default function edit() {
   const { user, setUser, loading: loadingFetchUsser } = useContext(AuthContext);
@@ -24,7 +24,7 @@ export default function edit() {
   const [loading, setLoading] = useState(false);
   const [invalidFieldsProfile, setinvalidFieldsProfile] = useState(false);
 
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState('');
 
   const [upload, setUpload] = useState<Blob>();
 
@@ -208,7 +208,7 @@ export default function edit() {
               onChange={handleChange}
               value={profile.birthday}
               onFocus={(e) => {
-                e.currentTarget.type = "date";
+                e.currentTarget.type = 'date';
                 e.currentTarget.focus();
               }}
             />
