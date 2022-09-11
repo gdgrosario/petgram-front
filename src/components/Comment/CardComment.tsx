@@ -55,6 +55,12 @@ export const CardComment = ({
           setData={setData}
         />
       )}
+
+      <style jsx>{`
+        header {
+          justify-content: space-between;
+        }
+      `}</style>
     </>
   );
 };

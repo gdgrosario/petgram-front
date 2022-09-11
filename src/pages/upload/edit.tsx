@@ -1,9 +1,9 @@
-import { HeadInfo } from '@components/HeadInfo';
-import { UploadContext } from '@context/ContextUpload';
-import Close from '@public/assets/svgs/icons/close.svg';
-import { Upload } from '@services/Upload';
-import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+import { HeadInfo } from "@components/HeadInfo";
+import { UploadContext } from "@context/ContextUpload";
+import Close from "@public/assets/svgs/icons/close.svg";
+import { Upload } from "@services/Upload";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
 
 export default function edit() {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function edit() {
 
   useEffect(() => {
     if (!image) {
-      router.push('/');
+      router.push("/");
     }
   }, [image]);
 
@@ -29,9 +29,9 @@ export default function edit() {
 
   const handleHome = () => {
     setUpload(null);
-    setDescription('');
+    setDescription("");
     setimageBlob(null);
-    router.push('/');
+    router.push("/");
   };
 
   const handleSubmit = async () => {
@@ -39,10 +39,10 @@ export default function edit() {
     const response = await Upload({ image: imageBlob, description });
     setLoading(false);
     if (response === 201) {
-      router.push('/');
+      router.push("/");
 
       setUpload(null);
-      setDescription('');
+      setDescription("");
       setimageBlob(null);
     }
   };
@@ -57,7 +57,7 @@ export default function edit() {
         <h2>Nuevo post</h2>
 
         <button onClick={handleSubmit}>
-          {loading ? 'Subiendo...' : 'Subir'}
+          {loading ? "Subiendo..." : "Subir"}
         </button>
       </header>
 
@@ -66,6 +66,7 @@ export default function edit() {
         <textarea
           defaultValue={description}
           onChange={(event) => handleChange(event)}
+          placeholder="Escribe una descripción"
         ></textarea>
       </section>
     </>

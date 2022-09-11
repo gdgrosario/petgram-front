@@ -97,7 +97,7 @@ export const ControllerLikes = ({
                 {userLikes &&
                   userLikes.map((userLike) => (
                     <ProfilePhoto
-                      profileAvatar={user.avatar ? user.avatar : ""}
+                      profileAvatar={user?.avatar ? user.avatar : ""}
                       key={userLike.id}
                       className="profile-photo-preview"
                       size="extraSmall"
