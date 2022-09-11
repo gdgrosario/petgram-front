@@ -1,6 +1,15 @@
-.gird-card-profile{
-    display: grid;
-    justify-items: center;
-    gap: 8px;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+@mixin grid-card {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.gird-card-profile {
+  @include grid-card;
+  gap: 4px;
+}
+
+.gird-card-follow {
+  @include grid-card;
+  gap: 1rem;
 }

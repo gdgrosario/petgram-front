@@ -1,7 +1,7 @@
 .box-profile {
-  height: 255px;
+  // height: 255px;
   &__content-profile {
-    min-height: 210px;
+    min-height: 150px;
     max-height: 210px;
     overflow: hidden;
     height: 25vh;
@@ -28,9 +28,9 @@
 
 .info-user-box {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   position: relative;
-  bottom: 50px;
+  bottom: 30px;
   margin-left: 30px;
 
   &__box-perfil-photo {
@@ -51,10 +51,10 @@
   &__box-buttons {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: left;
     gap: 10px;
     flex-wrap: wrap;
-    margin-top: 5px;
+    padding-left: 20px;
   }
 
   &__name {
@@ -64,15 +64,15 @@
 
   &__user-name {
     margin: 2px 0 0 0;
-    color: #cecdcd;
+    color: #a7a7a7;
   }
   h1 {
-    color: white;
+    color: #222;
   }
 }
 
 .section-friends {
-  margin-top: 20px;
+  margin: 20px 0;
   &__followers {
     margin: 22px 0;
     color: #8e8e8e;
@@ -100,15 +100,13 @@
 @media (max-width: 424px) {
   .info-user-box {
     &__box-buttons {
-      flex-direction: column;
+      justify-content: center;
+      padding-left: 0;
     }
   }
 }
 
 @supports (object-fit: cover) {
-  .box-profile {
-    height: 300px;
-  }
   .info-user-box {
     &__perfil-photo {
       height: 100%;
