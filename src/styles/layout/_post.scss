@@ -102,6 +102,15 @@
 
   &__section {
     margin: 0 20px;
+    span {
+      color: rgb(157, 157, 157);
+      margin-top: 1rem;
+      display: block;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
   }
 
   &__list-hashtag {

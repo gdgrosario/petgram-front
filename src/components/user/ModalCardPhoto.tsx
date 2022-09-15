@@ -23,7 +23,7 @@ export const ModalCardPhoto = ({ photo, post }: IModalCardPhoto) => {
     <div id="myModal" className="modal">
       <div className="modal-content">
         <div className="icon">
-          <Close onClick={() => closePhoto()} className="close" />
+          <Close width={12} onClick={() => closePhoto()} className="close" />
         </div>
 
         <div className="image">

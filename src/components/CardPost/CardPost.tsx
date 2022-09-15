@@ -1,22 +1,22 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-import { ProfilePhoto } from '../ProfilePhoto';
+import { ProfilePhoto } from "../ProfilePhoto";
 
-import BarsMenu from '@public/assets/svgs/icons/bar.svg';
-import Link from 'next/link';
-import { Comment as CommentType, UserBasic, Post } from 'src/models/User';
+import BarsMenu from "@public/assets/svgs/icons/bar.svg";
+import Link from "next/link";
+import { Comment as CommentType, UserBasic, Post } from "src/models/User";
 import {
   forwardRef,
   LegacyRef,
   useState,
   Dispatch,
   SetStateAction,
-} from 'react';
-import { ModalComment } from '../Comment/ModalComment';
-import { CardComment } from '../Comment/CardComment';
-import { ControllerLikes } from './ControllerLikes';
-import { deletePost } from '@services/Posts';
-import { useOwner } from '../../hooks/useOwner';
+} from "react";
+import { ModalComment } from "../Comment/ModalComment";
+import { CardComment } from "../Comment/CardComment";
+import { ControllerLikes } from "./ControllerLikes";
+import { deletePost } from "@services/Posts";
+import { useOwner } from "../../hooks/useOwner";
 interface ICardPost {
   user: UserBasic;
   description: string;
@@ -111,9 +111,9 @@ export const CardPost = forwardRef(
                   />
                 ))}
               {comments && comments.length > 0 && (
-                <button onClick={() => setToggleModal(!toggleModal)}>
-                  Ver más
-                </button>
+                <span onClick={() => setToggleModal(!toggleModal)}>
+                  Ver más comentarios
+                </span>
               )}
             </section>
           </footer>

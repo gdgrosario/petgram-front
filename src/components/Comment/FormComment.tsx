@@ -76,13 +76,14 @@ export const FormComment = ({ postId, setData, data }: IFomComment) => {
 
   return (
     <>
-      <form onSubmit={handleComment}>
+      <form onSubmit={handleComment} className="form__comment">
         <textarea
           value={inputComment}
           onChange={(e) => setInputComment(e.target.value)}
           placeholder="Escribe un comentario"
+          className="form__comment__textarea"
         />
-        <button>
+        <button className="form__comment__btn">
           {loadingComment
             ? "Loading...."
             : currentIdComment

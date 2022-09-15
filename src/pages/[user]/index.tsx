@@ -8,9 +8,6 @@ import { GridCards } from "@components/GridCards";
 import { CardInfoProfile } from "@components/CardInfoProfile";
 import { NotFoundUser } from "../../components/NotFoundUser";
 
-// internal
-import Wave from "@public/assets/svgs/wave.svg";
-
 /* Internal Images */
 import catPerfil from "@public/assets/user/catPerfil.jpg";
 import { CardPhoto } from "@components/user/CardPhoto";
@@ -66,9 +63,7 @@ const ProfileUser = ({ userData }: IProfileUser) => {
               backgroundSize: "cover",
             }}
             className="box-profile__content-profile"
-          >
-            <Wave className="box-profile__wave" />
-          </div>
+          ></div>
 
           <div className="info-user-box">
             <div className="info-user-box__box-perfil-photo">
@@ -87,17 +82,18 @@ const ProfileUser = ({ userData }: IProfileUser) => {
                 {userData.nickname || "Anonimo"}{" "}
               </h1>
               <p className="info-user-box__user-name">{userData.name}</p>
-              <RenderButtonsForUser userData={userData} />
             </div>
           </div>
         </section>
+
+        <RenderButtonsForUser userData={userData} />
 
         <div className="container-global">
           <p className="box-profile__description-profile">
             {userData.biography}
           </p>
           <section className="section-friends">
-            <GridCards>
+            <div className="gird-card-follow">
               <CardInfoProfile
                 navPage={`${userData.nickname}/followeds`}
                 amount={userData.numberOfFollowed}
@@ -113,17 +109,17 @@ const ProfileUser = ({ userData }: IProfileUser) => {
                 amount={userData.posts ? userData.posts.length : 0}
                 textCard="Publicaciones"
               />
-            </GridCards>
+            </div>
 
             {/* <RenderButtonsForUser {...UserState} /> */}
           </section>
 
-          <GridCards>
+          <div className="gird-card-profile">
             {userData.posts &&
               userData.posts.map((post) => (
                 <CardPhoto key={post.id} post={post} />
               ))}
-          </GridCards>
+          </div>
         </div>
       </div>
     </>

@@ -6,8 +6,11 @@
   outline: none !important;
   text-decoration: none;
 }
+p {
+  margin: 0;
+}
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background: $bg_white;
 }
 html::-webkit-scrollbar {

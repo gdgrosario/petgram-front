@@ -1,6 +1,6 @@
 /* svgs */
-import { useRouter } from 'next/router';
-import BackBtn from '@public/assets/svgs/icons/arrow.svg';
+import { useRouter } from "next/router";
+import BackBtn from "@public/assets/svgs/icons/arrow.svg";
 
 export function NavPages({ titleHeaderPage }) {
   const router = useRouter();

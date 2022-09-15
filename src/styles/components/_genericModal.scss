@@ -32,7 +32,7 @@
     position: fixed;
     z-index: 9999;
     background-color: #ffffff;
-    border-radius: 20px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,8 +44,6 @@
     background-color: transparent;
     border: none;
     height: 50px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
     border-bottom: 1px solid #e5e5e5;
     &--danger {
       color: #ff0000;
