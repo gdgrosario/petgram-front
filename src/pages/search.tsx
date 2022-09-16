@@ -62,7 +62,7 @@ const search = () => {
                 </Link>
               </div>
             ))
-          : search.length > 3 && <p>Not Found</p>}
+          : !loading &&<p>Not Found</p>}
 
         <FooterActionButtons />
       </main>
