@@ -29,9 +29,6 @@ interface ICardPost {
 }
 export const CardPost = forwardRef(
   (props: ICardPost, ref: LegacyRef<HTMLDivElement>) => {
-    const [toggleModal, setToggleModal] = useState(false);
-    const [btnDeletePost, setBtnDeletePost] = useState(false);
-    const isOwner = useOwner(props.user.id);
     const {
       user,
       description,
@@ -42,6 +39,9 @@ export const CardPost = forwardRef(
       userLikes,
       setPost,
     } = props;
+    const [toggleModal, setToggleModal] = useState(false);
+    const [btnDeletePost, setBtnDeletePost] = useState(false);
+    const isOwner = useOwner(props.user.id);
 
     const handleDeletePost = async () => {
       const status = await deletePost(postId);

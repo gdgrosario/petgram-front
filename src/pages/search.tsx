@@ -9,7 +9,6 @@ const search = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [usersSearch, setUsersSearch] = useState<User[]>();
-  console.log(usersSearch);
   const searchUsers = async (sch: string) => {
     setLoading(true);
     if (sch.length > 0) {

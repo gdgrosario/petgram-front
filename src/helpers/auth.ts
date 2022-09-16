@@ -12,10 +12,15 @@ const getAccessToken = () => {
 };
 
 const expiredToke = (token: string): boolean => {
-  const dataToken = jwtDecode<PayloadToken>(token);
-  const { exp } = dataToken;
-  const currentDate = (Date.now() + 60) / 1000;
-  return currentDate > exp;
+  try {
+    const dataToken = jwtDecode<PayloadToken>(token);
+    const { exp } = dataToken;
+    const currentDate = (Date.now() + 60) / 1000;
+    return currentDate > exp;
+  } catch (error) {
+    removeCookies(user_token);
+    return false;
+  }
 };
 
 export { getAccessToken };
